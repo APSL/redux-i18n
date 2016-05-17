@@ -34,7 +34,7 @@ glob(localesPath, function(err, files) {
       for(trans in translations[lang]) {
         wstream.write(`    "${trans}": "${translations[lang][trans]}",\n`)
       }
-    wstream.write(`  }\n`);
+    wstream.write(`  },\n`);
   }
   wstream.write(`}\n`);
 });
