@@ -10,6 +10,9 @@
     "i18n_extract": "./bin/i18n_extract.js",
     "i18n_import": "./bin/i18n_import.js"
   },
+  "dependencies": {
+    "gettext-parser": "^1.1.2"
+  },
   "devDependencies": {
     "babel-cli": "^6.8.0",
     "babel-core": "^6.7.7",
