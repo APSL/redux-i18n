@@ -2,9 +2,12 @@
 var glob = require("glob"),
     gtp = require("gettext-parser"),
     fs = require("fs"),
-    path = require("path");
+    color = require("colors"),
+    path = require("path"),
+    optimist = require("optimist");
 
-var localesPath = "locales/*.po";
+var args = optimist.argv;
+var localesPath = `${args.locales || "locales"}/*.po`;
 var translations = {};
 
 glob(localesPath, function(err, files) {
@@ -27,7 +30,8 @@ glob(localesPath, function(err, files) {
   /***************************************************************************/
   /* Creating translations.js
   /***************************************************************************/
-  var wstream = fs.createWriteStream("src/translations.js");
+  var translationsFile = `${args.translations || "src"}/translations.js`;
+  var wstream = fs.createWriteStream(translationsFile);
   wstream.write(`export const translations = {\n`);
   for(lang in translations) {
     wstream.write(`  ${lang}: {\n`);
@@ -37,4 +41,6 @@ glob(localesPath, function(err, files) {
     wstream.write(`  },\n`);
   }
   wstream.write(`}\n`);
+
+  console.log(`\nDone! '${translationsFile}' generated.\n`.green);
 });

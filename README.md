@@ -108,9 +108,27 @@ npm run import
 npm run extract
 ```
 
-This script search all results with a regular expression and generate a *locales/template.pot* file. This file can be used with [Poedit](https://poedit.net/) application for generate *en.po*, *es.po*, etc. files.
+This script search all results inside **src** folder with a regular expression and generate a **locales/template.pot** file. This file can be used with [Poedit](https://poedit.net/) application for generate *en.po*, *es.po*, etc. files.
 
 You should save your *po* files inside *locales* folder.
+
+If you want set other source folder, you can use *source* parameter.
+
+```json
+    "scripts": {
+        "extract": "i18n_extract --source=mysource",
+        "import": "i18n_import"
+    }    
+```
+
+Or if you want set other *locales* folder:
+
+```json
+    "scripts": {
+        "extract": "i18n_extract --source=mysource --locales=mylocales",
+        "import": "i18n_import"
+    }    
+```
 
 ## Import your po files
 
@@ -118,5 +136,22 @@ You should save your *po* files inside *locales* folder.
 npm run import
 ```
 
-This script load all po files inside you *locales* folder, extract all translations and build a *translations.js* that you will use in your application.
+This script load all po files inside you *locales* folder, extract all translations and build a **src/translations.js** that you will use in your application.
 
+You can set other *locales* folder:
+
+```json
+    "scripts": {
+        "extract": "i18n_extract --source=mysource --locales=mylocales",
+        "import": "i18n_import --locales=mylocales"
+    }    
+```
+
+If you want save *translation.js* file to other folder:
+
+```json
+    "scripts": {
+        "extract": "i18n_extract --source=mysource --locales=mylocales",
+        "import": "i18n_import --locales=mylocales --translations=myfolder"
+    }    
+```
