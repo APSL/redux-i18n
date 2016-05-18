@@ -1,11 +1,27 @@
 {
   "name": "redux-i18n",
   "version": "0.0.1",
-  "description": "",
+  "description": "A simple and powerful package for translate your react applications.",
   "main": "./dist/index.js",
+  "repository": {
+      "type": "git",
+      "url": "https://github.com/APSL/redux-i18n"
+  },
   "scripts": {
     "build": "babel src --out-dir dist"
   },
+  "keywords": [
+      "react",
+      "reactjs",
+      "flux",
+      "redux",
+      "i18n",
+      "gettext",
+      "translations"
+  ],
+  "author": "Apsl <info@apsl.net> (https://www.apsl.net)",
+  "license": "MIT",
+  "homepage": "https://github.com/APSL/redux-i18n",
   "bin": {
     "i18n_extract": "./bin/i18n_extract.js",
     "i18n_import": "./bin/i18n_import.js"
