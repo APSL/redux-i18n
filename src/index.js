@@ -9,6 +9,11 @@ import deepForceUpdate from 'react-deep-force-update'
 
 class I18n extends React.Component {
 
+  constructor(props) {
+    super(props)
+    this.trans = this.trans.bind(this)
+  }
+
   // Check if the text need replace some params
   params(text, params) {
     if (params !== undefined) {
@@ -39,7 +44,7 @@ class I18n extends React.Component {
 
   getChildContext() {
     return {
-      t: this.trans.bind(this),
+      t: this.trans,
       currentLang: this.props.lang
     }
   }

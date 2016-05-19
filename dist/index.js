@@ -32,17 +32,20 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var I18n = function (_React$Component) {
   _inherits(I18n, _React$Component);
 
-  function I18n() {
+  function I18n(props) {
     _classCallCheck(this, I18n);
 
-    return _possibleConstructorReturn(this, Object.getPrototypeOf(I18n).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(I18n).call(this, props));
+
+    _this.trans = _this.trans.bind(_this);
+    return _this;
   }
+
+  // Check if the text need replace some params
+
 
   _createClass(I18n, [{
     key: "params",
-
-
-    // Check if the text need replace some params
     value: function params(text, _params) {
       if (_params !== undefined) {
         for (var k in _params) {
@@ -75,7 +78,7 @@ var I18n = function (_React$Component) {
     key: "getChildContext",
     value: function getChildContext() {
       return {
-        t: this.trans.bind(this),
+        t: this.trans,
         currentLang: this.props.lang
       };
     }
