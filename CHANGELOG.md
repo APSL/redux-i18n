@@ -12,3 +12,4 @@
 ## 0.0.3
 
 - Improved documentation of contributed file.
+- Performance improvement
