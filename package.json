@@ -1,6 +1,6 @@
 {
   "name": "redux-i18n",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A simple and powerful package for translate your react applications.",
   "main": "./dist/index.js",
   "repository": {
@@ -8,7 +8,7 @@
       "url": "https://github.com/APSL/redux-i18n"
   },
   "scripts": {
-    "build": "babel src --out-dir dist"
+    "build": "babel src --out-dir dist && uglifyjs dist/index.js --compress -o dist/index.js"
   },
   "keywords": [
       "react",

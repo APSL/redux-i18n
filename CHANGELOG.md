@@ -13,3 +13,7 @@
 
 - Improved documentation of contributed file.
 - Performance improvement
+
+## 0.0.4
+
+- Compress *dist/index.js* file.
