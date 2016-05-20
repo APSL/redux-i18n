@@ -65,7 +65,7 @@ export default connect(state => ({
 
 ## Translating the content
 
-You can access to a *I18n's* functions and attributes with your component's context. For example:
+You can access to a *I18n's* functions with your component's context. For example:
 
 ```javascript
 Home.contextTypes = {
