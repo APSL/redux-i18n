@@ -20,7 +20,10 @@ class MainApp extends React.Component {
   render() {
     return (
       <I18n translations={translations}>
-        {this.props.children}
+        <div>
+            <h1>My Project</h1>
+            {this.props.children}
+        </div>
       </I18n>
     )
   }
@@ -38,43 +41,45 @@ export const translations = {
 }
 ```
 
-You should have a *session reducer* with a *lang* attribute. As this:
+## Setting the reducer
+
+In your *combineReducers* you should add **i18nState** reducer.
 
 ```javascript
-const sessionState = {
-  lang: "es"
-}
+import {otherreducers} from "./Yourproject"
+import {i18nState} from "redux-i18n"
 
-export function session(state=sessionState, action) {
-  switch (action.type) {
-    case "SESSION_SET_LANGUAGE":
-      return {...state, lang: action.lang}
-    default:
-      return state
-  }
-}
+const appReducer = combineReducers({
+    otherreducers,
+    i18nState
+})
 ```
 
-*I18n* component is connected to *session.lang* reducer and listen when language change for redraw components.
+Now, you can connect *lang* attribute in your component:
 
-## Translating content
+```javascript
+export default connect(state => ({
+  lang: state.i18nState.lang,
+}))(Home)
+```
+
+## Translating the content
 
 You can access to a *I18n's* functions and attributes with your component's context. For example:
 
 ```javascript
 Home.contextTypes = {
-  t: React.PropTypes.func.isRequired,
-  currentLang: React.PropTypes.string.isRequired
+  t: React.PropTypes.func.isRequired
 }
 ```
 
-And then, you can use *i18n* function or *currentLang* attribute in you render method.
+And then, you can use *i18n* function in your render method.
 
 ```javascript
 render() {
     return (
       <div>
-        <strong>Your current language, is: {this.context.currentLang}</strong><br/>
+        <strong>Your current language, is: {this.props.lang}</strong><br/>
         {this.context.t("Translate this text")}<br/>
         {this.context.t("Hello {n}!", {n: "Cesc"})}<br/><br/>
         <button onClick={this.changeLanguage.bind(this)}>Change Language</button>
@@ -82,6 +87,19 @@ render() {
     )
 }
 ```
+
+## Changing the language
+
+This library has a *setLanguage* action. You can use as follow:
+
+```javascript
+import {setLanguage} from "redux-i18n"
+
+componentWillMount() {
+    this.props.dispatch(setLanguage("es"))
+}
+```
+
 ## Using the scripts
 
 This package have two scripts for extract texts to a *template.pot* and import texts from *po* file to a *translation.js* file.

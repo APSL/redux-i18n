@@ -16,4 +16,6 @@
 
 ## 0.0.4
 
-- Compress *dist/index.js* file.
+- Redux state and action added.
+- Improved documentation.
+

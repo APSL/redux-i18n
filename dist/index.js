@@ -1,1 +1,35 @@
-"use strict";function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{"default":obj}}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor))throw new TypeError("Cannot call a class as a function")}function _possibleConstructorReturn(self,call){if(!self)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!call||"object"!=typeof call&&"function"!=typeof call?self:call}function _inherits(subClass,superClass){if("function"!=typeof superClass&&null!==superClass)throw new TypeError("Super expression must either be null or a function, not "+typeof superClass);subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:!1,writable:!0,configurable:!0}}),superClass&&(Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass)}Object.defineProperty(exports,"__esModule",{value:!0});var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||!1,descriptor.configurable=!0,"value"in descriptor&&(descriptor.writable=!0),Object.defineProperty(target,descriptor.key,descriptor)}}return function(Constructor,protoProps,staticProps){return protoProps&&defineProperties(Constructor.prototype,protoProps),staticProps&&defineProperties(Constructor,staticProps),Constructor}}(),_react=require("react"),_react2=_interopRequireDefault(_react),_reactRedux=require("react-redux"),_reactDeepForceUpdate=require("react-deep-force-update"),_reactDeepForceUpdate2=_interopRequireDefault(_reactDeepForceUpdate),I18n=function(_React$Component){function I18n(props){_classCallCheck(this,I18n);var _this=_possibleConstructorReturn(this,Object.getPrototypeOf(I18n).call(this,props));return _this.trans=_this.trans.bind(_this),_this}return _inherits(I18n,_React$Component),_createClass(I18n,[{key:"params",value:function(text,_params){if(void 0!==_params)for(var k in _params){var reg=new RegExp("{"+k+"}","g");text=text.replace(reg,_params[k])}return text}},{key:"trans",value:function(textKey,params){var langMessages=this.props.translations[this.props.lang];if(void 0===langMessages)return this.params(textKey,params);var message=langMessages[textKey];return void 0===message||""===message?this.params(textKey,params):this.params(message,params)}},{key:"getChildContext",value:function(){return{t:this.trans,currentLang:this.props.lang}}},{key:"componentDidUpdate",value:function(prevProps,prevState){prevProps.lang!==this.props.lang&&(0,_reactDeepForceUpdate2["default"])(this)}},{key:"render",value:function(){return this.props.children}}]),I18n}(_react2["default"].Component);I18n.childContextTypes={t:_react2["default"].PropTypes.func.isRequired,currentLang:_react2["default"].PropTypes.string.isRequired},I18n.propTypes={translations:_react2["default"].PropTypes.object.isRequired},exports["default"]=(0,_reactRedux.connect)(function(state){return{lang:state.session.lang}})(I18n);
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.setLanguage = exports.i18nState = exports.I18n = undefined;
+
+var _reducer = require("./reducer");
+
+Object.defineProperty(exports, "i18nState", {
+  enumerable: true,
+  get: function get() {
+    return _reducer.i18nState;
+  }
+});
+
+var _actions = require("./actions");
+
+Object.defineProperty(exports, "setLanguage", {
+  enumerable: true,
+  get: function get() {
+    return _actions.setLanguage;
+  }
+});
+
+var _component = require("./component");
+
+var _component2 = _interopRequireDefault(_component);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.I18n = _component2.default; /*
+                                     * Project: redux-i18n
+                                     * File: index.js
+                                     */
