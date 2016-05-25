@@ -15,7 +15,7 @@ import ComponentTest from "./ComponentTest"
 
 
 /*****************************************************************************/
-/* Translations definition
+/* Translations and Store...
 /*****************************************************************************/
 const translations = {
   es: {
@@ -26,19 +26,19 @@ const translations = {
   }
 }
 
+let store = createStore(
+  i18nState,
+  applyMiddleware(
+    thunk,
+    promiseMiddleware
+  )
+)
+
 /*****************************************************************************/
 /* Test 1: Essentials tests...
 /*****************************************************************************/
 describe("I18n", () => {
   it("essentials tests", () => {
-
-    const store = createStore(
-      i18nState,
-      applyMiddleware(
-        thunk,
-        promiseMiddleware
-      )
-    )
 
     const i18nComp = TestUtils.renderIntoDocument(
       <Provider store={store}>
