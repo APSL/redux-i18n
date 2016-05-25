@@ -67,5 +67,5 @@ I18n.propTypes = {
 }
 
 export default connect(state => ({
-  lang: state.i18nState.lang
+  lang: state ? state.i18nState.lang : "en"
 }))(I18n)

@@ -46,6 +46,8 @@
     "react-dom": "^15.0.2",
     "react-redux": "^4.4.5",
     "redux": "^3.5.2",
+    "redux-promise-middleware": "^3.0.0",
+    "redux-thunk": "^2.1.0",
     "webpack": "^1.13.0"
   },
   "jest": {
@@ -54,7 +56,9 @@
       "<rootDir>/node_modules/react-dom/",
       "<rootDir>/node_modules/react-addons-test-utils/",
       "<rootDir>/node_modules/react-redux/",
-      "<rootDir>/node_modules/redux/"
+      "<rootDir>/node_modules/redux/",
+      "<rootDir>/node_modules/redux-thunk/",
+      "<rootDir>/node_modules/redux-promise-middleware/"
     ]
   }
 }
