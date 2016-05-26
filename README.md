@@ -3,6 +3,7 @@
 **redux-i18n** is a simple and powerful package for translate your *react* application with *react-redux*.
 
 [![redux-i18n in Travis](https://travis-ci.org/APSL/redux-i18n.svg?branch=master)](https://travis-ci.org/APSL/redux-i18n)
+[![npm version](https://badge.fury.io/js/redux-i18n.svg)](https://www.npmjs.com/package/redux-i18n)
 
 ## Install
 
