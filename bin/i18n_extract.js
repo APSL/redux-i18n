@@ -7,8 +7,10 @@ var glob = require("glob"),
 
 var args = optimist.argv;
 var srcPath = `${args.source || "src"}/**/*.js*`;
-var pattern = /context.t\((?:\"(.+?)\")(?:,.+)?\)/g;
+var pattern = require("./extract_pattern")
+var pattern = pattern.pattern;
 var texts = {};
+
 
 /*****************************************************************************/
 /* Check if locale folder exists
@@ -35,6 +37,7 @@ glob(srcPath, function(err, files) {
     console.log(`Parsing ${file}`.yellow);
     var fileContent = fs.readFileSync(file, "utf-8");
 
+    var m = null;
     while ((m = pattern.exec(fileContent)) !== null) {
       if (m.index === pattern.lastIndex) {
           pattern.lastIndex++;
@@ -68,5 +71,3 @@ glob(srcPath, function(err, files) {
   console.log(`\nDone! '${args.locales || "locales"}/template.pot' updated.\n`.green);
 
 });
-
-
