@@ -17,9 +17,6 @@ const translations = {
   es: {
     "Hello": "Hola",
     "Hello {name}!": "Hola {name}!"
-  },
-  en: {
-    "Hello": "Hello"
   }
 }
 
@@ -28,28 +25,24 @@ describe("component test", function() {
 
     this.store = createStore(
       combineReducers({i18nState}),
-      applyMiddleware(
-        thunk
-      )
+      applyMiddleware(thunk)
     )
 
-    this.withoutParams = TestUtils.renderIntoDocument(
+    this.withoutParamsNode = ReactDOM.findDOMNode(TestUtils.renderIntoDocument(
       <Provider store={this.store}>
         <I18n translations={translations}>
           <TransWithoutParams/>
         </I18n>
       </Provider>
-    )
-    this.withoutParamsNode = ReactDOM.findDOMNode(this.withoutParams)
+    ))
 
-    this.withParams = TestUtils.renderIntoDocument(
+    this.withParamsNode = ReactDOM.findDOMNode(TestUtils.renderIntoDocument(
       <Provider store={this.store}>
         <I18n translations={translations}>
           <TransWithParams/>
         </I18n>
       </Provider>
-    )
-    this.withParamsNode = ReactDOM.findDOMNode(this.withParams)
+    ))
   })
 
   it("initial state", function() {
