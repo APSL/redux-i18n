@@ -1,5 +1,5 @@
-.. image:: https://travis-ci.org/APSL/redux-i18n.svg?branch=master
-    :target: https://travis-ci.org/APSL/redux-i18n
+
+[![redux-i18n in Travis](https://travis-ci.org/APSL/redux-i18n.svg?branch=master)](https://travis-ci.org/APSL/redux-i18n)
 
 # Description
 
