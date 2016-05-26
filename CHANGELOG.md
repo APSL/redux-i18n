@@ -19,3 +19,6 @@
 - Redux state and action added.
 - Improved documentation.
 
+## 0.0.5
+
+- Added Unit tests.

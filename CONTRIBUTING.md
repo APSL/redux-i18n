@@ -6,6 +6,12 @@ Instructions for edit this project.
 
 * Edit the *src/index.js* file.
 * You should document the code.
+* Run tests
+
+ ```
+npm test
+```
+
 * Build the library with:
 
  ```
