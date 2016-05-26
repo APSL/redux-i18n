@@ -10,8 +10,8 @@ import {Provider} from "react-redux"
 import I18n from '../src/component';
 import {i18nState} from "../src/reducer"
 import {setLanguage} from "../src/actions"
-import TransWithoutParams from "./TransWithoutParams"
-import TransWithParams from "./TransWithParams"
+import TransWithoutParams from "./components/TransWithoutParams"
+import TransWithParams from "./components/TransWithParams"
 
 const translations = {
   es: {

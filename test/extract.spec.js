@@ -1,4 +1,4 @@
-import {pattern} from "../bin/extract_pattern"
+import {pattern, getAllMatches} from "../bin/extract_utils"
 import expect from "expect"
 
 let html = `
@@ -13,18 +13,10 @@ let html = `
 describe("extract texts", function() {
   it("extracting basic texts", function() {
 
-    let found = []
-    let m = null
+    let matches = getAllMatches(pattern, html)
 
-    while ((m = pattern.exec(html)) !== null) {
-      if (m.index === pattern.lastIndex) {
-          pattern.lastIndex++;
-      }
-      found.push(m[1])
-    }
-
-    expect(found.length).toEqual(2)
-    expect(found[0]).toEqual("Translate this text")
-    expect(found[1]).toEqual("Hello {n}!")
+    expect(matches.length).toEqual(2)
+    expect(matches[0]).toEqual("Translate this text")
+    expect(matches[1]).toEqual("Hello {n}!")
   })
 })

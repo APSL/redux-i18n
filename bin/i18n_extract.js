@@ -7,8 +7,9 @@ var glob = require("glob"),
 
 var args = optimist.argv;
 var srcPath = `${args.source || "src"}/**/*.js*`;
-var pattern = require("./extract_pattern")
-var pattern = pattern.pattern;
+var extractUtils = require("./extract_utils")
+var pattern = extractUtils.pattern;
+var getAllMatches = extractUtils.getAllMatches;
 var texts = {};
 
 
@@ -36,20 +37,15 @@ glob(srcPath, function(err, files) {
 
     console.log(`Parsing ${file}`.yellow);
     var fileContent = fs.readFileSync(file, "utf-8");
+    var matches = getAllMatches(pattern, fileContent);
 
-    var m = null;
-    while ((m = pattern.exec(fileContent)) !== null) {
-      if (m.index === pattern.lastIndex) {
-          pattern.lastIndex++;
-      }
-
-      var text = m[1];
+    for (var i=0;i<matches.length;i++) {
+      var text = matches[i];
       if(texts[text] === undefined) {
-        texts[text] = [file]
+        texts[text] = [file];
       } else {
         texts[text].push(file)
       }
-
     }
 
   });
