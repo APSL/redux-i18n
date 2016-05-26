@@ -1,3 +1,6 @@
+.. image:: https://travis-ci.org/APSL/redux-i18n.svg?branch=master
+    :target: https://travis-ci.org/APSL/redux-i18n
+
 # Description
 
 **redux-i18n** is a simple and powerful package for translate your *react* application with *react-redux*.
