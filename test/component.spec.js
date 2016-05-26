@@ -12,6 +12,7 @@ import {i18nState} from "../src/reducer"
 import {setLanguage} from "../src/actions"
 import TransWithoutParams from "./components/TransWithoutParams"
 import TransWithParams from "./components/TransWithParams"
+import Dates from "./components/Dates"
 
 const translations = {
   es: {
@@ -43,6 +44,15 @@ describe("component test", function() {
         </I18n>
       </Provider>
     ))
+
+    this.dates = ReactDOM.findDOMNode(TestUtils.renderIntoDocument(
+      <Provider store={this.store}>
+        <I18n translations={translations}>
+          <Dates/>
+        </I18n>
+      </Provider>
+    ))
+
   })
 
   it("initial state", function() {
@@ -67,5 +77,9 @@ describe("component test", function() {
   it("changing language in text with params", function() {
     this.store.dispatch(setLanguage("es"))
     expect(this.withParamsNode.textContent).toEqual("Hola Francesc!")
+  })
+
+  it("dates format", function() {
+    console.log(this.dates.textContent);
   })
 })

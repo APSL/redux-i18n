@@ -1,7 +1,6 @@
-import React from 'react'
+import React from "react"
 
 class TransWithoutParams extends React.Component {
-
   render() {
     return (
       <div>
