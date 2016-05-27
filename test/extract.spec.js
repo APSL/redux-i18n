@@ -7,6 +7,9 @@ let html = `
   {this.context.t("Translate this text")}<br/>
   {this.context.t("Hello {n}!", {n: "Cesc"})}<br/><br/>
   <button onClick={this.changeLanguage.bind(this)}>Change Language</button>
+  <div>
+    {sample.format(this.context.t("YYYY-MM-DD"))}
+  </div>
 </div>
 `
 
@@ -15,8 +18,9 @@ describe("extract texts", function() {
 
     let matches = getAllMatches(pattern, html)
 
-    expect(matches.length).toEqual(2)
+    expect(matches.length).toEqual(3)
     expect(matches[0]).toEqual("Translate this text")
     expect(matches[1]).toEqual("Hello {n}!")
+    expect(matches[2]).toEqual("YYYY-MM-DD")
   })
 })

@@ -29,8 +29,7 @@
   },
   "dependencies": {
     "gettext-parser": "^1.1.2",
-    "react-deep-force-update": "^2.0.1",
-    "moment": "~2.10.6"
+    "react-deep-force-update": "^2.0.1"
   },
   "devDependencies": {
     "babel-cli": "^6.8.0",
@@ -43,6 +42,7 @@
     "gettext-parser": "^1.1.2",
     "jsdom-no-contextify": "^3.1.0",
     "mocha": "^2.5.3",
+    "moment": "~2.10.6",
     "react": "^15.0.2",
     "react-addons-test-utils": "^15.1.0",
     "react-dom": "^15.0.2",

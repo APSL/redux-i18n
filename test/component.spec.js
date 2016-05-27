@@ -17,7 +17,8 @@ import Dates from "./components/Dates"
 const translations = {
   es: {
     "Hello": "Hola",
-    "Hello {name}!": "Hola {name}!"
+    "Hello {name}!": "Hola {name}!",
+    "YYYY-MM-DD": "DD/MM/YYYY"
   }
 }
 
@@ -79,7 +80,11 @@ describe("component test", function() {
     expect(this.withParamsNode.textContent).toEqual("Hola Francesc!")
   })
 
-  it("dates format", function() {
-    console.log(this.dates.textContent);
+  it("date format", function() {
+    this.store.dispatch(setLanguage("en"))
+    expect(this.dates.textContent).toEqual("2016-01-01")
+    this.store.dispatch(setLanguage("es"))
+    expect(this.dates.textContent).toEqual("01/01/2016")
   })
+
 })
