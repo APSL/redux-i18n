@@ -4,15 +4,19 @@
  */
 import React from "react"
 import {connect} from "react-redux"
-import deepForceUpdate from 'react-deep-force-update'
+import deepForceUpdate from "react-deep-force-update"
+import moment from "moment"
 
 class I18n extends React.Component {
 
   constructor(props) {
     super(props)
+
     this.trans = this.trans.bind(this)
     this.d1 = this.date.bind(this, false)
     this.d2 = this.date.bind(this, true)
+
+    moment.locale(this.props.lang)
   }
 
   // Check if the text need replace some params
@@ -58,6 +62,7 @@ class I18n extends React.Component {
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.lang !== this.props.lang) {
       deepForceUpdate(this)
+      moment.locale(this.props.lang)
     }
   }
 

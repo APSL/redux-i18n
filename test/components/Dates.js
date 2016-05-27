@@ -1,5 +1,5 @@
 import React from "react"
-import moment from "momentjs"
+import moment from "moment"
 
 class Dates extends React.Component {
 
