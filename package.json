@@ -11,6 +11,11 @@
     "build": "babel src --out-dir dist",
     "test": "NODE_ENV=test mocha --compilers js:babel-core/register --recursive"
   },
+  "files":[
+      "bin",
+      "*.md",
+      "dist"
+  ],
   "keywords": [
     "react",
     "reactjs",
