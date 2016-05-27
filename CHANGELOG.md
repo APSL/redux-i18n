@@ -22,3 +22,8 @@
 ## 0.0.5
 
 - Added Unit tests.
+
+## 0.0.6
+
+- Documentation updated with an example with dates translated.
+- New tests with date formats.

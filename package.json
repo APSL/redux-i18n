@@ -1,6 +1,6 @@
 {
   "name": "redux-i18n",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A simple and powerful package for translate your react applications.",
   "main": "./dist/index.js",
   "repository": {

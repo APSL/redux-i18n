@@ -91,6 +91,19 @@ render() {
 }
 ```
 
+You can translate date formats, too.
+
+```javascript
+render() {
+    let today = moment()
+    return (
+      <div>
+        {today.format(this.context.t("YYYY-MM-DD"))}
+      </div>
+    )
+}
+```
+
 ## Changing the language
 
 This library has a *setLanguage* action. You can use as follow:
