@@ -23,7 +23,10 @@
     "redux",
     "i18n",
     "gettext",
-    "translations"
+    "translations",
+    "poedit",
+    "po",
+    "internationalize"
   ],
   "author": "Apsl <info@apsl.net> (https://www.apsl.net)",
   "license": "MIT",
