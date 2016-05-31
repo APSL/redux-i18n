@@ -1,4 +1,4 @@
-exports.pattern = /context.t\((?:\"(.+?)\")(?:,.+)?\)/g;
+exports.pattern = /context.t\((?:\"(.+?)\")(?:,.+)?\)?/g;
 exports.getAllMatches = function(pattern, content) {
   var found = [];
   var m = null;

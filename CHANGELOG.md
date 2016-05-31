@@ -31,3 +31,7 @@
 ## 0.0.7
 
 - Added "files" attribute in package.json.
+
+## 0.0.8
+
+- Extract regexp bug fixed.
