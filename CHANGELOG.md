@@ -35,3 +35,7 @@
 ## 0.0.8
 
 - Extract regexp bug fixed.
+
+## 1.0.0
+
+- The package's version is increased because it's stable.
