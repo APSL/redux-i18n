@@ -1,29 +1,28 @@
-import React from "react"
-import ReactDOM from 'react-dom';
-import expect from "expect"
-import {createStore, applyMiddleware, combineReducers} from "redux"
-import thunk from "redux-thunk"
-import promiseMiddleware from "redux-promise-middleware"
-import TestUtils from 'react-addons-test-utils';
-import {Provider} from "react-redux"
+import React from 'react'
+import ReactDOM from 'react-dom'
+import expect from 'expect'
+import {createStore, applyMiddleware, combineReducers} from 'redux'
+import thunk from 'redux-thunk'
+import TestUtils from 'react-addons-test-utils'
+import {Provider} from 'react-redux'
 
-import I18n from '../src/component';
-import {i18nState} from "../src/reducer"
-import {setLanguage} from "../src/actions"
-import TransWithoutParams from "./components/TransWithoutParams"
-import TransWithParams from "./components/TransWithParams"
-import Dates from "./components/Dates"
+import I18n from '../dist/component'
+import {i18nState} from '../dist/reducer'
+import {setLanguage} from '../dist/actions'
+import TransWithoutParams from './components/TransWithoutParams'
+import TransWithParams from './components/TransWithParams'
+import Dates from './components/Dates'
 
 const translations = {
   es: {
-    "Hello": "Hola",
-    "Hello {name}!": "Hola {name}!",
-    "YYYY-MM-DD": "DD/MM/YYYY"
+    'Hello': 'Hola',
+    'Hello {name}!': 'Hola {name}!',
+    'YYYY-MM-DD': 'DD/MM/YYYY'
   }
 }
 
-describe("component test", function() {
-  before("prepare store and component", function() {
+describe('component test', function() {
+  before('prepare store and component', function() {
 
     this.store = createStore(
       combineReducers({i18nState}),
@@ -56,35 +55,35 @@ describe("component test", function() {
 
   })
 
-  it("initial state", function() {
+  it('initial state', function() {
     expect(this.store.getState().i18nState).toExist()
-    expect(this.store.getState().i18nState.lang).toEqual("en")
+    expect(this.store.getState().i18nState.lang).toEqual('en')
   })
 
-  it("text without params", function() {
-    expect(this.withoutParamsNode.textContent).toEqual("Hello")
+  it('text without params', function() {
+    expect(this.withoutParamsNode.textContent).toEqual('Hello')
   })
 
-  it("changing language in text without params", function() {
-    this.store.dispatch(setLanguage("es"))
-    expect(this.withoutParamsNode.textContent).toEqual("Hola")
+  it('changing language in text without params', function() {
+    this.store.dispatch(setLanguage('es'))
+    expect(this.withoutParamsNode.textContent).toEqual('Hola')
   })
 
-  it("text with params", function() {
-    this.store.dispatch(setLanguage("en"))
-    expect(this.withParamsNode.textContent).toEqual("Hello Francesc!")
+  it('text with params', function() {
+    this.store.dispatch(setLanguage('en'))
+    expect(this.withParamsNode.textContent).toEqual('Hello Francesc!')
   })
 
-  it("changing language in text with params", function() {
-    this.store.dispatch(setLanguage("es"))
-    expect(this.withParamsNode.textContent).toEqual("Hola Francesc!")
+  it('changing language in text with params', function() {
+    this.store.dispatch(setLanguage('es'))
+    expect(this.withParamsNode.textContent).toEqual('Hola Francesc!')
   })
 
-  it("date format", function() {
-    this.store.dispatch(setLanguage("en"))
-    expect(this.dates.textContent).toEqual("2016-01-01")
-    this.store.dispatch(setLanguage("es"))
-    expect(this.dates.textContent).toEqual("01/01/2016")
+  it('date format', function() {
+    this.store.dispatch(setLanguage('en'))
+    expect(this.dates.textContent).toEqual('2016-01-01')
+    this.store.dispatch(setLanguage('es'))
+    expect(this.dates.textContent).toEqual('01/01/2016')
   })
 
 })

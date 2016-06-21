@@ -39,3 +39,9 @@
 ## 1.0.0
 
 - The package's version is increased because it's stable.
+
+## 1.0.1
+
+- Eslint check added in test.
+- Regexp of extract script improved. Now can extract texts inside single quotas.
+- Tests run on dist libraries. Not over the sources.

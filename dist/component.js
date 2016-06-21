@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -6,13 +6,13 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = require("react");
+var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRedux = require("react-redux");
+var _reactRedux = require('react-redux');
 
-var _reactDeepForceUpdate = require("react-deep-force-update");
+var _reactDeepForceUpdate = require('react-deep-force-update');
 
 var _reactDeepForceUpdate2 = _interopRequireDefault(_reactDeepForceUpdate);
 
@@ -44,11 +44,11 @@ var I18n = function (_React$Component) {
 
 
   _createClass(I18n, [{
-    key: "params",
+    key: 'params',
     value: function params(text, _params) {
       if (_params !== undefined) {
         for (var k in _params) {
-          var reg = new RegExp("\{" + k + "\}", "g");
+          var reg = new RegExp('\{' + k + '\}', 'g');
           text = text.replace(reg, _params[k]);
         }
       }
@@ -58,7 +58,7 @@ var I18n = function (_React$Component) {
     // Main method for translating texts
 
   }, {
-    key: "trans",
+    key: 'trans',
     value: function trans(textKey, params) {
       var langMessages = this.props.translations[this.props.lang];
 
@@ -67,28 +67,28 @@ var I18n = function (_React$Component) {
       }
 
       var message = langMessages[textKey];
-      if (message === undefined || message === "") {
+      if (message === undefined || message === '') {
         return this.params(textKey, params);
       }
 
       return this.params(message, params);
     }
   }, {
-    key: "getChildContext",
+    key: 'getChildContext',
     value: function getChildContext() {
       return {
         t: this.trans
       };
     }
   }, {
-    key: "componentDidUpdate",
+    key: 'componentDidUpdate',
     value: function componentDidUpdate(prevProps, prevState) {
       if (prevProps.lang !== this.props.lang) {
         (0, _reactDeepForceUpdate2.default)(this);
       }
     }
   }, {
-    key: "render",
+    key: 'render',
     value: function render() {
       return this.props.children;
     }

@@ -4,5 +4,5 @@
  */
 
 export function setLanguage(lang) {
-  return {type: "REDUX_I18N_SET_LANGUAGE", lang}
+  return {type: 'REDUX_I18N_SET_LANGUAGE', lang}
 }

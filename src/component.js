@@ -2,9 +2,9 @@
  * Project: redux-i18n
  * File: component.js
  */
-import React from "react"
-import {connect} from "react-redux"
-import deepForceUpdate from "react-deep-force-update"
+import React from 'react'
+import {connect} from 'react-redux'
+import deepForceUpdate from 'react-deep-force-update'
 
 class I18n extends React.Component {
 
@@ -17,7 +17,7 @@ class I18n extends React.Component {
   params(text, params) {
     if (params !== undefined) {
       for (let k in params) {
-        let reg = new RegExp("\{" + k + "\}", "g")
+        let reg = new RegExp('\{' + k + '\}', 'g')
         text = text.replace(reg, params[k])
       }
     }
@@ -33,7 +33,7 @@ class I18n extends React.Component {
     }
 
     let message = langMessages[textKey]
-    if (message === undefined || message === "") {
+    if (message === undefined || message === '') {
       return this.params(textKey, params)
     }
 

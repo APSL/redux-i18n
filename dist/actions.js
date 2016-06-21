@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -10,5 +10,5 @@ exports.setLanguage = setLanguage;
  */
 
 function setLanguage(lang) {
-  return { type: "REDUX_I18N_SET_LANGUAGE", lang: lang };
+  return { type: 'REDUX_I18N_SET_LANGUAGE', lang: lang };
 }

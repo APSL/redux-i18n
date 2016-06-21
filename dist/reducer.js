@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -13,7 +13,7 @@ exports.i18nState = i18nState;
  */
 
 var reduxI18nState = {
-  lang: "en"
+  lang: 'en'
 };
 
 function i18nState() {
@@ -21,7 +21,7 @@ function i18nState() {
   var action = arguments[1];
 
   switch (action.type) {
-    case "REDUX_I18N_SET_LANGUAGE":
+    case 'REDUX_I18N_SET_LANGUAGE':
       return _extends({}, state, { lang: action.lang });
     default:
       return state;
