@@ -45,3 +45,7 @@
 - Eslint check added in test.
 - Regexp of extract script improved. Now can extract texts inside single quotas.
 - Tests run on dist libraries. Not over the sources.
+
+## 1.0.2
+
+- Replaced with single quotes the translation.js file.
