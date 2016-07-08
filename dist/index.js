@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.setLanguage = exports.i18nState = exports.I18n = undefined;
+exports.setLanguage = exports.i18nState = exports.default = undefined;
 
 var _reducer = require('./reducer');
 
@@ -29,7 +29,7 @@ var _component2 = _interopRequireDefault(_component);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.I18n = _component2.default; /*
-                                     * Project: redux-i18n
-                                     * File: index.js
-                                     */
+exports.default = _component2.default; /*
+                                        * Project: redux-i18n
+                                        * File: index.js
+                                        */
