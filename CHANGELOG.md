@@ -49,3 +49,7 @@
 ## 1.0.2
 
 - Replaced with single quotes the translation.js file.
+
+## 1.0.3
+
+- I18n component now it's the default import. Replace *import **{I18n}** from 'redux-i18n'* for *import **I18n** from 'redux-i18n'*. Thanks to *evandavis* (https://github.com/APSL/redux-i18n/issues/1).
