@@ -3,7 +3,7 @@
  * File: index.js
  */
 
-export I18n from './component'
+export default from './component'
 export {i18nState} from './reducer'
 export {setLanguage} from './actions'
 
