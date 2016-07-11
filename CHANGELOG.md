@@ -53,3 +53,7 @@
 ## 1.0.3
 
 - I18n component now it's the default import. Replace *import **{I18n}** from 'redux-i18n'* for *import **I18n** from 'redux-i18n'*. Thanks to *evandavis* (https://github.com/APSL/redux-i18n/issues/1).
+
+## 1.0.4
+
+- Two dependencies fixed. Thanks to *evandavis* (https://github.com/APSL/redux-i18n/issues/3).
