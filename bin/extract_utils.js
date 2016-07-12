@@ -1,4 +1,9 @@
-exports.pattern = /context.t\((?:[\"\'](.+?)[\"\'])(?:,.+)?\)?/g;
+exports.pattern = function(gettext) {
+  if (typeof gettext !== 'string') {
+    gettext = 'context.t';
+  }
+  return new RegExp(gettext + '\\((?:[\"\'](.+?)[\"\'])(?:,.+)?\\)?', 'g');
+}
 exports.getAllMatches = function(pattern, content) {
   var found = [];
   var m = null;

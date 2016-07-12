@@ -5,6 +5,7 @@ let html = `
 <div>
   <strong>Your current language, is: {this.props.lang}</strong><br/>
   {this.context.t("Translate this text")}<br/>
+  {translate("Also translate this text")}<br/>
   {this.context.t('Hello {n}!', {n: 'Cesc'})}<br/><br/>
   <button onClick={this.changeLanguage.bind(this)}>Change Language</button>
   <div>
@@ -24,12 +25,24 @@ let html = `
 describe('extract texts', function() {
   it('extracting basic texts', function() {
 
-    let matches = getAllMatches(pattern, html)
+    let matches = getAllMatches(pattern(), html)
 
     expect(matches.length).toEqual(4)
     expect(matches[0]).toEqual('Translate this text')
     expect(matches[1]).toEqual('Hello {n}!')
     expect(matches[2]).toEqual('YYYY-MM-DD')
     expect(matches[3]).toEqual('{n}. Values from {f} to {t}')
-  })
+  });
+
+  it('accepts a custom getText function name', function() {
+
+    let matches = getAllMatches(pattern('(?:translate|\\bt)'), html);
+
+    expect(matches.length).toEqual(5)
+    expect(matches[0]).toEqual('Translate this text')
+    expect(matches[1]).toEqual('Also translate this text')
+    expect(matches[2]).toEqual('Hello {n}!')
+    expect(matches[3]).toEqual('YYYY-MM-DD')
+    expect(matches[4]).toEqual('{n}. Values from {f} to {t}')
+  });
 })
