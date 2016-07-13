@@ -57,3 +57,7 @@
 ## 1.0.4
 
 - Two dependencies fixed. Thanks to *evandavis* (https://github.com/APSL/redux-i18n/issues/3).
+
+## 1.0.5
+
+- Add the ability to specify *--pattern* as a custom name for the translation function. Thanks to *evandavis* (https://github.com/APSL/redux-i18n/pull/4/commits/9ebd28f5f4d47c8414fc3dcd18da05a5cee14575)

@@ -116,7 +116,7 @@ componentWillMount() {
 }
 ```
 
-## Using the scripts
+## Extract/import scripts
 
 This package have two scripts for extract texts to a *template.pot* and import texts from *po* file to a *translation.js* file.
 
@@ -163,6 +163,25 @@ Or if you want set other *locales* folder:
         "import": "i18n_import"
     }    
 ```
+
+The default *regex* pattern finds all occurrences of *this.context.t*, but if you want to use your custom pattern, see this example:
+
+```javascript
+export default function App({aProp, bProp}, {t: translate}) {
+    return <div>{translate('Hello world!')}</div>;
+}
+```
+
+In *package.json*:
+
+```json
+    "scripts": {
+        "extract": "i18n_extract --pattern=translate",
+        "import": "i18n_import"
+    }    
+```
+
+
 
 ## Import your po files
 
