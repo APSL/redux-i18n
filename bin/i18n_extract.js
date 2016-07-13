@@ -8,7 +8,7 @@ var glob = require("glob"),
 var args = optimist.argv;
 var srcPath = `${args.source || "src"}/**/*.js*`;
 var extractUtils = require("./extract_utils")
-var pattern = extractUtils.pattern;
+var pattern = extractUtils.pattern(args.pattern);
 var getAllMatches = extractUtils.getAllMatches;
 var texts = {};
 
