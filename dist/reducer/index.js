@@ -9,7 +9,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 exports.i18nState = i18nState;
 /*
  * Project: redux-i18n
- * File: reducer.js
+ * File: reducer/index.js
  */
 
 var reduxI18nState = {

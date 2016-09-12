@@ -1,19 +1,19 @@
 /*
  * Project: redux-i18n
- * File: reducer.js
+ * File: reducer/immutable.js
  */
 
-const reduxI18nState = {
+import { Map } from 'immutable';
+
+const reduxI18nState = new Map({
   lang: 'en'
-}
+})
 
 export function i18nState(state = reduxI18nState, action) {
   switch (action.type) {
     case 'REDUX_I18N_SET_LANGUAGE':
-        return {...state, lang: action.lang}
+        return state.set('lang', action.lang)
     default:
         return state
   }
 }
-
-

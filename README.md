@@ -17,6 +17,9 @@ This package provide a parent component that encapsulate your application. See t
 
 ```javascript
 import I18n from "redux-i18n"
+// with Immutable.js:
+import I18n from "redux-i18n/immutable"
+
 import {translations} from "./translations"
 
 class MainApp extends React.Component {
@@ -50,7 +53,10 @@ In your *combineReducers* you should add **i18nState** reducer.
 
 ```javascript
 import {otherreducers} from "./Yourproject"
+
 import {i18nState} from "redux-i18n"
+// with Immutable.js:
+import {i18nState} from "redux-i18n/immutable"
 
 const appReducer = combineReducers({
     otherreducers,

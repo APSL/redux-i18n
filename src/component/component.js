@@ -1,9 +1,9 @@
 /*
  * Project: redux-i18n
- * File: component.js
+ * File: component/component.js
  */
+
 import React from 'react'
-import {connect} from 'react-redux'
 import deepForceUpdate from 'react-deep-force-update'
 
 class I18n extends React.Component {
@@ -65,6 +65,4 @@ I18n.propTypes = {
   translations: React.PropTypes.object.isRequired
 }
 
-export default connect(state => ({
-  lang: state.i18nState.lang
-}))(I18n)
+export default I18n
