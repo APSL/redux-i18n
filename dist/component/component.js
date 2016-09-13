@@ -10,8 +10,6 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRedux = require('react-redux');
-
 var _reactDeepForceUpdate = require('react-deep-force-update');
 
 var _reactDeepForceUpdate2 = _interopRequireDefault(_reactDeepForceUpdate);
@@ -24,9 +22,8 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /*
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 * Project: redux-i18n
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * File: component.js
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * File: component/component.js
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 */
-
 
 var I18n = function (_React$Component) {
   _inherits(I18n, _React$Component);
@@ -34,7 +31,7 @@ var I18n = function (_React$Component) {
   function I18n(props) {
     _classCallCheck(this, I18n);
 
-    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(I18n).call(this, props));
+    var _this = _possibleConstructorReturn(this, (I18n.__proto__ || Object.getPrototypeOf(I18n)).call(this, props));
 
     _this.trans = _this.trans.bind(_this);
     return _this;
@@ -105,8 +102,4 @@ I18n.propTypes = {
   translations: _react2.default.PropTypes.object.isRequired
 };
 
-exports.default = (0, _reactRedux.connect)(function (state) {
-  return {
-    lang: state.i18nState.lang
-  };
-})(I18n);
+exports.default = I18n;

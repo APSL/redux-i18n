@@ -15,7 +15,8 @@
   "files": [
     "bin",
     "*.md",
-    "dist"
+    "dist",
+    "immutable.js"
   ],
   "keywords": [
     "react",
@@ -63,6 +64,7 @@
     "react-dom": "^15.0.2",
     "react-redux": "^4.4.5",
     "redux": "^3.5.2",
+    "redux-immutablejs": "0.0.8",
     "redux-promise-middleware": "^3.0.0",
     "redux-thunk": "^2.1.0",
     "webpack": "^1.13.0"
