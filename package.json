@@ -1,6 +1,6 @@
 {
   "name": "redux-i18n",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A simple and powerful package for translate your react applications.",
   "main": "./dist/index.js",
   "repository": {
@@ -56,6 +56,7 @@
     "eslint-plugin-react": "^5.2.2",
     "expect": "^1.20.1",
     "gettext-parser": "^1.1.2",
+    "immutable": "^3.8.1",
     "jsdom-no-contextify": "^3.1.0",
     "mocha": "^2.5.3",
     "moment": "~2.10.6",
