@@ -65,3 +65,7 @@
 ## 1.0.6
 
 - Immutable.js compatibility. Thanks to *tiii* (https://github.com/APSL/redux-i18n/pull/5)
+
+## 1.0.7 (Not created yet)
+
+- Readme improved.

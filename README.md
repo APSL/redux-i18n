@@ -11,6 +11,14 @@
 npm i redux-i18n --save
 ```
 
+## Features
+
+* Tool for translating your React projects.
+* Use react-redux.
+* Compatible with Immutable.js
+* Can export your translations into POT files (Poedit).
+* Can import from .PO files to *translations.js* object.
+
 ## How to use
 
 This package provide a parent component that encapsulate your application. See this example for understand it.
@@ -189,7 +197,7 @@ In *package.json*:
 
 
 
-## Import your po files
+## Import your .po files
 
 ```
 npm run import
