@@ -25,7 +25,7 @@ class I18n extends React.Component {
   }
 
   // Main method for translating texts
-  trans(textKey, params) {
+  trans(textKey, params, comment) {
     let langMessages = this.props.translations[this.props.lang]
 
     if (langMessages === undefined) {

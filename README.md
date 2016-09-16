@@ -14,10 +14,11 @@ npm i redux-i18n --save
 ## Features
 
 * Tool for translating your React projects.
-* Use react-redux.
-* Compatible with Immutable.js
-* Can export your translations into POT files (Poedit).
-* Can import from .PO files to *translations.js* object.
+* Designed to react-redux.
+* Compatible with Immutable.js.
+* You can export your translations into POT files (Poedit).
+* You can import from .PO files to *translations.js* object.
+* You can add comments for translators.
 
 ## How to use
 
@@ -118,6 +119,20 @@ render() {
 }
 ```
 
+Its possible add comments for translators, too.
+
+```javascript
+render() {
+    let today = moment()
+    return (
+      <div>
+        {this.context.t("Translate this text", {}, "This is a comment for translator.")}<br/>
+        {this.context.t("Hello {n}!", {n: "Cesc"}, "An another comment.")}<br/><br/>
+      </div>
+    )
+}
+```
+
 ## Changing the language
 
 This library has a *setLanguage* action. You can use as follow:
@@ -195,6 +210,9 @@ In *package.json*:
     }    
 ```
 
+If you have added comments for translator, you will see this into Poedit.
+
+![Poedit screenshot](imgs/poedit1.jpg?raw=true "Poedit screenshot")
 
 
 ## Import your .po files

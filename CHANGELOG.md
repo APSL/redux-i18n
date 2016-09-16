@@ -66,6 +66,8 @@
 
 - Immutable.js compatibility. Thanks to *tiii* (https://github.com/APSL/redux-i18n/pull/5)
 
-## 1.0.7 (Not created yet)
+## 1.0.7
 
 - Readme improved.
+- Tests improved for the action of "extract".
+- Now its posible add comments for a translator when *t* function is called. Read the documentation.

@@ -1,7 +1,7 @@
-import {pattern, getAllMatches} from '../bin/extract_utils'
+import {pattern, getAllMatches, potFileContent, groupByText} from '../bin/extract_utils'
 import expect from 'expect'
 
-let html = `
+const html = `
 <div>
   <strong>Your current language, is: {this.props.lang}</strong><br/>
   {this.context.t("Translate this text")}<br/>
@@ -19,30 +19,88 @@ let html = `
       n: index
     })}
   />
+
+  <div>{this.context.t('Hi {name}!', { name: 'Cesc' }, 'This is a comment for the translator')}</div>
+  <div>{this.context.t('Hi {name}!', { name: 'Cesc' },'This is a comment for the translator')}</div>
+  <div>{this.context.t('Hi {name}!', {}, 'This is a comment for the translator')}</div>
 </div>
 `
 
-describe('extract texts', function() {
-  it('extracting basic texts', function() {
+describe('extract texts', () => {
+  it('extracting basic texts', () => {
 
-    let matches = getAllMatches(pattern(), html)
+    const matches = getAllMatches(pattern(), html)
 
-    expect(matches.length).toEqual(4)
-    expect(matches[0]).toEqual('Translate this text')
-    expect(matches[1]).toEqual('Hello {n}!')
-    expect(matches[2]).toEqual('YYYY-MM-DD')
-    expect(matches[3]).toEqual('{n}. Values from {f} to {t}')
+    expect(matches.length).toEqual(7)
+    expect(matches[0].text).toEqual('Translate this text')
+    expect(matches[1].text).toEqual('Hello {n}!')
+    expect(matches[2].text).toEqual('YYYY-MM-DD')
+    expect(matches[3].text).toEqual('{n}. Values from {f} to {t}')
+    expect(matches[4].text).toEqual('Hi {name}!')
+    expect(matches[4].comment).toEqual('This is a comment for the translator')
   });
 
-  it('accepts a custom getText function name', function() {
+  it('accepts a custom getText function name', () => {
 
-    let matches = getAllMatches(pattern('(?:translate|\\bt)'), html);
+    const matches = getAllMatches(pattern('(?:translate|\\bt)'), html);
 
-    expect(matches.length).toEqual(5)
-    expect(matches[0]).toEqual('Translate this text')
-    expect(matches[1]).toEqual('Also translate this text')
-    expect(matches[2]).toEqual('Hello {n}!')
-    expect(matches[3]).toEqual('YYYY-MM-DD')
-    expect(matches[4]).toEqual('{n}. Values from {f} to {t}')
+    expect(matches.length).toEqual(8)
+    expect(matches[0].text).toEqual('Translate this text')
+    expect(matches[1].text).toEqual('Also translate this text')
+    expect(matches[2].text).toEqual('Hello {n}!')
+    expect(matches[3].text).toEqual('YYYY-MM-DD')
+    expect(matches[4].text).toEqual('{n}. Values from {f} to {t}')
   });
+
+  it('check pot file content', () => {
+
+    // Grouping all matches by text-id
+    const matches = getAllMatches(pattern(), html)
+    expect(matches.length).toEqual(7)
+
+    const filesMatches = {
+      'src/file1.js': matches,
+      'src/file2.js': matches
+    }
+
+    const grBTxt = groupByText(filesMatches)
+    expect(Object.keys(grBTxt).length).toEqual(5)
+    expect(grBTxt['Translate this text'].files.length).toEqual(2)
+    expect(grBTxt['Hi {name}!'].trans.comment).toEqual('This is a comment for the translator')
+
+    // Build pot content and check...
+    const content = potFileContent(grBTxt)
+    expect(content).toEqual('msgid ""\n\
+msgstr ""\n\
+"Content-Type: text/plain; charset=UTF-8"\n\
+"Content-Transfer-Encoding: 8bit"\n\
+\n\
+#: src/file1.js\n\
+#: src/file2.js\n\
+msgid "Translate this text"\n\
+msgstr ""\n\
+\n\
+#: src/file1.js\n\
+#: src/file2.js\n\
+msgid "Hello {n}!"\n\
+msgstr ""\n\
+\n\
+#: src/file1.js\n\
+#: src/file2.js\n\
+msgid "YYYY-MM-DD"\n\
+msgstr ""\n\
+\n\
+#: src/file1.js\n\
+#: src/file2.js\n\
+msgid "{n}. Values from {f} to {t}"\n\
+msgstr ""\n\
+\n\
+#. This is a comment for the translator\n\
+#: src/file1.js\n\
+#: src/file2.js\n\
+msgid "Hi {name}!"\n\
+msgstr ""\n\n')
+
+  });
+
 })
