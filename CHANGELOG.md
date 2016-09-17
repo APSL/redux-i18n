@@ -71,3 +71,7 @@
 - Readme improved.
 - Tests improved for the action of "extract".
 - Now its posible add comments for a translator when *t* function is called. Read the documentation.
+
+## 1.0.8 (Not created yet)
+
+- Readme improved.

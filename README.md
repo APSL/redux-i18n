@@ -123,11 +123,12 @@ Its possible add comments for translators, too.
 
 ```javascript
 render() {
-    let today = moment()
     return (
       <div>
-        {this.context.t("Translate this text", {}, "This is a comment for translator.")}<br/>
-        {this.context.t("Hello {n}!", {n: "Cesc"}, "An another comment.")}<br/><br/>
+        {this.context.t("Translate this text", {},
+                        "This is a comment for translator.")}
+        {this.context.t("Hello {n}!", {n: "Cesc"},
+                        "An another comment.")}
       </div>
     )
 }
