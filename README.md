@@ -134,6 +134,12 @@ render() {
 }
 ```
 
+Transate can be used in stateless componens also.
+
+```javascript
+const Foo = ({}, context) => <h1>{context.t("Hello World")}</h1>
+```
+
 ## Changing the language
 
 This library has a *setLanguage* action. You can use as follow:
@@ -156,7 +162,7 @@ For use this scripts, you should edit your *package.json* and add both scripts.
     "scripts": {
         "extract": "i18n_extract",
         "import": "i18n_import"
-    }    
+    }
 ```
 
 In this example I have used *extract* and *import* name for scripts, but you can use any. For run one of any scripts:
@@ -182,7 +188,7 @@ If you want set other source folder, you can use *source* parameter.
     "scripts": {
         "extract": "i18n_extract --source=mysource",
         "import": "i18n_import"
-    }    
+    }
 ```
 
 Or if you want set other *locales* folder:
@@ -191,7 +197,7 @@ Or if you want set other *locales* folder:
     "scripts": {
         "extract": "i18n_extract --source=mysource --locales=mylocales",
         "import": "i18n_import"
-    }    
+    }
 ```
 
 The default *regex* pattern finds all occurrences of *this.context.t*, but if you want to use your custom pattern, see this example:
@@ -208,7 +214,7 @@ In *package.json*:
     "scripts": {
         "extract": "i18n_extract --pattern=translate",
         "import": "i18n_import"
-    }    
+    }
 ```
 
 If you have added comments for translator, you will see this into Poedit.
@@ -230,7 +236,7 @@ You can set other *locales* folder:
     "scripts": {
         "extract": "i18n_extract --source=mysource --locales=mylocales",
         "import": "i18n_import --locales=mylocales"
-    }    
+    }
 ```
 
 If you want save *translation.js* file to other folder:
@@ -239,5 +245,5 @@ If you want save *translation.js* file to other folder:
     "scripts": {
         "extract": "i18n_extract --source=mysource --locales=mylocales",
         "import": "i18n_import --locales=mylocales --translations=myfolder"
-    }    
+    }
 ```
