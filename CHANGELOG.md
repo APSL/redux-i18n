@@ -72,6 +72,10 @@
 - Tests improved for the action of "extract".
 - Now its posible add comments for a translator when *t* function is called. Read the documentation.
 
-## 1.0.8 (Not created yet)
+## 1.0.8
 
 - Readme improved.
+
+## 1.0.9 (Not created yet)
+
+- Readme improved. Thanks to *mac200* (https://github.com/APSL/redux-i18n/pull/8)
