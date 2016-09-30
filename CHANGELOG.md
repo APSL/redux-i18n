@@ -79,3 +79,4 @@
 ## 1.0.9 (Not created yet)
 
 - Readme improved. Thanks to *mac200* (https://github.com/APSL/redux-i18n/pull/8)
+- New tests added.

@@ -26,6 +26,10 @@ const html = `
 </div>
 `
 
+const stateless = `
+const Foo = ({}, context) => <h1>{context.t("Hello World")}</h1>
+`
+
 describe('extract texts', () => {
   it('extracting basic texts', () => {
 
@@ -102,5 +106,11 @@ msgid "Hi {name}!"\n\
 msgstr ""\n\n')
 
   });
+
+  it('stateless extracting', () => {
+    const matches = getAllMatches(pattern(), stateless)
+    expect(matches.length).toEqual(1)
+    expect(matches[0].text).toEqual('Hello World')
+  })
 
 })
