@@ -31,7 +31,7 @@ var I18n = function (_React$Component) {
   function I18n(props) {
     _classCallCheck(this, I18n);
 
-    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(I18n).call(this, props));
+    var _this = _possibleConstructorReturn(this, (I18n.__proto__ || Object.getPrototypeOf(I18n)).call(this, props));
 
     _this.trans = _this.trans.bind(_this);
     return _this;

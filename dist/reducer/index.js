@@ -17,7 +17,7 @@ var reduxI18nState = {
 };
 
 function i18nState() {
-  var state = arguments.length <= 0 || arguments[0] === undefined ? reduxI18nState : arguments[0];
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : reduxI18nState;
   var action = arguments[1];
 
   switch (action.type) {

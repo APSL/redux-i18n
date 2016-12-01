@@ -76,8 +76,12 @@
 
 - Readme improved.
 
-## 1.0.9 (Not created yet)
+## 1.0.9
 
 - Readme improved. Thanks to *mac200* (https://github.com/APSL/redux-i18n/pull/8)
 - New tests added.
-- New badge added.
+- New "dowloads per month" badge added.
+- New node versions added in travis configuration.
+- Readme updated adding the requirements sections.
+
+## 1.0.10 (Not created yet)

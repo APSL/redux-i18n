@@ -21,6 +21,10 @@ npm i redux-i18n --save
 * You can import from .PO files to *translations.js* object.
 * You can add comments for translators.
 
+## Requirements
+
+* node >= 4.0.0
+
 ## How to use
 
 This package provide a parent component that encapsulate your application. See this example for understand it.
