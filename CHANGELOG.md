@@ -90,6 +90,6 @@
 
 ## 1.0.11 
 
-- Fix: make sure numbers passed to *t* function via params object are converted to strings so .replace() won't fail
+- Fix: make sure numbers passed to *t* function via params object are converted to strings so .replace() won't fail. Thanks to *gannoncurran* (https://github.com/APSL/redux-i18n/pull/15)
 
 ## 1.0.12 (Not created yet)

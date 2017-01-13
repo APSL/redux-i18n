@@ -13,6 +13,7 @@ import {setLanguage} from '../dist/actions'
 import TransWithoutParams from './components/TransWithoutParams'
 import TransWithParams from './components/TransWithParams'
 import TransWithDollarSignParams from './components/TransWithDollarSignParams'
+import TransWithNumberParams from './components/TransWithNumberParams'
 import Dates from './components/Dates'
 
 const translations = {
@@ -55,6 +56,14 @@ describe('immutable component test', function() {
       </Provider>
     ))
 
+    this.withNumberParamsNode = ReactDOM.findDOMNode(TestUtils.renderIntoDocument(
+      <Provider store={this.store}>
+        <I18n translations={translations}>
+          <TransWithNumberParams/>
+        </I18n>
+      </Provider>
+    ))
+
     this.dates = ReactDOM.findDOMNode(TestUtils.renderIntoDocument(
       <Provider store={this.store}>
         <I18n translations={translations}>
@@ -86,6 +95,10 @@ describe('immutable component test', function() {
 
   it('text with dollar signs', function() {
     expect(this.withDollarSignParamsNode.textContent).toEqual('We should have two dollar signs $$!')
+  })
+
+  it('text with number params', function() {
+    expect(this.withNumberParamsNode.textContent).toEqual('13 things!')
   })
 
   it('changing language in text with params', function() {
