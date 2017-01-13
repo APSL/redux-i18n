@@ -86,6 +86,6 @@
 
 ## 1.0.10
 
-- Escapes any '$' characters passed to *t* function via params object to prevent unexpected behavior with string.replace()
+- Escapes any '$' characters passed to *t* function via params object to prevent unexpected behavior with string.replace(). Thanks to *gannoncurran* (https://github.com/APSL/redux-i18n/pull/14)
 
 ## 1.0.11 (Not created yet)
