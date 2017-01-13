@@ -46,7 +46,10 @@ var I18n = function (_React$Component) {
       if (_params !== undefined) {
         for (var k in _params) {
           var reg = new RegExp('\{' + k + '\}', 'g');
-          text = text.replace(reg, _params[k]);
+          // Escape possible '$' in params to prevent unexpected behavior with .replace()
+          // especially important for IE11, which misinterprets '$0' as a regex command
+          var param = _params[k].replace(/\$/g, '$$$$');
+          text = text.replace(reg, param);
         }
       }
       return text;

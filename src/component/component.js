@@ -18,7 +18,10 @@ class I18n extends React.Component {
     if (params !== undefined) {
       for (let k in params) {
         let reg = new RegExp('\{' + k + '\}', 'g')
-        text = text.replace(reg, params[k])
+        // Escape possible '$' in params to prevent unexpected behavior with .replace()
+        // especially important for IE11, which misinterprets '$0' as a regex command
+        let param = params[k].replace(/\$/g, '$$$$')
+        text = text.replace(reg, param)
       }
     }
     return text

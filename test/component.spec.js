@@ -11,6 +11,7 @@ import {i18nState} from '../dist/reducer'
 import {setLanguage} from '../dist/actions'
 import TransWithoutParams from './components/TransWithoutParams'
 import TransWithParams from './components/TransWithParams'
+import TransWithDollarSignParams from './components/TransWithDollarSignParams'
 import Dates from './components/Dates'
 
 const translations = {
@@ -45,6 +46,14 @@ describe('component test', function() {
       </Provider>
     ))
 
+    this.withDollarSignParamsNode = ReactDOM.findDOMNode(TestUtils.renderIntoDocument(
+      <Provider store={this.store}>
+        <I18n translations={translations}>
+          <TransWithDollarSignParams/>
+        </I18n>
+      </Provider>
+    ))
+
     this.dates = ReactDOM.findDOMNode(TestUtils.renderIntoDocument(
       <Provider store={this.store}>
         <I18n translations={translations}>
@@ -72,6 +81,10 @@ describe('component test', function() {
   it('text with params', function() {
     this.store.dispatch(setLanguage('en'))
     expect(this.withParamsNode.textContent).toEqual('Hello Francesc!')
+  })
+
+  it('text with dollar signs', function() {
+    expect(this.withDollarSignParamsNode.textContent).toEqual('We should have two dollar signs $$!')
   })
 
   it('changing language in text with params', function() {
