@@ -20,7 +20,7 @@ class I18n extends React.Component {
         let reg = new RegExp('\{' + k + '\}', 'g')
         // Escape possible '$' in params to prevent unexpected behavior with .replace()
         // especially important for IE11, which misinterprets '$0' as a regex command
-        let param = params[k].replace(/\$/g, '$$$$')
+        let param = params[k].toString().replace(/\$/g, '$$$$')
         text = text.replace(reg, param)
       }
     }
