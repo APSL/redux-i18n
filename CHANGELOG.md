@@ -84,4 +84,8 @@
 - New node versions added in travis configuration.
 - Readme updated adding the requirements sections.
 
-## 1.0.10 (Not created yet)
+## 1.0.10
+
+- Escapes any '$' characters passed to *t* function via params object to prevent unexpected behavior with string.replace()
+
+## 1.0.11 (Not created yet)
