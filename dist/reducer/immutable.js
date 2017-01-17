@@ -15,7 +15,7 @@ var reduxI18nState = new _immutable.Map({
      */
 
 function i18nState() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : reduxI18nState;
+  var state = arguments.length <= 0 || arguments[0] === undefined ? reduxI18nState : arguments[0];
   var action = arguments[1];
 
   switch (action.type) {

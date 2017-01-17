@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -33,7 +33,7 @@ var I18n = function (_React$Component) {
   function I18n(props) {
     _classCallCheck(this, I18n);
 
-    var _this = _possibleConstructorReturn(this, (I18n.__proto__ || Object.getPrototypeOf(I18n)).call(this, props));
+    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(I18n).call(this, props));
 
     _this.trans = _this.trans.bind(_this);
     return _this;
@@ -48,9 +48,14 @@ var I18n = function (_React$Component) {
       if (_params !== undefined) {
         for (var k in _params) {
           var reg = new RegExp('\{' + k + '\}', 'g');
+          var param = _params[k];
+
           // Escape possible '$' in params to prevent unexpected behavior with .replace()
           // especially important for IE11, which misinterprets '$0' as a regex command
-          var param = _params[k].toString().replace(/\$/g, '$$$$');
+          if (typeof param === 'string') {
+            param = param.replace(/\$/g, '$$$$');
+          }
+
           text = text.replace(reg, param);
         }
       }
