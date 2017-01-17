@@ -13,6 +13,7 @@ import TransWithoutParams from './components/TransWithoutParams'
 import TransWithParams from './components/TransWithParams'
 import TransWithDollarSignParams from './components/TransWithDollarSignParams'
 import TransWithNumberParams from './components/TransWithNumberParams'
+import TransWithJunkParams from './components/TransWithJunkParams'
 import Dates from './components/Dates'
 import {TransPluralize1, TransPluralize2} from './components/TransPlurals'
 
@@ -68,6 +69,14 @@ describe('component test', function() {
       </Provider>
     ))
 
+    this.withJunkParamsNode = ReactDOM.findDOMNode(TestUtils.renderIntoDocument(
+      <Provider store={this.store}>
+        <I18n translations={translations}>
+          <TransWithJunkParams/>
+        </I18n>
+      </Provider>
+    ))
+
     this.dates = ReactDOM.findDOMNode(TestUtils.renderIntoDocument(
       <Provider store={this.store}>
         <I18n translations={translations}>
@@ -119,6 +128,10 @@ describe('component test', function() {
 
   it('text with number params', function() {
     expect(this.withNumberParamsNode.textContent).toEqual('13 things!')
+  })
+
+  it('text with junk params', function() {
+    expect(this.withJunkParamsNode.textContent).toEqual('undefined, null, and false as strings')
   })
 
   it('changing language in text with params', function() {
