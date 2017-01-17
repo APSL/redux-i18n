@@ -74,12 +74,7 @@ describe('extract texts', () => {
 
     // Build pot content and check...
     const content = potFileContent(grBTxt)
-    expect(content).toEqual('msgid ""\n\
-msgstr ""\n\
-"Content-Type: text/plain; charset=UTF-8"\n\
-"Content-Transfer-Encoding: 8bit"\n\
-\n\
-#: src/file1.js\n\
+    expect(content).toEqual('#: src/file1.js\n\
 #: src/file2.js\n\
 msgid "Translate this text"\n\
 msgstr ""\n\

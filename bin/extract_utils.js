@@ -50,7 +50,7 @@ exports.groupByText = function(filesMatches) {
 
 // Build pot file content
 exports.potFileContent = function(texts) {
-  let content = 'msgid ""\nmsgstr ""\n"Content-Type: text/plain; charset=UTF-8"\n"Content-Transfer-Encoding: 8bit"\n\n'
+  let content = ''
 
   for (var obj in texts) {
 
