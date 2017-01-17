@@ -92,8 +92,10 @@
 
 - Fix: make sure numbers passed to *t* function via params object are converted to strings so .replace() won't fail. Thanks to *gannoncurran* (https://github.com/APSL/redux-i18n/pull/15)
 
-## 1.0.12 (Not created yet)
+## 1.1.0
 
 - Charset removed from POT header because is not necessary and POEdit showed an error.
 - New feature. It is already possible use plurals.
 - Unit tests improved and added more.
+
+## 1.1.1 (Not created yet)
