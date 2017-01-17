@@ -4,7 +4,7 @@ exports.pattern = function(gettext) {
   if (typeof gettext !== 'string') {
     gettext = 'context.t';
   }
-  return new RegExp(gettext + '\\((?:[\"\'](.+?)[\"\'])(?:,.+(?:,(?:\ )?[\'\"](.*)[\'\"]))?\\)?', 'g');
+  return new RegExp(gettext + '\\((?:([\"\'](.+?)[\"\'])|(?:\\[[\"\'](.+?)(?:[\"\']),(?: )(?:[\"\'](.+?)(?:[\"\']))))(?:,.+(?:,(?: )?[\'\"](.*)[\'\"]))?\\)?', 'g');
 }
 
 // Extract all occurences of content
@@ -17,8 +17,9 @@ exports.getAllMatches = function(pattern, content) {
         pattern.lastIndex++;
     }
     found.push({
-      text: m[1],
-      comment: m[2] || null
+      text: m[2] || m[3],
+      comment: m[5] || null,
+      plural: m[4] || null
     })
   }
 
@@ -54,8 +55,8 @@ exports.potFileContent = function(texts) {
 
   for (var obj in texts) {
 
-    let files = texts[obj].files
-    let trans = texts[obj].trans
+    const files = texts[obj].files
+    const trans = texts[obj].trans
 
     if (trans.comment) {
       content += `#. ${trans.comment}\n`
@@ -65,7 +66,13 @@ exports.potFileContent = function(texts) {
       content += `#: ${file}\n`
     })
 
-    content += `msgid "${trans.text}"\nmsgstr ""\n\n`
+    // We must check if text is plural or not.
+    if (trans.plural) {
+      content += `msgid "${trans.text}"\nmsgid_plural "${trans.plural}"\nmsgstr[0] ""\nmsgstr[1] ""\n\n`
+    } else {
+      content += `msgid "${trans.text}"\nmsgstr ""\n\n`
+    }
+
   }
 
   return content

@@ -15,12 +15,17 @@ import TransWithParams from './components/TransWithParams'
 import TransWithDollarSignParams from './components/TransWithDollarSignParams'
 import TransWithNumberParams from './components/TransWithNumberParams'
 import Dates from './components/Dates'
+import {TransPluralize1, TransPluralize2} from './components/TransPlurals'
 
 const translations = {
   es: {
     'Hello': 'Hola',
     'Hello {name}!': 'Hola {name}!',
     'YYYY-MM-DD': 'DD/MM/YYYY'
+  },
+  en: {
+    'una noche': 'one night',
+    '{n} noches': '{n} nights'
   }
 }
 
@@ -72,6 +77,22 @@ describe('immutable component test', function() {
       </Provider>
     ))
 
+    this.pluralize1 = ReactDOM.findDOMNode(TestUtils.renderIntoDocument(
+      <Provider store={this.store}>
+        <I18n translations={translations}>
+          <TransPluralize1/>
+        </I18n>
+      </Provider>
+    ))
+
+    this.pluralize2 = ReactDOM.findDOMNode(TestUtils.renderIntoDocument(
+      <Provider store={this.store}>
+        <I18n translations={translations}>
+          <TransPluralize2/>
+        </I18n>
+      </Provider>
+    ))
+
   })
 
   it('initial state', function() {
@@ -111,6 +132,15 @@ describe('immutable component test', function() {
     expect(this.dates.textContent).toEqual('2016-01-01')
     this.store.dispatch(setLanguage('es'))
     expect(this.dates.textContent).toEqual('01/01/2016')
+  })
+
+  it('pluralize', function() {
+    this.store.dispatch(setLanguage('es'))
+    expect(this.pluralize1.textContent).toEqual('una noche')
+    expect(this.pluralize2.textContent).toEqual('5 noches')
+    this.store.dispatch(setLanguage('en'))
+    expect(this.pluralize1.textContent).toEqual('one night')
+    expect(this.pluralize2.textContent).toEqual('5 nights')
   })
 
 })

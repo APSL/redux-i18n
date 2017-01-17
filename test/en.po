@@ -1,0 +1,28 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.11\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: en\n"
+
+#: src/file1.js src/file2.js
+msgid "Traducir este texto"
+msgstr "Translate this text"
+
+#. This is a comment for the translator
+#: src/file1.js src/file2.js
+msgid "Hola {n}!"
+msgstr "Hello {n}!"
+
+#: src/file1.js src/file2.js
+msgid "una noche"
+msgid_plural "{n} noches"
+msgstr[0] "one night"
+msgstr[1] "{n} nights"

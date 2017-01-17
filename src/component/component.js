@@ -31,6 +31,11 @@ class I18n extends React.Component {
   trans(textKey, params, comment) {
     let langMessages = this.props.translations[this.props.lang]
 
+    // Checking if textkey contains a pluralize object.
+    if (typeof textKey === 'object') {
+      textKey = textKey[params[textKey[2]] === 1 ? 0 : 1]
+    }
+
     if (langMessages === undefined) {
       return this.params(textKey, params)
     }
