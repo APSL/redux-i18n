@@ -1,46 +1,25 @@
 #!/usr/bin/env node
-var glob = require('glob'),
-    gtp = require('gettext-parser'),
-    fs = require('fs'),
-    color = require('colors'),
-    path = require('path'),
-    optimist = require('optimist');
 
-var args = optimist.argv;
-var localesPath = `${args.locales || 'locales'}/*.po`;
-var translations = {};
+const glob = require('glob');
+const fs = require('fs');
+const color = require('colors');
+const optimist = require('optimist');
+const importUtils = require('./import_utils');
+const getTrans = importUtils.getTrans
+const transToTxt = importUtils.transToTxt
 
-glob(localesPath, function(err, files) {
+const args = optimist.argv;
+const localesPath = `${args.locales || 'locales'}/*.po`;
+let translations = {};
+
+glob(localesPath, (err, files) => {
   files.map(function(file) {
-    var fileContent = fs.readFileSync(file);
-    var po = gtp.po.parse(fileContent);
-    var trans = po.translations[''];
-
-    var lang = path.parse(file).name;
-    translations[lang] = {};
-
-    for(k in trans) {
-      var transData = trans[k];
-      if(transData.msgid && transData.msgstr.length) {
-        translations[lang][transData.msgid] = transData.msgstr[0]
-      }
-    }
+    getTrans(file, translations)
   });
 
-  /***************************************************************************/
-  /* Creating translations.js
-  /***************************************************************************/
-  var translationsFile = `${args.translations || 'src'}/translations.js`;
+  const translationsFile = `${args.translations || 'src'}/translations.js`;
+  const content = transToTxt(translations)
   var wstream = fs.createWriteStream(translationsFile);
-  wstream.write(`export const translations = {\n`);
-  for(lang in translations) {
-    wstream.write(`  ${lang}: {\n`);
-      for(trans in translations[lang]) {
-        wstream.write(`    '${trans}': '${translations[lang][trans]}',\n`)
-      }
-    wstream.write(`  },\n`);
-  }
-  wstream.write(`}\n`);
-
+  wstream.write(content);
   console.log(`\nDone! '${translationsFile}' generated.\n`.green);
 });

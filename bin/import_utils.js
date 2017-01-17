@@ -1,6 +1,7 @@
-import fs from 'fs'
-import {po} from 'gettext-parser'
-import path from 'path'
+const fs = require('fs')
+const gtp = require('gettext-parser')
+const po = gtp.po
+const path = require('path')
 
 exports.getTrans = (file, translations) => {
   const content = fs.readFileSync(file)

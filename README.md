@@ -145,6 +145,20 @@ Transate can be used in stateless componens also.
 const Foo = ({}, context) => <h1>{context.t("Hello World")}</h1>
 ```
 
+## Pluralize
+
+Now is possible use plurals in your translations.
+
+```javascript
+<div>{this.context.t(['una noche', '{n} noches', 'n'], {n: 1})}</div>
+```
+
+Instead pass a string as first parameter, now you can pass a list. The first parameter of list is the text in singular, the second, the text in plural and finally the attribute name of params dictionary which is used for indicate quantity.
+
+After extract translations to POT file and if you open it with Poedit you will see the follow:
+
+![Poedit screenshot](imgs/poedit2.jpg?raw=true "Poedit screenshot")
+
 ## Changing the language
 
 This library has a *setLanguage* action. You can use as follow:

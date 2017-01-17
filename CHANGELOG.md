@@ -95,3 +95,5 @@
 ## 1.0.12 (Not created yet)
 
 - Charset removed from POT header because is not necessary and POEdit showed an error.
+- New feature. It is already possible use plurals.
+- Unit tests improved and added more.
