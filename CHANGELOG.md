@@ -102,3 +102,4 @@
 - Fix: don't naively force params to strings; instead, only perform string operations on string parameters. Thanks to *evandavis* (https://github.com/APSL/redux-i18n/pull/16)
 
 ## 1.1.2 (Not created yet)
+- Some tests added.

@@ -155,4 +155,9 @@ describe('component test', function() {
     expect(this.pluralize2.textContent).toEqual('5 nights')
   })
 
+  it('de-DE', function() {
+    this.store.dispatch(setLanguage('de-DE'))
+    expect(this.store.getState().i18nState.lang).toEqual('de-DE')
+  })
+
 })
