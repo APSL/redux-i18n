@@ -24,7 +24,7 @@ describe('importing po files', () => {
 
     const txt = transToTxt(translations)
     expect(txt).toEqual('export const translations = {\n\
-  en: {\n\
+  \'en\': {\n\
     \'Traducir este texto\': \'Translate this text\',\n\
     \'Hola {n}!\': \'Hello {n}!\',\n\
     \'una noche\': \'one night\',\n\

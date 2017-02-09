@@ -7,7 +7,7 @@ exports.getTrans = (file, translations) => {
   const content = fs.readFileSync(file)
   const pocontent = po.parse(content)
   const trans = pocontent.translations['']
-  const lang = path.parse(file).name
+  const lang = pocontent.headers.language.replace('_', '-')
 
   // Initializing language dictionary
   translations[lang] = {}
@@ -29,7 +29,7 @@ exports.transToTxt = (trans) => {
   let txt = 'export const translations = {\n'
 
   for (let lang in trans) {
-    txt += `  ${lang}: {\n`
+    txt += `  '${lang}': {\n`
 
     for (let k in trans[lang]) {
       txt += `    '${k}': '${trans[lang][k]}',\n`

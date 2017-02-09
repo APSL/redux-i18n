@@ -18,14 +18,17 @@ import Dates from './components/Dates'
 import {TransPluralize1, TransPluralize2} from './components/TransPlurals'
 
 const translations = {
-  es: {
+  'es': {
     'Hello': 'Hola',
     'Hello {name}!': 'Hola {name}!',
     'YYYY-MM-DD': 'DD/MM/YYYY'
   },
-  en: {
+  'en': {
     'una noche': 'one night',
     '{n} noches': '{n} nights'
+  },
+  'de-DE': {
+    'Hello': 'Hallo'
   }
 }
 
@@ -158,6 +161,7 @@ describe('component test', function() {
   it('de-DE', function() {
     this.store.dispatch(setLanguage('de-DE'))
     expect(this.store.getState().i18nState.lang).toEqual('de-DE')
+    expect(this.withoutParamsNode.textContent).toEqual('Hallo')
   })
 
 })

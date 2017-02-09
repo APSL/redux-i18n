@@ -54,7 +54,7 @@ Where *translations* is a dictionary as this:
 
 ```javascript
 export const translations = {
-  es: {
+  'es': {
     "Translate this text": "Traduce este texto",
     "Hello {n}!": "Hola {n}!",
   }

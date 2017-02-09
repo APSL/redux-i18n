@@ -103,3 +103,4 @@
 
 ## 1.1.2 (Not created yet)
 - Some tests added.
+- Now is possible use languages as "en-DE".
