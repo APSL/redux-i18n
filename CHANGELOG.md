@@ -101,6 +101,8 @@
 ## 1.1.1
 - Fix: don't naively force params to strings; instead, only perform string operations on string parameters. Thanks to *evandavis* (https://github.com/APSL/redux-i18n/pull/16)
 
-## 1.1.2 (Not created yet)
+## 1.1.2
 - Some tests added.
-- Now is possible use languages as "en-DE".
+- Now is possible use complex languages codes as "en-DE".
+
+## 1.1.3 (Not created yet)
