@@ -1,4 +1,5 @@
 var path = require('path')
+var HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   entry: path.resolve(__dirname, 'src/app.js'),
@@ -13,15 +14,26 @@ module.exports = {
     historyApiFallback: true
   },
   plugins: [
+    new HtmlWebpackPlugin({
+      template: 'src/index.html',
+      hash: false,
+      inject: 'body',
+      minify: {
+        collapseWhitespace: true
+      },
+    })
   ],
   module: {
     loaders: [{
-      test: /\.js?$/,
+      test: /\.js$/,
       exclude: /(node_modules|bower_components)/,
-      loader: 'babel',
+      loader: 'babel-loader',
       query: {
         presets: ['es2015', 'stage-2', 'react'],
       }
     }]
+  },
+  resolve: {
+    extensions: ['.js']
   }
 }

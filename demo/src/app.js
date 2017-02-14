@@ -2,9 +2,21 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-const Demo = () => {
+import {Provider} from 'react-redux'
+import {store} from './store'
+
+import I18n from 'redux-i18n'
+import {translations} from './translations'
+
+import Main from './main'
+
+let Demo = () => {
   return (
-    <div>Demo</div>
+    <Provider store={store}>
+      <I18n translations={translations}>
+        <Main/>
+      </I18n>
+    </Provider>
   )
 }
 
