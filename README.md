@@ -61,7 +61,7 @@ export const translations = {
 }
 ```
 
-## Setting the reducer
+## Defining reducer
 
 In your *combineReducers* you should add **i18nState** reducer.
 
@@ -124,7 +124,7 @@ render() {
 }
 ```
 
-Its possible add comments for translators, too.
+Is possible add comments for translators.
 
 ```javascript
 render() {
@@ -159,9 +159,9 @@ After extract translations to POT file and if you open it with Poedit you will s
 
 ![Poedit screenshot](imgs/poedit2.jpg?raw=true "Poedit screenshot")
 
-## Changing the language
+## Changing language
 
-This library has a *setLanguage* action. You can use as follow:
+This library has a *setLanguage* action. You can use it as follow:
 
 ```javascript
 import {setLanguage} from "redux-i18n"
@@ -170,6 +170,21 @@ componentWillMount() {
     this.props.dispatch(setLanguage("es"))
 }
 ```
+
+If you use combined languages as *es-ES*, *en-GB*, and you don't have those translations, you have something like that:
+
+```javascript
+export const translations = {
+  "es": {
+    ...
+  },
+  "en": {
+    ...
+  }
+}
+```
+
+*redux-i18n* will take fallback language content. In this case, *es* or *en*.
 
 ## Extract/import scripts
 

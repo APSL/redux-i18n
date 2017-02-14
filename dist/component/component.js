@@ -74,6 +74,11 @@ var I18n = function (_React$Component) {
         textKey = textKey[params[textKey[2]] === 1 ? 0 : 1];
       }
 
+      // Fall back lang
+      if (langMessages === undefined && this.props.lang.indexOf('-') > -1) {
+        langMessages = this.props.translations[this.props.lang.split('-')[0]];
+      }
+
       if (langMessages === undefined) {
         return this.params(textKey, params);
       }

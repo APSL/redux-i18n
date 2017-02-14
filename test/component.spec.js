@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import expect from 'expect'
+import {describe, it, before} from 'mocha'
 import {createStore, applyMiddleware, combineReducers} from 'redux'
 import thunk from 'redux-thunk'
 import TestUtils from 'react-addons-test-utils'
@@ -162,6 +163,12 @@ describe('component test', function() {
     this.store.dispatch(setLanguage('de-DE'))
     expect(this.store.getState().i18nState.lang).toEqual('de-DE')
     expect(this.withoutParamsNode.textContent).toEqual('Hallo')
+  })
+
+  it('fall back lang', function() {
+    this.store.dispatch(setLanguage('es-ES'))
+    expect(this.store.getState().i18nState.lang).toEqual('es-ES')
+    expect(this.withoutParamsNode.textContent).toEqual('Hola')
   })
 
 })
