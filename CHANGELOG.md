@@ -106,3 +106,4 @@
 - Now is possible use complex languages codes as "en-DE".
 
 ## 1.1.3 (Not created yet)
+- Fixed import action when there was quotes.

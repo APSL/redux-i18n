@@ -2,6 +2,7 @@ const fs = require('fs')
 const gtp = require('gettext-parser')
 const po = gtp.po
 const path = require('path')
+const escape_quotes = require('escape-quotes');
 
 exports.getTrans = (file, translations) => {
   const content = fs.readFileSync(file)
@@ -32,7 +33,7 @@ exports.transToTxt = (trans) => {
     txt += `  '${lang}': {\n`
 
     for (let k in trans[lang]) {
-      txt += `    '${k}': '${trans[lang][k]}',\n`
+      txt += `    '${escape_quotes(k)}': '${escape_quotes(trans[lang][k])}',\n`
     }
 
     txt += `  },\n`

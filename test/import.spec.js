@@ -10,12 +10,13 @@ describe('importing po files', () => {
 
     expect(Object.keys(translations).length).toEqual(1)
     expect(Object.keys(translations)[0]).toEqual('en')
-    expect(Object.keys(translations.en).length).toEqual(4)
+    expect(Object.keys(translations.en).length).toEqual(5)
 
     expect(translations.en['Traducir este texto']).toEqual('Translate this text')
     expect(translations.en['Hola {n}!']).toEqual('Hello {n}!')
     expect(translations.en['una noche']).toEqual('one night')
     expect(translations.en['{n} noches']).toEqual('{n} nights')
+    expect(translations.en['Text \'with\' quotes']).toEqual('Text \'with\' quotes')
   })
 
   it('from dict to js file', () => {
@@ -29,6 +30,7 @@ describe('importing po files', () => {
     \'Hola {n}!\': \'Hello {n}!\',\n\
     \'una noche\': \'one night\',\n\
     \'{n} noches\': \'{n} nights\',\n\
+    \'Text \\\'with\\\' quotes\': \'Text \\\'with\\\' quotes\',\n\
   },\n\
 }\n')
   })

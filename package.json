@@ -39,6 +39,7 @@
   },
   "dependencies": {
     "colors": "^1.1.2",
+    "escape-quotes": "^1.0.2",
     "gettext-parser": "^1.1.2",
     "glob": "^7.0.5",
     "optimist": "^0.6.1",
