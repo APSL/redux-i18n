@@ -105,5 +105,8 @@
 - Some tests added.
 - Now is possible use complex languages codes as "en-DE".
 
-## 1.1.3 (Not created yet)
+## 1.1.3
 - Fixed import action when there was quotes.
+- Demo app added. 
+
+## 1.1.4 (Not created yet)
