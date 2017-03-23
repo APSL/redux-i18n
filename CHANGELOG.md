@@ -2,6 +2,7 @@
 
 ## 1.1.5 (Not created yet)
 - Changelog format improved.
+- Documentation improved.
 
 ## 1.1.4
 - Fall back lang. Read documentation https://github.com/APSL/redux-i18n#changing-language

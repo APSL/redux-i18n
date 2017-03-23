@@ -1,6 +1,6 @@
 # Description
 
-**redux-i18n** is a simple and powerful package for translate your *react* application with *react-redux*.
+**redux-i18n** is a simple and powerful package for translate your *react* applications using *react-redux*.
 
 [![redux-i18n in Travis](https://travis-ci.org/APSL/redux-i18n.svg?branch=master)](https://travis-ci.org/APSL/redux-i18n)
 [![npm version](https://badge.fury.io/js/redux-i18n.svg)](https://www.npmjs.com/package/redux-i18n)
@@ -14,20 +14,21 @@ npm i redux-i18n --save
 
 ## Features
 
-* Tool for translating your React projects.
-* Designed to react-redux.
+* Translate literals.
+* Designed for react-redux.
 * Compatible with Immutable.js.
-* You can export your translations into POT files (Poedit).
-* You can import from .PO files to *translations.js* object.
-* You can add comments for translators.
+* Export translations to POT files (for translate with Poedit).
+* Import translations from .PO files to *translations.js* object (for use in your project).
+* Add comments for translators.
+* Pluralize literals.
 
 ## Requirements
 
 * node >= 4.0.0
 
-## How to use
+## Usage
 
-This package provide a parent component that encapsulate your application. See this example for understand it.
+The package provide a parent component for encapsulate your application and provide features for translate your project.
 
 ```javascript
 import I18n from "redux-i18n"
@@ -50,7 +51,7 @@ class MainApp extends React.Component {
 }
 ```
 
-Where *translations* is a dictionary as this:
+Where *translations* is a dictionary similar to this:
 
 ```javascript
 export const translations = {
@@ -61,9 +62,9 @@ export const translations = {
 }
 ```
 
-## Defining reducer
+## Redux Reducer
 
-In your *combineReducers* you should add **i18nState** reducer.
+In your *combineReducers* you should add this **i18nState** reducer.
 
 ```javascript
 import {otherreducers} from "./Yourproject"
@@ -78,7 +79,7 @@ const appReducer = combineReducers({
 })
 ```
 
-Now, you can connect *lang* attribute in your component:
+Already you can connect *lang* attribute in your component:
 
 ```javascript
 export default connect(state => ({
@@ -86,9 +87,9 @@ export default connect(state => ({
 }))(Home)
 ```
 
-## Translating the content
+## Translate literals
 
-You can access to a *I18n's* functions with your component's context. For example:
+You can access to *I18n's* functions using your component's context. For example:
 
 ```javascript
 Home.contextTypes = {
@@ -96,7 +97,7 @@ Home.contextTypes = {
 }
 ```
 
-And then, you can use *i18n* function in your render method.
+...then, you will can use *i18n* method in your component.
 
 ```javascript
 render() {
@@ -111,7 +112,7 @@ render() {
 }
 ```
 
-You can translate date formats, too.
+Translate date formats.
 
 ```javascript
 render() {
@@ -124,7 +125,7 @@ render() {
 }
 ```
 
-Is possible add comments for translators.
+Add comments for translators.
 
 ```javascript
 render() {
@@ -139,7 +140,13 @@ render() {
 }
 ```
 
-Transate can be used in stateless componens also.
+See how *Poedit* show the comments.
+
+![Poedit screenshot](imgs/poedit1.jpg?raw=true "Poedit screenshot")
+
+## Stateless components
+
+Example:
 
 ```javascript
 const Foo = ({}, context) => <h1>{context.t("Hello World")}</h1>
@@ -147,21 +154,21 @@ const Foo = ({}, context) => <h1>{context.t("Hello World")}</h1>
 
 ## Pluralize
 
-Now is possible use plurals in your translations.
+For use plurals in your translations.
 
 ```javascript
 <div>{this.context.t(['una noche', '{n} noches', 'n'], {n: 1})}</div>
 ```
 
-Instead pass a string as first parameter, now you can pass a list. The first parameter of list is the text in singular, the second, the text in plural and finally the attribute name of params dictionary which is used for indicate quantity.
+Instead pass a string as first parameter, you can pass a list. The first parameter is a singular text, the second one, a plural text and finally the attribute name of params dictionary which is used for set quantity.
 
-After extract translations to POT file and if you open it with Poedit you will see the follow:
+After extract translations to POT file and open it with Poedit you will see the follow:
 
 ![Poedit screenshot](imgs/poedit2.jpg?raw=true "Poedit screenshot")
 
-## Changing language
+## Change language
 
-This library has a *setLanguage* action. You can use it as follow:
+Use *setLanguage* action.
 
 ```javascript
 import {setLanguage} from "redux-i18n"
@@ -171,7 +178,7 @@ componentWillMount() {
 }
 ```
 
-If you use combined languages as *es-ES*, *en-GB*, and you don't have those translations, you have something like that:
+If you work with combined languages like *es-ES*, *en-GB*, and you don't have those translations in your object...
 
 ```javascript
 export const translations = {
@@ -184,13 +191,13 @@ export const translations = {
 }
 ```
 
-*redux-i18n* will take fallback language content. In this case, *es* or *en*.
+Don't worry because *redux-i18n* will take fallback language content. In this case, *es* or *en*.
 
-## Extract/import scripts
+## Extract/Import scripts
 
-This package have two scripts for extract texts to a *template.pot* and import texts from *po* file to a *translation.js* file.
+Exists two scripts for extract texts to a template (template.pot) and use in *Poedit* and import texts from *po* files to a *translation.js*.
 
-For use this scripts, you should edit your *package.json* and add both scripts.
+Add this scripts in your *package.json* for this purpose:
 
 ```json
     "scripts": {
@@ -199,42 +206,42 @@ For use this scripts, you should edit your *package.json* and add both scripts.
     }
 ```
 
-In this example I have used *extract* and *import* name for scripts, but you can use any. For run one of any scripts:
+Then you will can run the follow commands in your terminal:
 
 ```
 npm run extract
 npm run import
 ```
 
-## Extract texts and generate template.pot
+### Extract texts and build template.pot
 
 ```
 npm run extract
 ```
 
-This script search all results inside **src** folder with a regular expression and generate a **locales/template.pot** file. This file can be used with [Poedit](https://poedit.net/) application for generate *en.po*, *es.po*, etc. files.
+This script search all literals inside **src** folder with a regular expression and build a **locales/template.pot** file. This file can be used in [Poedit](https://poedit.net/) for build *en.po*, *es.po*, etc. files.
 
-You should save your *po* files inside *locales* folder.
+You will should save your *po* files inside *locales* folder.
 
-If you want set other source folder, you can use *source* parameter.
+If you want to set other source folder, you can use the *source* parameter.
 
 ```json
     "scripts": {
-        "extract": "i18n_extract --source=mysource",
+        "extract": "i18n_extract --source=mysourcefolder",
         "import": "i18n_import"
     }
 ```
 
-Or if you want set other *locales* folder:
+Or if you want to set other *locales* folder...
 
 ```json
     "scripts": {
-        "extract": "i18n_extract --source=mysource --locales=mylocales",
+        "extract": "i18n_extract --source=mysourcefolder --locales=mylocalesfolder",
         "import": "i18n_import"
     }
 ```
 
-The default *regex* pattern finds all occurrences of *this.context.t*, but if you want to use your custom pattern, see this example:
+The default regular expression pattern search all occurrences of *this.context.t* string, but if you want to use your custom pattern, see this example:
 
 ```javascript
 export default function App({aProp, bProp}, {t: translate}) {
@@ -242,7 +249,7 @@ export default function App({aProp, bProp}, {t: translate}) {
 }
 ```
 
-In *package.json*:
+Update your *package.json*:
 
 ```json
     "scripts": {
@@ -251,18 +258,15 @@ In *package.json*:
     }
 ```
 
-If you have added comments for translator, you will see this into Poedit.
+### Import .po files
 
-![Poedit screenshot](imgs/poedit1.jpg?raw=true "Poedit screenshot")
-
-
-## Import your .po files
+Finally, when your translator have finished all translations you'll should import *po* files in your project. Run:
 
 ```
 npm run import
 ```
 
-This script load all po files inside you *locales* folder, extract all translations and build a **src/translations.js** that you will use in your application.
+This script read all *po* files inside your *locales* folder, extract all translations and build a **src/translations.js** that you will can use in your project.
 
 You can set other *locales* folder:
 
@@ -273,7 +277,7 @@ You can set other *locales* folder:
     }
 ```
 
-If you want save *translation.js* file to other folder:
+If you want to save *translation.js* file in other folder:
 
 ```json
     "scripts": {
@@ -281,3 +285,5 @@ If you want save *translation.js* file to other folder:
         "import": "i18n_import --locales=mylocales --translations=myfolder"
     }
 ```
+
+**Please**: Don't forget to rate my project if you like it. Click on star!
