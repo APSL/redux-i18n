@@ -1,9 +1,11 @@
 # Changelog
 
-## 1.1.5 (Not created yet)
+## 1.1.6 (Not created yet)
+
+## 1.1.5
 - Changelog format improved.
 - Documentation improved.
-- Now is possible use html object as parameter.
+- Now is possible use html object as parameter. Read documentation https://github.com/APSL/redux-i18n#html-object-as-parameter
 
 ## 1.1.4
 - Fall back lang. Read documentation https://github.com/APSL/redux-i18n#changing-language
