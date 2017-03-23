@@ -17,6 +17,7 @@ import TransWithDollarSignParams from './components/TransWithDollarSignParams'
 import TransWithNumberParams from './components/TransWithNumberParams'
 import Dates from './components/Dates'
 import {TransPluralize1, TransPluralize2} from './components/TransPlurals'
+import TransWithObjParams from './components/TransWithObjParams'
 
 const translations = {
   'es': {
@@ -97,6 +98,14 @@ describe('immutable component test', function() {
       </Provider>
     ))
 
+    this.objAsParam = ReactDOM.findDOMNode(TestUtils.renderIntoDocument(
+      <Provider store={this.store}>
+        <I18n translations={translations}>
+          <TransWithObjParams/>
+        </I18n>
+      </Provider>
+    ))
+
   })
 
   it('initial state', function() {
@@ -157,6 +166,10 @@ describe('immutable component test', function() {
     this.store.dispatch(setLanguage('es-ES'))
     expect(this.store.getState().getIn(['i18nState', 'lang'])).toEqual('es-ES')
     expect(this.withoutParamsNode.textContent).toEqual('Hola')
+  })
+
+  it('object as param', function() {
+    expect(this.objAsParam.textContent).toEqual('Hello <span>Cesc</span>')
   })
 
 })

@@ -12,6 +12,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _server = require('react-dom/server');
+
+var _server2 = _interopRequireDefault(_server);
+
 var _reactDeepForceUpdate = require('react-deep-force-update');
 
 var _reactDeepForceUpdate2 = _interopRequireDefault(_reactDeepForceUpdate);
@@ -39,7 +43,7 @@ var I18n = function (_React$Component) {
     return _this;
   }
 
-  // Check if the text need replace some params
+  // It check if text have params
 
 
   _createClass(I18n, [{
@@ -54,6 +58,8 @@ var I18n = function (_React$Component) {
           // especially important for IE11, which misinterprets '$0' as a regex command
           if (typeof param === 'string') {
             param = param.replace(/\$/g, '$$$$');
+          } else if ((typeof param === 'undefined' ? 'undefined' : _typeof(param)) === 'object' && param !== null) {
+            param = _server2.default.renderToStaticMarkup(param);
           }
 
           text = text.replace(reg, param);

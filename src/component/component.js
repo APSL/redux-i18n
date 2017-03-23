@@ -4,6 +4,7 @@
  */
 
 import React from 'react'
+import ReactDOMServer from 'react-dom/server'
 import deepForceUpdate from 'react-deep-force-update'
 
 class I18n extends React.Component {
@@ -13,7 +14,7 @@ class I18n extends React.Component {
     this.trans = this.trans.bind(this)
   }
 
-  // Check if the text need replace some params
+  // It check if text have params
   params(text, params) {
     if (params !== undefined) {
       for (let k in params) {
@@ -24,6 +25,8 @@ class I18n extends React.Component {
         // especially important for IE11, which misinterprets '$0' as a regex command
         if (typeof param === 'string') {
           param = param.replace(/\$/g, '$$$$');
+        } else if (typeof param === 'object' && param !== null) {
+          param = ReactDOMServer.renderToStaticMarkup(param)
         }
 
         text = text.replace(reg, param)

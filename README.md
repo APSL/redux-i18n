@@ -144,6 +144,20 @@ See how *Poedit* show the comments.
 
 ![Poedit screenshot](imgs/poedit1.jpg?raw=true "Poedit screenshot")
 
+### HTML Object as parameter
+
+```javascript
+const user = {name: 'Cesc'}
+const name = <span>{user.name}</span>
+return <div>{context.t('Hello {name}', {name: name})}</div>
+```
+
+Result:
+
+```html
+Hello <span>Cesc</span>
+```
+
 ## Stateless components
 
 Example:
