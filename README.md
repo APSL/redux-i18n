@@ -300,4 +300,4 @@ If you want to save *translation.js* file in other folder:
     }
 ```
 
-**Please**: Don't forget to rate my project if you like it. Click on star!
+**Please**: Don't forget rate my project, if you like it. Click on star!
