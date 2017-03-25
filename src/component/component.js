@@ -37,7 +37,8 @@ class I18n extends React.Component {
 
   // Main method for translating texts
   trans(textKey, params, comment) {
-    let langMessages = this.props.translations[this.props.lang]
+    const translations = this.props.getTransFromReducer ? this.props.translations_reducer : this.props.translations
+    let langMessages = translations[this.props.lang]
 
     // Checking if textkey contains a pluralize object.
     if (typeof textKey === 'object') {
@@ -46,7 +47,7 @@ class I18n extends React.Component {
 
     // Fall back lang
     if (langMessages === undefined && this.props.lang.indexOf('-') > -1) {
-      langMessages = this.props.translations[this.props.lang.split('-')[0]]
+      langMessages = translations[this.props.lang.split('-')[0]]
     }
 
     if (langMessages === undefined) {
@@ -71,6 +72,8 @@ class I18n extends React.Component {
     if (prevProps.lang !== this.props.lang) {
       deepForceUpdate(this)
     }
+
+    // TODO: Si trabaja con reducer y varia el objeto, se tendría que refrescar....
   }
 
   render() {
@@ -83,7 +86,12 @@ I18n.childContextTypes = {
 }
 
 I18n.propTypes = {
-  translations: React.PropTypes.object.isRequired
+  translations: React.PropTypes.object.isRequired,
+  getTransFromReducer: React.PropTypes.bool
+}
+
+I18n.defaultProps = {
+  getTransFromReducer: false
 }
 
 export default I18n

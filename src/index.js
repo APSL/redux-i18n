@@ -5,5 +5,5 @@
 
 export default from './component'
 export {i18nState} from './reducer'
-export {setLanguage} from './actions'
+export {setLanguage, setTranslations} from './actions'
 
