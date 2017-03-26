@@ -8,7 +8,9 @@ exports.i18nState = i18nState;
 var _immutable = require('immutable');
 
 var reduxI18nState = new _immutable.Map({
-  lang: 'en'
+  lang: 'en',
+  translations: {},
+  forceRefresh: false
 }); /*
      * Project: redux-i18n
      * File: reducer/immutable.js
@@ -21,6 +23,10 @@ function i18nState() {
   switch (action.type) {
     case 'REDUX_I18N_SET_LANGUAGE':
       return state.set('lang', action.lang);
+    case 'REDUX_I18N_SET_TRANSLATIONS':
+      return state.set('translations', action.translations);
+    case 'REDUX_I18N_SET_FORCE_REFRESH':
+      return state.set('forceRefresh', action.force);
     default:
       return state;
   }

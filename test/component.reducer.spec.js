@@ -7,11 +7,9 @@ import {createStore, combineReducers, applyMiddleware} from 'redux'
 import thunk from 'redux-thunk'
 import {Provider} from 'react-redux'
 
-// TODO: Change src to dist!!!!
-// TODO: Check imutable version!!!
-import I18n from '../src/component'
-import {i18nState} from '../src/reducer'
-import {setLanguage} from '../src/actions'
+import I18n from '../dist/component'
+import {i18nState} from '../dist/reducer'
+import {setLanguage, setTranslations} from '../dist/actions'
 
 import TransWithoutParams from './components/TransWithoutParams'
 
@@ -33,9 +31,18 @@ describe('translations in reducer', function() {
   })
 
   it('default component', function() {
-    const state = this.store.getState()
-    expect(state.i18nState.translations).toEqual({})
+    expect(this.store.getState().i18nState.translations).toEqual({})
     this.store.dispatch(setLanguage('es'))
     expect(this.component.textContent).toEqual('Hello')
+
+    const trans = {
+      'es': {
+        'Hello': 'Hola'
+      }
+    }
+
+    this.store.dispatch(setTranslations(trans))
+    expect(this.store.getState().i18nState.translations.es['Hello']).toEqual('Hola')
+    expect(this.component.textContent).toEqual('Hola')
   })
 })

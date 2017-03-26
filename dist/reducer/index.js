@@ -13,7 +13,9 @@ exports.i18nState = i18nState;
  */
 
 var reduxI18nState = {
-  lang: 'en'
+  lang: 'en',
+  translations: {},
+  forceRefresh: false
 };
 
 function i18nState() {
@@ -23,6 +25,10 @@ function i18nState() {
   switch (action.type) {
     case 'REDUX_I18N_SET_LANGUAGE':
       return _extends({}, state, { lang: action.lang });
+    case 'REDUX_I18N_SET_TRANSLATIONS':
+      return _extends({}, state, { translations: action.translations });
+    case 'REDUX_I18N_SET_FORCE_REFRESH':
+      return _extends({}, state, { forceRefresh: action.force });
     default:
       return state;
   }

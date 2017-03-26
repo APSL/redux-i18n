@@ -20,6 +20,8 @@ var _reactDeepForceUpdate = require('react-deep-force-update');
 
 var _reactDeepForceUpdate2 = _interopRequireDefault(_reactDeepForceUpdate);
 
+var _actions = require('../actions');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -73,7 +75,8 @@ var I18n = function (_React$Component) {
   }, {
     key: 'trans',
     value: function trans(textKey, params, comment) {
-      var langMessages = this.props.translations[this.props.lang];
+      var translations = this.props.useReducer ? this.props.translations_reducer : this.props.translations;
+      var langMessages = translations[this.props.lang];
 
       // Checking if textkey contains a pluralize object.
       if ((typeof textKey === 'undefined' ? 'undefined' : _typeof(textKey)) === 'object') {
@@ -82,7 +85,7 @@ var I18n = function (_React$Component) {
 
       // Fall back lang
       if (langMessages === undefined && this.props.lang.indexOf('-') > -1) {
-        langMessages = this.props.translations[this.props.lang.split('-')[0]];
+        langMessages = translations[this.props.lang.split('-')[0]];
       }
 
       if (langMessages === undefined) {
@@ -106,8 +109,9 @@ var I18n = function (_React$Component) {
   }, {
     key: 'componentDidUpdate',
     value: function componentDidUpdate(prevProps, prevState) {
-      if (prevProps.lang !== this.props.lang) {
+      if (prevProps.lang !== this.props.lang || !prevProps.forceRefresh && this.props.forceRefresh) {
         (0, _reactDeepForceUpdate2.default)(this);
+        this.props.dispatch((0, _actions.setForceRefresh)(false));
       }
     }
   }, {
@@ -125,7 +129,12 @@ I18n.childContextTypes = {
 };
 
 I18n.propTypes = {
-  translations: _react2.default.PropTypes.object.isRequired
+  translations: _react2.default.PropTypes.object.isRequired,
+  useReducer: _react2.default.PropTypes.bool
+};
+
+I18n.defaultProps = {
+  useReducer: false
 };
 
 exports.default = I18n;
