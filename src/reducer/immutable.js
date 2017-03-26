@@ -7,7 +7,8 @@ import { Map } from 'immutable';
 
 const reduxI18nState = new Map({
   lang: 'en',
-  translations: {}
+  translations: {},
+  forceRefresh: false
 })
 
 export function i18nState(state = reduxI18nState, action) {
@@ -16,6 +17,8 @@ export function i18nState(state = reduxI18nState, action) {
       return state.set('lang', action.lang)
     case 'REDUX_I18N_SET_TRANSLATIONS':
       return state.set('translations', action.translations)
+    case 'REDUX_I18N_SET_FORCE_REFRESH':
+      return state.set('forceRefresh', action.force)
     default:
         return state
   }

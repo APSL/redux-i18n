@@ -6,6 +6,7 @@
 import React from 'react'
 import ReactDOMServer from 'react-dom/server'
 import deepForceUpdate from 'react-deep-force-update'
+import {setForceRefresh} from '../actions'
 
 class I18n extends React.Component {
 
@@ -37,7 +38,7 @@ class I18n extends React.Component {
 
   // Main method for translating texts
   trans(textKey, params, comment) {
-    const translations = this.props.getTransFromReducer ? this.props.translations_reducer : this.props.translations
+    const translations = this.props.useReducer ? this.props.translations_reducer : this.props.translations
     let langMessages = translations[this.props.lang]
 
     // Checking if textkey contains a pluralize object.
@@ -69,11 +70,10 @@ class I18n extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevProps.lang !== this.props.lang) {
+    if (prevProps.lang !== this.props.lang || (!prevProps.forceRefresh && this.props.forceRefresh)) {
       deepForceUpdate(this)
+      this.props.dispatch(setForceRefresh(false))
     }
-
-    // TODO: Si trabaja con reducer y varia el objeto, se tendría que refrescar....
   }
 
   render() {
@@ -87,11 +87,11 @@ I18n.childContextTypes = {
 
 I18n.propTypes = {
   translations: React.PropTypes.object.isRequired,
-  getTransFromReducer: React.PropTypes.bool
+  useReducer: React.PropTypes.bool
 }
 
 I18n.defaultProps = {
-  getTransFromReducer: false
+  useReducer: false
 }
 
 export default I18n

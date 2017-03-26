@@ -5,7 +5,8 @@
 
 const reduxI18nState = {
   lang: 'en',
-  translations: {}
+  translations: {},
+  forceRefresh: false
 }
 
 export function i18nState(state = reduxI18nState, action) {
@@ -14,6 +15,8 @@ export function i18nState(state = reduxI18nState, action) {
       return {...state, lang: action.lang}
     case 'REDUX_I18N_SET_TRANSLATIONS':
       return {...state, translations: action.translations}
+    case 'REDUX_I18N_SET_FORCE_REFRESH':
+      return {...state, forceRefresh: action.force}
     default:
         return state
   }
