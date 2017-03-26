@@ -300,6 +300,27 @@ If you want to save *translation.js* file in other folder:
     }
 ```
 
+## Async translations
+
+If the application grows, translations tend to grow quite a lot also, adding a lot to the overall size of the js bundle.
+
+You can set a empty translation object to component and set *useReducer* parameter for works with reducer. For example:
+
+```javascript
+    <Provider store={this.store}>
+        <I18n translations={{}} useReducer={true}>
+            <MainApp/>
+        </I18n>
+    </Provider>
+```
+
+Then you can use *setTranslations* action.
+
+```javascript
+import {setTranslations} from 'redux-i18n'
+api.get('...').then(r => this.props.dispatch(setTranslations(r.translations)))
+```
+
 ---
 
 **Please**: Don't forget rate my project, if you like it. Click on star!
