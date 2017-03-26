@@ -6,7 +6,6 @@ import {setLanguage} from 'redux-i18n'
 
 class Main extends React.Component {
 
-
   constructor(props) {
     super(props)
     this.languages = ['es', 'en', 'de-DE']
@@ -23,12 +22,13 @@ class Main extends React.Component {
   render() {
     return (
       <div>
+        <h1>Translations Dict</h1>
         Language: {this.props.lang}<br/>
-        Translation: {this.context.t('Hello world!')}<br/>
         Change language:
         <select value={this.props.lang} onChange={this.onChangeLang}>
           {this.languages.map(lang => <option key={lang} value={lang}>{lang}</option>)}
-        </select>
+        </select><br/>
+        Translation: {this.context.t('Hello world!')}<br/>
       </div>
     )
   }
