@@ -69,6 +69,13 @@ class I18n extends React.Component {
     }
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    if (this.props.forceRefresh && !nextProps.forceRefresh) {
+      return false
+    }
+    return true
+  }
+
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.lang !== this.props.lang || (!prevProps.forceRefresh && this.props.forceRefresh)) {
       deepForceUpdate(this)

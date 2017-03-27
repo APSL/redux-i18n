@@ -107,6 +107,14 @@ var I18n = function (_React$Component) {
       };
     }
   }, {
+    key: 'shouldComponentUpdate',
+    value: function shouldComponentUpdate(nextProps, nextState) {
+      if (this.props.forceRefresh && !nextProps.forceRefresh) {
+        return false;
+      }
+      return true;
+    }
+  }, {
     key: 'componentDidUpdate',
     value: function componentDidUpdate(prevProps, prevState) {
       if (prevProps.lang !== this.props.lang || !prevProps.forceRefresh && this.props.forceRefresh) {
