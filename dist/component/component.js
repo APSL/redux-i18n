@@ -111,7 +111,10 @@ var I18n = function (_React$Component) {
     value: function componentDidUpdate(prevProps, prevState) {
       if (prevProps.lang !== this.props.lang || !prevProps.forceRefresh && this.props.forceRefresh) {
         (0, _reactDeepForceUpdate2.default)(this);
-        this.props.dispatch((0, _actions.setForceRefresh)(false));
+
+        if (this.props.forceRefresh) {
+          this.props.dispatch((0, _actions.setForceRefresh)(false));
+        }
       }
     }
   }, {
