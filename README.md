@@ -323,4 +323,4 @@ api.get('...').then(r => this.props.dispatch(setTranslations(r.translations)))
 
 ---
 
-**Please**: Don't forget rate my project, if you like it. Click on star!
+**Please**, if you like my package, don't forget to rate it. Click on the "star"!
