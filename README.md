@@ -149,7 +149,7 @@ See how *Poedit* show the comments.
 ```javascript
 const user = {name: 'Cesc'}
 const name = <span>{user.name}</span>
-return <div>{context.t('Hello {name}', {name: name})}</div>
+return <div dangerouslySetInnerHTML={{ __html: context.t('Hello {name}', {name: name}) }}/>
 ```
 
 Result:
@@ -157,6 +157,8 @@ Result:
 ```html
 Hello <span>Cesc</span>
 ```
+
+Notice that for [security reasons](https://facebook.github.io/react/docs/dom-elements.html#dangerouslysetinnerhtml) we can't print html code directly. We should use "dangerouslySetInnerHTML" method for that.
 
 ## Stateless components
 

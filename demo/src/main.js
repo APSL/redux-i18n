@@ -20,6 +20,9 @@ class Main extends React.Component {
   }
 
   render() {
+    const user = {name: 'Cesc'}
+    const name = <b>{user.name}</b>
+
     return (
       <div>
         <h1>Translations Dict</h1>
@@ -29,6 +32,7 @@ class Main extends React.Component {
           {this.languages.map(lang => <option key={lang} value={lang}>{lang}</option>)}
         </select><br/>
         Translation: {this.context.t('Hello world!')}<br/>
+        Translation 2: <span dangerouslySetInnerHTML={{ __html: this.context.t('Hello {name}', {name: name})}}/>
       </div>
     )
   }
