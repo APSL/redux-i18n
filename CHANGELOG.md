@@ -1,6 +1,10 @@
 # Changelog
 
-## 1.1.6 (Not created yet)
+## 1.2.1 (Not created yet)
+
+## 1.2.0
+- Now is possible use reducer for store your translations. You can load async translations and then store there. Read documentation https://github.com/APSL/redux-i18n#async-translations
+- Documentation updated for explain how use html object as a param. (https://github.com/APSL/redux-i18n#html-object-as-parameter) 
 
 ## 1.1.5
 - Changelog format improved.

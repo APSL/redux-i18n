@@ -30,7 +30,7 @@ function setTranslations(translations, language) {
       var state = getState();
       var trans = null;
 
-      // Immutable compatible
+      // Compatibility with immutable
       if (state.i18nState === undefined) {
         trans = state.getIn(['i18nState', 'translations']);
       } else {
