@@ -11,10 +11,24 @@ function updateTranslations(translations) {
   return {type: 'REDUX_I18N_SET_TRANSLATIONS', translations}
 }
 
-export function setTranslations(translations) {
-  return function(dispatch) {
-    dispatch(setForceRefresh(true))
-    dispatch(updateTranslations(translations))
+export function setTranslations(translations, language) {
+  return function(dispatch, getState) {
+    if (language === undefined) {
+      dispatch(updateTranslations(translations))
+    } else {
+      const state = getState()
+      let trans = null
+
+      // Compatibility with immutable
+      if (state.i18nState === undefined) {
+        trans = state.getIn(['i18nState', 'translations'])
+      } else {
+        trans = {...state.i18nState.translations}
+      }
+      trans[language] = translations
+      dispatch(updateTranslations(trans))
+      dispatch(setForceRefresh(true))
+    }
   }
 }
 

@@ -30,7 +30,7 @@ describe('translations in reducer', function() {
 
   })
 
-  it('default component', function() {
+  it('set all translations object', function() {
     expect(this.store.getState().i18nState.translations).toEqual({})
     this.store.dispatch(setLanguage('es'))
     expect(this.component.textContent).toEqual('Hello')
@@ -44,5 +44,23 @@ describe('translations in reducer', function() {
     this.store.dispatch(setTranslations(trans))
     expect(this.store.getState().i18nState.translations.es['Hello']).toEqual('Hola')
     expect(this.component.textContent).toEqual('Hola')
+  })
+
+  it('add only one new language in translations', function() {
+    const trans = {
+      'es': {
+        'Hello': 'Hola'
+      }
+    }
+    this.store.dispatch(setTranslations(trans))
+    expect(this.store.getState().i18nState.translations).toEqual(trans)
+    this.store.dispatch(setLanguage('es'))
+    expect(this.component.textContent).toEqual('Hola')
+
+    this.store.dispatch(setLanguage('de'))
+    expect(this.component.textContent).toEqual('Hello')
+
+    this.store.dispatch(setTranslations({'Hello': 'Hallo'}, 'de'))
+    expect(this.component.textContent).toEqual('Hallo')
   })
 })

@@ -321,6 +321,12 @@ import {setTranslations} from 'redux-i18n'
 api.get('...').then(r => this.props.dispatch(setTranslations(r.translations)))
 ```
 
+You can pass a second parameter to action for set the language. Depend of the your response structure.
+
+```javascript
+api.get('...').then(r => this.props.dispatch(setTranslations(r.translations, 'en')))
+```
+
 ---
 
 **Please**, if you like my package, don't forget to rate it. Click on the "star"!
