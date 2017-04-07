@@ -1,5 +1,9 @@
 
 // Regexp pattern for extract translations
+// Some tools:
+//  - https://regexper.com/
+//  - https://regex101.com/
+//  - http://www.freeformatter.com/javascript-escape.html
 exports.pattern = function(gettext) {
   if (typeof gettext !== 'string') {
     gettext = 'context.t';
