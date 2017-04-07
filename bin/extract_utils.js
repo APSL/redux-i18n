@@ -4,7 +4,7 @@ exports.pattern = function(gettext) {
   if (typeof gettext !== 'string') {
     gettext = 'context.t';
   }
-  return new RegExp(gettext + '\\((?:([\"\'](.+?)[\"\'])|(?:\\[[\"\'](.+?)(?:[\"\']),(?: )(?:[\"\'](.+?)(?:[\"\']))))(?:,.+(?:,(?: )?[\'\"](.*)[\'\"]))?\\)?', 'g');
+  return new RegExp(gettext + '\\((?:([\"\']([^\),]+)[\"\'])|(?:\[[\"\']([^\\),]+)(?:[\"\']),(?: )(?:[\"\'](.+?)(?:[\"\']))))(?:,.+(?:,(?: )?[\'\"](.*)[\'\"]))?\\)?', 'g');
 }
 
 // Extract all occurences of content
