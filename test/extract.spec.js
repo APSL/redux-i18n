@@ -1,5 +1,6 @@
 import {pattern, getAllMatches, potFileContent, groupByText} from '../bin/extract_utils'
 import expect from 'expect'
+import {describe, it} from 'mocha'
 
 const html = `
 <div>
@@ -24,6 +25,7 @@ const html = `
   <div>{this.context.t('Hi {name}!', { name: 'Cesc' },'This is a comment for the translator')}</div>
   <div>{this.context.t('Hi {name}!', {}, 'This is a comment for the translator')}</div>
   <span>{context.t(['una noche', '{n} noches', 'n'], {n: 5})}</span>
+  <span>{context.t("Tom's house is very big")}</span>
 </div>
 `
 
@@ -36,20 +38,21 @@ describe('extract texts', () => {
 
     const matches = getAllMatches(pattern(), html)
 
-    expect(matches.length).toEqual(8)
+    expect(matches.length).toEqual(9)
     expect(matches[0].text).toEqual('Translate this text')
     expect(matches[1].text).toEqual('Hello {n}!')
     expect(matches[2].text).toEqual('YYYY-MM-DD')
     expect(matches[3].text).toEqual('{n}. Values from {f} to {t}')
     expect(matches[4].text).toEqual('Hi {name}!')
     expect(matches[4].comment).toEqual('This is a comment for the translator')
+    expect(matches[8].text).toEqual("Tom's house is very big")
   });
 
   it('accepts a custom getText function name', () => {
 
     const matches = getAllMatches(pattern('(?:translate|\\bt)'), html);
 
-    expect(matches.length).toEqual(9)
+    expect(matches.length).toEqual(10)
     expect(matches[0].text).toEqual('Translate this text')
     expect(matches[1].text).toEqual('Also translate this text')
     expect(matches[2].text).toEqual('Hello {n}!')
@@ -61,7 +64,7 @@ describe('extract texts', () => {
 
     // Grouping all matches by text-id
     const matches = getAllMatches(pattern(), html)
-    expect(matches.length).toEqual(8)
+    expect(matches.length).toEqual(9)
 
     const filesMatches = {
       'src/file1.js': matches,
@@ -69,7 +72,7 @@ describe('extract texts', () => {
     }
 
     const grBTxt = groupByText(filesMatches)
-    expect(Object.keys(grBTxt).length).toEqual(6)
+    expect(Object.keys(grBTxt).length).toEqual(7)
     expect(grBTxt['Translate this text'].files.length).toEqual(2)
     expect(grBTxt['Hi {name}!'].trans.comment).toEqual('This is a comment for the translator')
 
