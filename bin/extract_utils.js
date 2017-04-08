@@ -8,7 +8,7 @@ exports.pattern = function(gettext) {
   if (typeof gettext !== 'string') {
     gettext = 'context.t';
   }
-  return new RegExp(gettext + '\\((?:([\"\'](.+?)[\"\'])|(?:\\[[\"\'](.+?)(?:[\"\']),(?: )(?:[\"\'](.+?)(?:[\"\']))))(?:,.+(?:,(?: )?[\'\"](.*)[\'\"]))?\\)?', 'g');
+  return new RegExp(`(?:${gettext}(?:(?:(?:\\(\\\"(.+?)(?:\\\"))|(?:\\(\\\'(.+?)(?:\\\')))|(?:(?:\\(\\[\\\'(.+?)\\\'\\,\\s?\\\'(.+?)\\\')|(?:\\(\\[\\\"(.+?)\\\"\\,\\s?\\\"(.+?)\\\")))(?:.*?\\}\\,\\s?(?:(?:\\\'(.+?)\\\')|(?:\\\"(.+?)\\\")))?)`, 'g');
 }
 
 // Extract all occurences of content
@@ -21,9 +21,9 @@ exports.getAllMatches = function(pattern, content) {
         pattern.lastIndex++;
     }
     found.push({
-      text: m[2] || m[3],
-      comment: m[5] || null,
-      plural: m[4] || null
+      text: m[1] || m[2] || m[3] || m[5],
+      comment: (m[7] || m[8]) || null,
+      plural: (m[4] || m[6]) || null
     })
   }
 
