@@ -1,6 +1,9 @@
 # Changelog
 
-## 1.2.2 (Not created yet)
+## 1.2.3 (Not created yet)
+
+## 1.2.2
+- 'Extract' action and tests improved.
 
 ## 1.2.1 
 - English grammar improved in documentation. Thanks to *doei* (https://github.com/APSL/redux-i18n/pull/19).
