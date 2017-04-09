@@ -3,7 +3,7 @@
 ## 1.3.1 (Not created yet)
 
 ## 1.3.0
-- New *initialLang* attribute added.
+- New *initialLang* attribute added. Take a look to *Usage* section.
 
 ## 1.2.2
 - 'Extract' action and tests improved.
