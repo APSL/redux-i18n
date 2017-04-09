@@ -126,6 +126,11 @@ var I18n = function (_React$Component) {
       }
     }
   }, {
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      this.props.dispatch((0, _actions.setLanguage)(this.props.initialLang));
+    }
+  }, {
     key: 'render',
     value: function render() {
       return this.props.children;
@@ -141,11 +146,13 @@ I18n.childContextTypes = {
 
 I18n.propTypes = {
   translations: _react2.default.PropTypes.object.isRequired,
-  useReducer: _react2.default.PropTypes.bool
+  useReducer: _react2.default.PropTypes.bool,
+  initialLang: _react2.default.PropTypes.string
 };
 
 I18n.defaultProps = {
-  useReducer: false
+  useReducer: false,
+  initialLang: 'en'
 };
 
 exports.default = I18n;

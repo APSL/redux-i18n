@@ -6,7 +6,7 @@
 import React from 'react'
 import ReactDOMServer from 'react-dom/server'
 import deepForceUpdate from 'react-deep-force-update'
-import {setForceRefresh} from '../actions'
+import {setForceRefresh, setLanguage} from '../actions'
 
 class I18n extends React.Component {
 
@@ -86,6 +86,10 @@ class I18n extends React.Component {
     }
   }
 
+  componentWillMount() {
+    this.props.dispatch(setLanguage(this.props.initialLang))
+  }
+
   render() {
     return this.props.children
   }
@@ -97,11 +101,13 @@ I18n.childContextTypes = {
 
 I18n.propTypes = {
   translations: React.PropTypes.object.isRequired,
-  useReducer: React.PropTypes.bool
+  useReducer: React.PropTypes.bool,
+  initialLang: React.PropTypes.string
 }
 
 I18n.defaultProps = {
-  useReducer: false
+  useReducer: false,
+  initialLang: 'en'
 }
 
 export default I18n

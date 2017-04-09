@@ -62,6 +62,17 @@ export const translations = {
 }
 ```
 
+Also you can set initial language with *initialLang* attribute:
+
+```javascript
+<I18n translations={translations} initialLang="es">
+    <div>
+        <h1>My Project</h1>
+        {this.props.children}
+    </div>
+</I18n>
+```
+
 ## Redux Reducer
 
 You'll need to add the **i18nState** reducer in your *combineReducers*.

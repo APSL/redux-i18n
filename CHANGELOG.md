@@ -1,6 +1,9 @@
 # Changelog
 
-## 1.2.3 (Not created yet)
+## 1.3.1 (Not created yet)
+
+## 1.3.0
+- New *initialLang* attribute added.
 
 ## 1.2.2
 - 'Extract' action and tests improved.
