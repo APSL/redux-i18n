@@ -1,6 +1,9 @@
 # Changelog
 
-## 1.3.1 (Not created yet)
+## 1.3.2 (Not created yet)
+
+## 1.3.1
+- Updates extract strings regex. Tanks to *pablen* (https://github.com/APSL/redux-i18n/pull/25).
 
 ## 1.3.0
 - New *initialLang* attribute added. Take a look to *Usage* section.
