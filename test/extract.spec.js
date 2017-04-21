@@ -8,6 +8,7 @@ const html = `
   {this.context.t("Translate this text")}<br/>
   {translate("Also translate this text")}<br/>
   {this.context.t('Hello {n}!', {n: 'Cesc'})}<br/><br/>
+  {notranslate("Don't translate this text")}<br/>
   <button onClick={this.changeLanguage.bind(this)}>Change Language</button>
   <div>
     {sample.format(this.context.t('YYYY-MM-DD'))}
@@ -31,6 +32,18 @@ const html = `
   <span>{context.t(["una noche 4", "{n} noche's 4", "n"], {n: 5}, "This is a comment 4")}</span>
   <span>{context.t(['una noche 5', '{n} noches 5', 'n'], {n: 5}, 'This is a comment 5')}</span>
   <span>{context.t("Tom's house is very big")}</span>
+  <span>{context.t(
+    "Tom's house is very big"
+  )}</span>
+  <span>{context.t(
+    [
+      "Tom's house is very big" ,
+      "Tom's houses are very big" ,
+    ]
+    ,
+    {}
+    , "Some comment"
+  )}</span>
 </div>
 `
 
@@ -43,7 +56,7 @@ describe('extract texts', () => {
 
     const matches = getAllMatches(pattern(), html)
 
-    expect(matches.length).toEqual(14)
+    expect(matches.length).toEqual(16)
     expect(matches[0].text).toEqual('Translate this text')
     expect(matches[0].plural).toEqual(null)
     expect(matches[0].comment).toEqual(null)
@@ -115,7 +128,7 @@ describe('extract texts', () => {
 
     // Grouping all matches by text-id
     const matches = getAllMatches(pattern(), html)
-    expect(matches.length).toEqual(14)
+    expect(matches.length).toEqual(16)
 
     const filesMatches = {
       'src/file1.js': matches,
