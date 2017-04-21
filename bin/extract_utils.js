@@ -5,11 +5,15 @@
 //  - https://regex101.com/
 //  - http://www.freeformatter.com/javascript-escape.html
 exports.pattern = function(gettext) {
-  if (typeof gettext !== 'string') {
-    gettext = 'context.t';
-  }
-  return new RegExp(`(?:${gettext}(?:(?:(?:\\(\\\"(.+?)(?:\\\"))|(?:\\(\\\'(.+?)(?:\\\')))|(?:(?:\\(\\[\\\'(.+?)\\\'\\,\\s?\\\'(.+?)\\\')|(?:\\(\\[\\\"(.+?)\\\"\\,\\s?\\\"(.+?)\\\")))(?:.*?\\}\\,\\s?(?:(?:\\\'(.+?)\\\')|(?:\\\"(.+?)\\\")))?)`, 'g');
-}
+  // If custom pattern provided, enforce word boundary to avoid some false positives.
+  // e.g. someString.split('.') would extract '.' if custom pattern is 't'
+  const patternName = typeof gettext !== 'string' ? 'context.t' : `\\b(?=\\w)${gettext}`;
+
+  return new RegExp(
+    `(?:${patternName}(?:(?:(?:\\(\\s*?\\"(.+?)(?:\\"))|(?:\\(\\s*?\\'(.+?)(?:\\')))|(?:(?:\\(\\s*?\\[\\s*?\\'(.+?)\\'\\s*?\\,\\s*?\\'(.+?)\\')|(?:\\(\\s*?\\[\\s*?\\"(.+?)\\"\\s*?\\,\\s*?\\"(.+?)\\")))(?:.*?\\}\\s*?\\,\\s*?(?:(?:\\'(.+?)\\')|(?:\\s*?\\"(.+?)\\")))?)`,
+    'g'
+  );
+};
 
 // Extract all occurences of content
 exports.getAllMatches = function(pattern, content) {
