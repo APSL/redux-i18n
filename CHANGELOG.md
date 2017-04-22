@@ -1,6 +1,9 @@
 # Changelog
 
-## 1.3.2 (Not created yet)
+## 1.3.3 (Not created yet)
+
+## 1.3.2
+- New parameter for "extract" action added (fexts)
 
 ## 1.3.1
 - Updates extract strings regex. Tanks to *pablen* (https://github.com/APSL/redux-i18n/pull/25).

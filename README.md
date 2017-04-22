@@ -266,6 +266,15 @@ Or if you want to export your locales to a different folder...
     }
 ```
 
+By default this command find in all *.js* and *.jsx* file extensions, but you can customize it with *fexts* parameter. Check out this example:
+
+```json
+    "scripts": {
+        "extract": "i18n_extract --fexts=js,jsx,cofee",
+        "import": "i18n_import"
+    }
+```
+
 The default regular expression will search all occurrences of *this.context.t* string, but you can also supply your own custom pattern, as in the following example:
 
 ```javascript

@@ -6,14 +6,19 @@ var glob = require('glob'),
     optimist = require('optimist');
 
 var args = optimist.argv;
-var srcPath = `${args.source || 'src'}/**/*.js*`;
+var exts = args.fexts || 'js*'
+
+if (exts.split(',').length > 1) {
+  exts = `{${exts}}`
+}
+
+var srcPath = `${args.source || 'src'}/**/*.${exts}`;
 var extractUtils = require('./extract_utils')
 var pattern = extractUtils.pattern(args.pattern);
 var getAllMatches = extractUtils.getAllMatches;
 var potFileContent = extractUtils.potFileContent;
 var groupByText = extractUtils.groupByText;
 var texts = {};
-
 
 /*****************************************************************************/
 /* Check if locale folder exists
