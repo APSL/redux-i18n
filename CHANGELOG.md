@@ -3,7 +3,7 @@
 ## 1.3.3 (Not created yet)
 
 ## 1.3.2
-- New parameter for "extract" action added (fexts)
+- New parameter for "extract" action added (fexts). Take a look documentation  (https://github.com/APSL/redux-i18n#extract-texts-and-build-templatepot). Thanks to *renchap* for this idea (https://github.com/APSL/redux-i18n/issues/26).
 
 ## 1.3.1
 - Updates extract strings regex. Tanks to *pablen* (https://github.com/APSL/redux-i18n/pull/25).
