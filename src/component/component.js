@@ -5,6 +5,7 @@
 
 import React from 'react'
 import ReactDOMServer from 'react-dom/server'
+import {PropTypes} from 'prop-types'
 import deepForceUpdate from 'react-deep-force-update'
 import {setForceRefresh, setLanguage} from '../actions'
 
@@ -96,13 +97,13 @@ class I18n extends React.Component {
 }
 
 I18n.childContextTypes = {
-  t: React.PropTypes.func.isRequired
+  t: PropTypes.func.isRequired
 }
 
 I18n.propTypes = {
-  translations: React.PropTypes.object.isRequired,
-  useReducer: React.PropTypes.bool,
-  initialLang: React.PropTypes.string
+  translations: PropTypes.object.isRequired,
+  useReducer: PropTypes.bool,
+  initialLang: PropTypes.string
 }
 
 I18n.defaultProps = {

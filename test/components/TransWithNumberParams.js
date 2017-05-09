@@ -1,4 +1,5 @@
 import React from "react"
+import {PropTypes} from 'prop-types'
 
 class TransWithNumberParams extends React.Component {
   render() {
@@ -9,7 +10,7 @@ class TransWithNumberParams extends React.Component {
 }
 
 TransWithNumberParams.contextTypes = {
-  t: React.PropTypes.func.isRequired
+  t: PropTypes.func.isRequired
 }
 
 export default TransWithNumberParams

@@ -1,4 +1,5 @@
 import React from "react"
+import {PropTypes} from 'prop-types'
 
 class TransWithParams extends React.Component {
   render() {
@@ -9,7 +10,7 @@ class TransWithParams extends React.Component {
 }
 
 TransWithParams.contextTypes = {
-  t: React.PropTypes.func.isRequired
+  t: PropTypes.func.isRequired
 }
 
 export default TransWithParams

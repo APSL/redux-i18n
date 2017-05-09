@@ -43,6 +43,7 @@
     "gettext-parser": "^1.1.2",
     "glob": "^7.0.5",
     "optimist": "^0.6.1",
+    "prop-types": "^15.5.8",
     "react-deep-force-update": "^2.0.1"
   },
   "devDependencies": {
@@ -62,7 +63,6 @@
     "mocha": "^2.5.3",
     "moment": "~2.10.6",
     "react": "^15.0.2",
-    "react-addons-test-utils": "^15.1.0",
     "react-dom": "^15.0.2",
     "react-redux": "^4.4.5",
     "redux": "^3.5.2",
