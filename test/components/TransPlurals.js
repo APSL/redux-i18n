@@ -1,4 +1,5 @@
 import React from 'react'
+import {PropTypes} from 'prop-types'
 
 export function TransPluralize1({}, context) {
   return (
@@ -13,10 +14,9 @@ export function TransPluralize2({}, context) {
 }
 
 TransPluralize1.contextTypes = {
-  t: React.PropTypes.func.isRequired
+  t: PropTypes.func.isRequired
 }
 
 TransPluralize2.contextTypes = {
-  t: React.PropTypes.func.isRequired
+  t: PropTypes.func.isRequired
 }
-

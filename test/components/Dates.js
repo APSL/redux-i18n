@@ -1,4 +1,5 @@
 import React from "react"
+import {PropTypes} from 'prop-types'
 import moment from "moment"
 
 class Dates extends React.Component {
@@ -13,7 +14,7 @@ class Dates extends React.Component {
 }
 
 Dates.contextTypes = {
-  t: React.PropTypes.func.isRequired
+  t: PropTypes.func.isRequired
 }
 
 export default Dates

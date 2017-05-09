@@ -16,6 +16,8 @@ var _server = require('react-dom/server');
 
 var _server2 = _interopRequireDefault(_server);
 
+var _propTypes = require('prop-types');
+
 var _reactDeepForceUpdate = require('react-deep-force-update');
 
 var _reactDeepForceUpdate2 = _interopRequireDefault(_reactDeepForceUpdate);
@@ -141,13 +143,13 @@ var I18n = function (_React$Component) {
 }(_react2.default.Component);
 
 I18n.childContextTypes = {
-  t: _react2.default.PropTypes.func.isRequired
+  t: _propTypes.PropTypes.func.isRequired
 };
 
 I18n.propTypes = {
-  translations: _react2.default.PropTypes.object.isRequired,
-  useReducer: _react2.default.PropTypes.bool,
-  initialLang: _react2.default.PropTypes.string
+  translations: _propTypes.PropTypes.object.isRequired,
+  useReducer: _propTypes.PropTypes.bool,
+  initialLang: _propTypes.PropTypes.string
 };
 
 I18n.defaultProps = {

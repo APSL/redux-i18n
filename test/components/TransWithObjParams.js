@@ -1,4 +1,5 @@
 import React from 'react'
+import {PropTypes} from 'prop-types'
 
 const TransWithObjParams = ({}, context) => {
   const user = {name: 'Cesc'}
@@ -7,7 +8,7 @@ const TransWithObjParams = ({}, context) => {
 }
 
 TransWithObjParams.contextTypes = {
-  t: React.PropTypes.func.isRequired
+  t: PropTypes.func.isRequired
 }
 
 export default TransWithObjParams
