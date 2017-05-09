@@ -86,12 +86,15 @@ var I18n = function (_React$Component) {
       }
 
       // Fall back lang
-      if (langMessages === undefined && this.props.lang.indexOf('-') > -1) {
-        langMessages = translations[this.props.lang.split('-')[0]];
-      }
-
+      console.log(langMessages);
       if (langMessages === undefined) {
-        return this.params(textKey, params);
+        if (this.props.lang.indexOf('-') > -1) {
+          langMessages = translations[this.props.lang.split('-')[0]];
+        } else if (this.props.fallbackLang) {
+          langMessages = translations[this.props.fallbackLang];
+        } else {
+          return this.params(textKey, params);
+        }
       }
 
       var message = langMessages[textKey];
@@ -149,12 +152,14 @@ I18n.childContextTypes = {
 I18n.propTypes = {
   translations: _propTypes.PropTypes.object.isRequired,
   useReducer: _propTypes.PropTypes.bool,
-  initialLang: _propTypes.PropTypes.string
+  initialLang: _propTypes.PropTypes.string,
+  fallbackLang: _propTypes.PropTypes.string
 };
 
 I18n.defaultProps = {
   useReducer: false,
-  initialLang: 'en'
+  initialLang: 'en',
+  fallbackLang: null
 };
 
 exports.default = I18n;

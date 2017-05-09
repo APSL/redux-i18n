@@ -48,12 +48,14 @@ class I18n extends React.Component {
     }
 
     // Fall back lang
-    if (langMessages === undefined && this.props.lang.indexOf('-') > -1) {
-      langMessages = translations[this.props.lang.split('-')[0]]
-    }
-
     if (langMessages === undefined) {
-      return this.params(textKey, params)
+      if (this.props.lang.indexOf('-') > -1) {
+        langMessages = translations[this.props.lang.split('-')[0]]
+      } else if (this.props.fallbackLang) {
+        langMessages = translations[this.props.fallbackLang]
+      } else {
+        return this.params(textKey, params)
+      }
     }
 
     let message = langMessages[textKey]
@@ -103,12 +105,14 @@ I18n.childContextTypes = {
 I18n.propTypes = {
   translations: PropTypes.object.isRequired,
   useReducer: PropTypes.bool,
-  initialLang: PropTypes.string
+  initialLang: PropTypes.string,
+  fallbackLang: PropTypes.string
 }
 
 I18n.defaultProps = {
   useReducer: false,
-  initialLang: 'en'
+  initialLang: 'en',
+  fallbackLang: null
 }
 
 export default I18n
