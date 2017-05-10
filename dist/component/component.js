@@ -86,19 +86,25 @@ var I18n = function (_React$Component) {
       }
 
       // Fall back lang
-      console.log(langMessages);
+      if (langMessages === undefined && this.props.lang.indexOf('-') > -1) {
+        langMessages = translations[this.props.lang.split('-')[0]];
+      }
+
+      // If don't have message lang dictionary...
       if (langMessages === undefined) {
-        if (this.props.lang.indexOf('-') > -1) {
-          langMessages = translations[this.props.lang.split('-')[0]];
-        } else if (this.props.fallbackLang) {
-          langMessages = translations[this.props.fallbackLang];
-        } else {
-          return this.params(textKey, params);
-        }
+        return this.params(textKey, params);
       }
 
       var message = langMessages[textKey];
       if (message === undefined || message === '') {
+        // If don't have literal translation and have fallback lang, try
+        // to get from there.
+        if (this.props.fallbackLang && translations[this.props.fallbackLang]) {
+          var literal = translations[this.props.fallbackLang][textKey];
+          if (literal !== undefined && literal !== '') {
+            return this.params(literal, params);
+          }
+        }
         return this.params(textKey, params);
       }
 

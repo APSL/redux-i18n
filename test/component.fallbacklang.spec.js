@@ -9,6 +9,7 @@ import {Provider} from 'react-redux'
 
 import I18n from '../dist/component'
 import {i18nState} from '../dist/reducer'
+import {setLanguage} from '../dist/actions'
 
 import TransWithoutParams from './components/TransWithoutParams'
 
@@ -43,6 +44,8 @@ describe('fallback language', function() {
   it('checking language', function() {
     expect(this.store.getState().i18nState.lang).toEqual('en')
     expect(this.component.textContent).toEqual('Hallo')
+    this.store.dispatch(setLanguage('es'))
+    expect(this.component.textContent).toEqual('Hola')
   })
 
 })
