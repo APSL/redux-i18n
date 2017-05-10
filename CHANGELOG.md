@@ -2,6 +2,7 @@
 
 ## 1.3.3 (Not created yet)
 - Fix deprecations with React 15.5. Thanks to *renchap* (https://github.com/APSL/redux-i18n/pull/31).
+- "fallbackLang" prop added. Read documentation (https://github.com/APSL/redux-i18n#usage)
 
 ## 1.3.2
 - New parameter for "extract" action added (fexts). Take a look documentation  (https://github.com/APSL/redux-i18n#extract-texts-and-build-templatepot). Thanks to *renchap* for this idea (https://github.com/APSL/redux-i18n/issues/26).
