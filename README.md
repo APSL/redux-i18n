@@ -73,6 +73,25 @@ Also you can set initial language with *initialLang* attribute:
 </I18n>
 ```
 
+If you have partial translations, this means that you don't have your translations at 100% and you want to show untranslated literals in other language, you can use fallbackLang.
+
+```javascript
+<I18n translations={translations} initialLang="de" fallbackLang="en">
+    <div>
+        <h1>My Project</h1>
+        {this.props.children}
+    </div>
+</I18n>
+```
+
+In this case, if you want to show this translations:
+
+```html
+<div>{this.context.t('_hello_')}</div>
+```
+
+And this isn't in "de" language, it will show in "en".
+
 ## Redux Reducer
 
 You'll need to add the **i18nState** reducer in your *combineReducers*.
