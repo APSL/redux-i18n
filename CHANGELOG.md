@@ -1,6 +1,8 @@
 # Changelog
 
-## 1.4.0 (Not created yet)
+## 1.4.1 (Not created yet)
+
+## 1.4.0
 - Fix deprecations with React 15.5. Thanks to *renchap* (https://github.com/APSL/redux-i18n/pull/31).
 - "fallbackLang" prop added. Read documentation (https://github.com/APSL/redux-i18n#usage)
 - Build code minimized for reduce dist folder size.
