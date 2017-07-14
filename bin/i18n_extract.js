@@ -43,7 +43,7 @@ glob(srcPath, function(err, files) {
   files.map(function(file) {
     readline.createInterface({
       input: fs.createReadStream(file),
-      outpu: process.stdout,
+      output: process.stdout,
       terminal: false
     })
 

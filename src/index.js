@@ -6,4 +6,4 @@
 export default from './component'
 export {i18nState} from './reducer'
 export {setLanguage, setTranslations} from './actions'
-
+export localize from './hoc'
