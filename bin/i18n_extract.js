@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 var glob = require('glob'),
     fs = require('fs'),
+    colors = require('colors'),
     readline = require('readline'),
     optimist = require('optimist');
 
