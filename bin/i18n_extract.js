@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 var glob = require('glob'),
     fs = require('fs'),
+    colors = require('colors'),
     readline = require('readline'),
     optimist = require('optimist');
 
@@ -42,7 +43,7 @@ glob(srcPath, function(err, files) {
   files.map(function(file) {
     readline.createInterface({
       input: fs.createReadStream(file),
-      output: process.stdout,
+      outpu: process.stdout,
       terminal: false
     })
 
