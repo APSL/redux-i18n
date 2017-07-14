@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 var glob = require('glob'),
     fs = require('fs'),
-    color = require('colors'),
     readline = require('readline'),
     optimist = require('optimist');
 
@@ -12,13 +11,18 @@ if (exts.split(',').length > 1) {
   exts = `{${exts}}`
 }
 
-var srcPath = `${args.source || 'src'}/**/*.${exts}`;
+var src = args.source || 'src'
+
+if (src.split(',').length > 1) {
+  src = `@(${src.split(',').join('|')})`
+}
+
+var srcPath = `${src}/**/*.${exts}`;
 var extractUtils = require('./extract_utils')
 var pattern = extractUtils.pattern(args.pattern);
 var getAllMatches = extractUtils.getAllMatches;
 var potFileContent = extractUtils.potFileContent;
 var groupByText = extractUtils.groupByText;
-var texts = {};
 
 /*****************************************************************************/
 /* Check if locale folder exists
@@ -38,7 +42,7 @@ glob(srcPath, function(err, files) {
   files.map(function(file) {
     readline.createInterface({
       input: fs.createReadStream(file),
-      outpu: process.stdout,
+      output: process.stdout,
       terminal: false
     })
 

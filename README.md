@@ -367,6 +367,36 @@ Depending on your response's structure, it could look like this:
 api.get('...').then(r => this.props.dispatch(setTranslations(r.translations, 'en')))
 ```
 
+## HOC
+
+If you want to isolate the use of context from your components, you can import the Localize Hoc to provide the translate function as a prop to your component. For example:
+
+```javascript
+  import Localize from 'redux-i18n'
+
+  class SomeComponent extends Component {
+    render() {
+      return this.props.t('hello world')
+    }
+  }
+
+  export default Localize()(SomeComponent)
+```
+
+You can also change the name of the provided prop:
+
+```javascript
+  import Localize from 'redux-i18n'
+
+  class SomeComponent extends Component {
+    render() {
+      return this.props.translate('hello world')
+    }
+  }
+
+  export default Localize('translate')(SomeComponent)
+```
+
 ---
 
 **Please**, if you like my package, don't forget to rate it. Click on the "star"!
