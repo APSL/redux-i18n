@@ -1,6 +1,10 @@
 # Changelog
 
-## 1.4.1 (Not created yet)
+## 1.5.1 (Not created yet)
+
+## 1.5.0
+- Localize Hoc method for translate your isolate components. Thanks to *stayman* (https://github.com/APSL/redux-i18n/pull/34).
+- Extract from múltiple folders. Thanks to *stayman* (https://github.com/APSL/redux-i18n/pull/36).
 
 ## 1.4.0
 - Fix deprecations with React 15.5. Thanks to *renchap* (https://github.com/APSL/redux-i18n/pull/31).
