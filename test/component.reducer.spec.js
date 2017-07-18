@@ -63,4 +63,58 @@ describe('translations in reducer', function() {
     this.store.dispatch(setTranslations({'Hello': 'Hallo'}, 'de'))
     expect(this.component.textContent).toEqual('Hallo')
   })
+
+  describe('options', function() {
+    it('add only one new language in translations', function() {
+      const trans = {
+        'es': {
+          'Hello': 'Hola'
+        }
+      }
+      this.store.dispatch(setTranslations(trans))
+      this.store.dispatch(setLanguage('de'))
+      this.store.dispatch(setTranslations({'Hello': 'Hallo'}, {language: 'de'}))
+      expect(this.component.textContent).toEqual('Hallo')
+    });
+    
+    it('preserve existing translations', function() {
+      const trans = {
+        'es': {
+          'Hello': 'Hola'
+        }
+      }
+
+      const newTranslations = {
+        'de': {
+          'Hello': 'Hallo'
+        }
+      }
+      this.store.dispatch(setTranslations(trans))
+      this.store.dispatch(setTranslations(newTranslations, {preserveExisting: true}))
+      this.store.dispatch(setLanguage('es'))
+      expect(this.component.textContent).toEqual('Hola')
+      this.store.dispatch(setLanguage('de'))
+      expect(this.component.textContent).toEqual('Hallo')
+    });
+
+    it('preserve translations in only one language', function() {
+      const trans = {
+        'es': {
+          'Hello': 'Hola'
+        }
+      }
+
+      const newTranslations = {
+        'Goodbye': 'Adiós'
+      }
+
+      this.store.dispatch(setTranslations(trans))
+      this.store.dispatch(setTranslations(newTranslations, {language: 'es', preserveExisting: true}))
+      expect(this.store.getState().i18nState.translations['es']).toEqual({
+        'Hello': 'Hola',
+        'Goodbye': 'Adiós'
+      })
+    })
+  })
+
 })
