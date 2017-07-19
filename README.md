@@ -367,6 +367,18 @@ Depending on your response's structure, it could look like this:
 api.get('...').then(r => this.props.dispatch(setTranslations(r.translations, 'en')))
 ```
 
+Since version 1.5.1 is possible pass a dictionary as a second param with some options. This allows us set more functionalities to method. 
+
+- preserveExisting (bool): If is true, the translations received does merge with existing translations.
+- language (string): Language code
+
+Some examples:
+
+```javascript
+setTranslations(newTranslations, {preserveExisting: true})
+setTranslations({'Hello': 'Hallo'}, {language: 'de'})
+```
+
 ## HOC
 
 If you want to isolate the use of context from your components, you can import the Localize Hoc to provide the translate function as a prop to your component. For example:

@@ -1,6 +1,8 @@
 # Changelog
 
 ## 1.5.1 (Not created yet)
+- *setTranslations* now can merge translations. Thanks to *tagoro9* (https://github.com/APSL/redux-i18n/pull/38)
+- Extract regex improved. Thanks to *stayman* (https://github.com/APSL/redux-i18n/pull/39)
 
 ## 1.5.0
 - Localize Hoc method for translate your isolate components. Thanks to *stayman* (https://github.com/APSL/redux-i18n/pull/34).
