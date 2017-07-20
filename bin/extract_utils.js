@@ -45,10 +45,13 @@ exports.groupByText = function(filesMatches) {
       const trans = matches[i]
 
       if (group[trans.text] === undefined) {
-        group[trans.text] = { files: [file], trans: trans }
+        group[trans.text] = { files: [file], trans: trans, comments: [trans.comment] }
       } else {
         if (group[trans.text].files.indexOf(file) === -1) {
           group[trans.text].files.push(file)
+        }
+        if (group[trans.text].comments.indexOf(trans.comment) === -1) {
+          group[trans.text].comments.push(trans.comment)
         }
       }
     }
@@ -65,10 +68,11 @@ exports.potFileContent = function(texts) {
 
     const files = texts[obj].files
     const trans = texts[obj].trans
+    const comments = texts[obj].comments
 
-    if (trans.comment) {
-      content += `#. ${trans.comment}\n`
-    }
+    comments.filter(comment => comment).map((comment) => {
+      content += `#. ${comment}\n`
+    })
 
     files.map((file) => {
       content += `#: ${file}\n`

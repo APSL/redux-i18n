@@ -11,24 +11,40 @@ function updateTranslations(translations) {
   return {type: 'REDUX_I18N_SET_TRANSLATIONS', translations}
 }
 
-export function setTranslations(translations, language) {
+export function setTranslations(translations, languageOrOptions) {
   return function(dispatch, getState) {
-    if (language === undefined) {
-      dispatch(updateTranslations(translations))
+    const options = typeof languageOrOptions === 'string'
+      ? {language: languageOrOptions}
+      : languageOrOptions || {}
+    const {language, preserveExisting} = options
+    const state = getState()
+    let trans = null
+    // Compatibility with immutable
+    if (state.i18nState === undefined) {
+      trans = state.getIn(['i18nState', 'translations'])
     } else {
-      const state = getState()
-      let trans = null
-
-      // Compatibility with immutable
-      if (state.i18nState === undefined) {
-        trans = state.getIn(['i18nState', 'translations'])
-      } else {
-        trans = {...state.i18nState.translations}
-      }
-      trans[language] = translations
-      dispatch(updateTranslations(trans))
-      dispatch(setForceRefresh(true))
+      trans = {...state.i18nState.translations}
     }
+    const newTranslations = language === undefined
+      ? translations
+      : {...trans, [language]: translations}
+    dispatch(
+      updateTranslations(
+        preserveExisting
+          ? Object.keys(newTranslations).reduce(
+              (allTranslations, lang) => ({
+                ...allTranslations,
+                [lang]: {
+                  ...allTranslations[lang],
+                  ...newTranslations[lang]
+                }
+              }),
+              trans
+            )
+          : newTranslations
+      )
+    )
+    dispatch(setForceRefresh(true))
   }
 }
 

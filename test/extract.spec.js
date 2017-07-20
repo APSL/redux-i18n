@@ -44,6 +44,8 @@ const html = `
     {}
     , "Some comment"
   )}</span>
+
+  <div>{this.context.t('Hi {name} 1!', { name: 'Cesc' }, 'This is a comment for the translator duplicate')}</div>
 </div>
 `
 
@@ -56,7 +58,7 @@ describe('extract texts', () => {
 
     const matches = getAllMatches(pattern(), html)
 
-    expect(matches.length).toEqual(16)
+    expect(matches.length).toEqual(17)
     expect(matches[0].text).toEqual('Translate this text')
     expect(matches[0].plural).toEqual(null)
     expect(matches[0].comment).toEqual(null)
@@ -74,7 +76,7 @@ describe('extract texts', () => {
     expect(matches[3].comment).toEqual(null)
 
     expect(matches[4].text).toEqual('Hi {name} 1!')
-    expect(matches[3].plural).toEqual(null)
+    expect(matches[4].plural).toEqual(null)
     expect(matches[4].comment).toEqual('This is a comment for the translator 1')
 
     expect(matches[5].text).toEqual('Hi {name} 2!')
@@ -128,7 +130,7 @@ describe('extract texts', () => {
 
     // Grouping all matches by text-id
     const matches = getAllMatches(pattern(), html)
-    expect(matches.length).toEqual(16)
+    expect(matches.length).toEqual(17)
 
     const filesMatches = {
       'src/file1.js': matches,
@@ -164,6 +166,7 @@ msgid "{n}. Values from {f} to {t}"
 msgstr ""
 
 #. This is a comment for the translator 1
+#. This is a comment for the translator duplicate
 #: src/file1.js
 #: src/file2.js
 msgid "Hi {name} 1!"
