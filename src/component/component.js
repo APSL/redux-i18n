@@ -24,13 +24,22 @@ class I18n extends React.Component {
 
     const children = text.split(/({[^}]+})/g)
       .map((child) => {
-        const match = /{(.+)}/g.exec(child)[1];
-        return params[match] || child;
+        const match = /{(.+)}/g.exec(child);
+        if (match) {
+          const param = params[match[1]];
+          return param ? param : String(param)
+        }
+
+        return child;
       });
 
-    // When React 16 is released, change the span to an identity function for array children,
-    // removing the extra dom node
-    return React.createElement('span', null, ...children);
+    // if any children are objects (i.e. react components), wrap in a span, otherwise return as string
+    // ignore anything that is falsy, bypassing null, etc
+    return children.some(child => child && typeof child === 'object')
+      // When React 16 is released, change the span to an identity function for array children,
+      // removing the extra dom node
+      ? React.createElement('span', null, ...children)
+      : children.join('');
   }
 
   // Main method for translating texts
