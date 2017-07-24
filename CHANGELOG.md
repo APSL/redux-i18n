@@ -1,6 +1,11 @@
 # Changelog
 
-## 1.5.1 (Not created yet)
+## 1.5.3 (Not created yet)
+
+## 1.5.2 
+- Multiple comments fix. Thanks to *stayman* (https://github.com/APSL/redux-i18n/pull/40)
+
+## 1.5.1 
 - *setTranslations* now can merge translations. Thanks to *tagoro9* (https://github.com/APSL/redux-i18n/pull/38)
 - Extract regex improved. Thanks to *stayman* (https://github.com/APSL/redux-i18n/pull/39)
 
