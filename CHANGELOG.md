@@ -1,6 +1,9 @@
 # Changelog
 
-## 1.5.3 (Not created yet)
+## 1.5.4 (Not created yet)
+
+## 1.5.3
+- Allow react component interpolation. Thanks to *staymain* (https://github.com/APSL/redux-i18n/pull/41)
 
 ## 1.5.2 
 - Multiple comments fix. Thanks to *stayman* (https://github.com/APSL/redux-i18n/pull/40)
