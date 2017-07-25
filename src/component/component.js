@@ -4,7 +4,6 @@
  */
 
 import React from 'react'
-import ReactDOMServer from 'react-dom/server'
 import {PropTypes} from 'prop-types'
 import deepForceUpdate from 'react-deep-force-update'
 import {setForceRefresh, setLanguage} from '../actions'
@@ -18,23 +17,29 @@ class I18n extends React.Component {
 
   // It check if text have params
   params(text, params) {
-    if (params !== undefined) {
-      for (let k in params) {
-        let reg = new RegExp('\{' + k + '\}', 'g')
-        let param = params[k];
+    // if params don't exist, just return the string
+    if (!params) {
+      return text;
+    }
 
-        // Escape possible '$' in params to prevent unexpected behavior with .replace()
-        // especially important for IE11, which misinterprets '$0' as a regex command
-        if (typeof param === 'string') {
-          param = param.replace(/\$/g, '$$$$');
-        } else if (typeof param === 'object' && param !== null) {
-          param = ReactDOMServer.renderToStaticMarkup(param)
+    const children = text.split(/({[^}]+})/g)
+      .map((child) => {
+        const match = /{(.+)}/g.exec(child);
+        if (match) {
+          const param = params[match[1]];
+          return param ? param : String(param)
         }
 
-        text = text.replace(reg, param)
-      }
-    }
-    return text
+        return child;
+      });
+
+    // if any children are objects (i.e. react components), wrap in a span, otherwise return as string
+    // ignore anything that is falsy, bypassing null, etc
+    return children.some(child => child && typeof child === 'object')
+      // When React 16 is released, change the span to an identity function for array children,
+      // removing the extra dom node
+      ? React.createElement('span', null, ...children)
+      : children.join('');
   }
 
   // Main method for translating texts

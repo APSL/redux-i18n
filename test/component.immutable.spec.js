@@ -169,7 +169,7 @@ describe('immutable component test', function() {
   })
 
   it('object as param', function() {
-    expect(this.objAsParam.textContent).toEqual('Hello <span>Cesc</span>')
+    expect(this.objAsParam.textContent).toEqual('Hello Cesc')
   })
 
 })
