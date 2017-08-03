@@ -58,11 +58,11 @@ class I18n extends React.Component {
     }
 
     // If don't have message lang dictionary...
-    if (langMessages === undefined) {
+    if (langMessages === undefined && !this.props.fallbackLang) {
       return this.params(textKey, params)
     }
 
-    let message = langMessages[textKey]
+    let message = langMessages ? langMessages[textKey] : undefined;
     if (message === undefined || message === '') {
       // If don't have literal translation and have fallback lang, try
       // to get from there.
