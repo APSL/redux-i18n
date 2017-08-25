@@ -384,7 +384,7 @@ setTranslations({'Hello': 'Hallo'}, {language: 'de'})
 If you want to isolate the use of context from your components, you can import the Localize Hoc to provide the translate function as a prop to your component. For example:
 
 ```javascript
-  import Localize from 'redux-i18n'
+  import { localize } from 'redux-i18n'
 
   class SomeComponent extends Component {
     render() {
@@ -392,13 +392,13 @@ If you want to isolate the use of context from your components, you can import t
     }
   }
 
-  export default Localize()(SomeComponent)
+  export default localize()(SomeComponent)
 ```
 
 You can also change the name of the provided prop:
 
 ```javascript
-  import Localize from 'redux-i18n'
+  import { localize } from 'redux-i18n'
 
   class SomeComponent extends Component {
     render() {
@@ -406,7 +406,7 @@ You can also change the name of the provided prop:
     }
   }
 
-  export default Localize('translate')(SomeComponent)
+  export default localize('translate')(SomeComponent)
 ```
 
 ---
