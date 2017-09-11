@@ -4,7 +4,7 @@ import {describe, it} from 'mocha'
 import expect from 'expect'
 
 describe('importing po files', () => {
-  it('from po fiel to dict', () => {
+  it('from po file to dict', () => {
     let translations = {}
     getTrans('./test/en.po', translations)
 
