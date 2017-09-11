@@ -1,6 +1,13 @@
 # Changelog
 
-## 1.5.3 (Not created yet)
+## 1.5.5 (Not created yet)
+- Documentation error for HOC. Thanks to *fhessenberger* (https://github.com/APSL/redux-i18n/pull/48)
+
+## 1.5.4 
+- Fix: use fallback lang translation if current lang is unknown. Thanks to *tagoro9* (https://github.com/APSL/redux-i18n/pull/43)
+
+## 1.5.3
+- Allow react component interpolation. Thanks to *staymain* (https://github.com/APSL/redux-i18n/pull/41)
 
 ## 1.5.2 
 - Multiple comments fix. Thanks to *stayman* (https://github.com/APSL/redux-i18n/pull/40)

@@ -46,6 +46,8 @@ describe('fallback language', function() {
     expect(this.component.textContent).toEqual('Hallo')
     this.store.dispatch(setLanguage('es'))
     expect(this.component.textContent).toEqual('Hola')
+    this.store.dispatch(setLanguage('fr'))
+    expect(this.component.textContent).toEqual('Hallo')
   })
 
 })
