@@ -339,6 +339,14 @@ Or, save *translation.js* to a different location:
     }
 ```
 
+You can also change the encoding for your extraction from PO (default is iso-8859-1)
+```json
+    "scripts": {
+        "extract": "i18n_extract --source=mysource --locales=mylocales",
+        "import": "i18n_import --encoding=utf-8"
+    }
+```
+
 ## Async translations
 
 When applications grow, translations tend to bigger as well, adding a lot to the overall size of the js bundle.
@@ -367,7 +375,7 @@ Depending on your response's structure, it could look like this:
 api.get('...').then(r => this.props.dispatch(setTranslations(r.translations, 'en')))
 ```
 
-Since version 1.5.1 is possible pass a dictionary as a second param with some options. This allows us set more functionalities to method. 
+Since version 1.5.1 is possible pass a dictionary as a second param with some options. This allows us set more functionalities to method.
 
 - preserveExisting (bool): If is true, the translations received does merge with existing translations.
 - language (string): Language code

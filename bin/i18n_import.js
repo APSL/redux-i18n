@@ -10,11 +10,12 @@ const transToTxt = importUtils.transToTxt
 
 const args = optimist.argv;
 const localesPath = `${args.locales || 'locales'}/*.po`;
+const encoding = args.encoding;
 let translations = {};
 
 glob(localesPath, (err, files) => {
   files.map(function(file) {
-    getTrans(file, translations)
+    getTrans(file, translations, encoding)
   });
 
   const translationsFile = `${args.translations || 'src'}/translations.js`;
