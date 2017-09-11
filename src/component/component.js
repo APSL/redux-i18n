@@ -102,7 +102,9 @@ class I18n extends React.Component {
   }
 
   componentWillMount() {
-    this.props.dispatch(setLanguage(this.props.initialLang))
+    if (!this.props.initialized) {
+      this.props.dispatch(setLanguage(this.props.initialLang))
+    }
   }
 
   render() {
@@ -118,7 +120,8 @@ I18n.propTypes = {
   translations: PropTypes.object.isRequired,
   useReducer: PropTypes.bool,
   initialLang: PropTypes.string,
-  fallbackLang: PropTypes.string
+  fallbackLang: PropTypes.string,
+  initialized: PropTypes.bool
 }
 
 I18n.defaultProps = {
