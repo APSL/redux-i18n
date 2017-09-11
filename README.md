@@ -387,6 +387,10 @@ setTranslations(newTranslations, {preserveExisting: true})
 setTranslations({'Hello': 'Hallo'}, {language: 'de'})
 ```
 
+## InitialState
+
+Sometimes language is set initially by the redux store creation, or in an isomorphic way. In this case, you can set the `initialized` prop to stop the `I18n` provider from dispatching an action.
+
 ## HOC
 
 If you want to isolate the use of context from your components, you can import the Localize Hoc to provide the translate function as a prop to your component. For example:
