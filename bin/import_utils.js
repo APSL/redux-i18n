@@ -1,12 +1,11 @@
 const fs = require('fs')
 const gtp = require('gettext-parser')
 const po = gtp.po
-const path = require('path')
 const escape_quotes = require('escape-quotes');
 
-exports.getTrans = (file, translations) => {
+exports.getTrans = (file, translations, encoding) => {
   const content = fs.readFileSync(file)
-  const pocontent = po.parse(content)
+  const pocontent = po.parse(content, encoding)
   const trans = pocontent.translations['']
   const lang = pocontent.headers.language.replace('_', '-')
 
