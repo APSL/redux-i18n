@@ -2,6 +2,8 @@
 
 ## 1.5.5 (Not created yet)
 - Documentation error for HOC. Thanks to *fhessenberger* (https://github.com/APSL/redux-i18n/pull/48)
+- Encoding setter. Thanks to *stayman* (https://github.com/APSL/redux-i18n/pull/51)
+- Isomorphic. Thanks to *stayman* (https://github.com/APSL/redux-i18n/pull/52)
 
 ## 1.5.4 
 - Fix: use fallback lang translation if current lang is unknown. Thanks to *tagoro9* (https://github.com/APSL/redux-i18n/pull/43)
