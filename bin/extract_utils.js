@@ -77,12 +77,12 @@ exports.potFileContent = function(texts) {
     files.map((file) => {
       content += `#: ${file}\n`
     })
-
+    const string = trans.text.replace(/"/g, '\\"');
     // We must check if text is plural or not.
     if (trans.plural) {
-      content += `msgid "${trans.text}"\nmsgid_plural "${trans.plural}"\nmsgstr[0] ""\nmsgstr[1] ""\n\n`
+      content += `msgid "${string}"\nmsgid_plural "${trans.plural}"\nmsgstr[0] ""\nmsgstr[1] ""\n\n`
     } else {
-      content += `msgid "${trans.text}"\nmsgstr ""\n\n`
+      content += `msgid "${string}"\nmsgstr ""\n\n`
     }
 
   }
