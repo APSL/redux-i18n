@@ -1,6 +1,9 @@
 # Changelog
 
-## 1.5.6 (Not created yet)
+## 1.5.7 (Not created yet)
+
+## 1.5.6
+- Escape doublequotes. Thanks to *stayman* (https://github.com/APSL/redux-i18n/pull/54)
 
 ## 1.5.5
 - Documentation error for HOC. Thanks to *fhessenberger* (https://github.com/APSL/redux-i18n/pull/48)
