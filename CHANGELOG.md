@@ -1,6 +1,9 @@
 # Changelog
 
-## 1.5.8 (Not created yet)
+## 1.5.9 (Not created yet)
+
+## 1.5.8
+- Made parameter propName optional in function localize. Thanks to *vasilevich* (https://github.com/APSL/redux-i18n/pull/58)
 
 ## 1.5.7
 - Added typescript typings file. Thanks to *vasilevich* (https://github.com/APSL/redux-i18n/pull/57)
