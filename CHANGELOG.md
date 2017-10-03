@@ -1,6 +1,9 @@
 # Changelog
 
-## 1.5.7 (Not created yet)
+## 1.5.8 (Not created yet)
+
+## 1.5.7
+- Added typescript typings file. Thanks to *vasilevich* (https://github.com/APSL/redux-i18n/pull/57)
 
 ## 1.5.6
 - Escape doublequotes. Thanks to *stayman* (https://github.com/APSL/redux-i18n/pull/54)
