@@ -54,7 +54,7 @@ declare module 'redux-i18n' {
 
     export function setForceRefresh(force: boolean): ISetForceRefreshAction
 
-    export function localize(propName: string): IWrapWithLocalized
+    export function localize(propName?: string): IWrapWithLocalized
 
     export function getTranslateFunction(translations: ITranslations, lang: string, fallbackLang?: string): IGetTranslateFunctionResponse
 
