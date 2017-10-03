@@ -3,6 +3,7 @@
   "version": "1.5.6",
   "description": "A simple and powerful package for translate your react applications.",
   "main": "./dist/index.js",
+  "typings": "./index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/APSL/redux-i18n"
