@@ -4,7 +4,7 @@ declare module 'redux-i18n' {
     import {ThunkAction} from 'redux-thunk';
 
     export interface I18nProps {
-        translations: object;
+        translations: ITranslations;
         useReducer?: boolean;
         initialLang?: string;
         fallbackLang?: string;
@@ -13,7 +13,7 @@ declare module 'redux-i18n' {
 
     export interface IreduxI18nState {
         lang: string;
-        translations: object;
+        translations: ITranslations;
         forceRefresh: boolean;
     }
 

@@ -17,6 +17,7 @@
     "bin",
     "*.md",
     "dist",
+    "index.d.ts",
     "immutable.js"
   ],
   "keywords": [
