@@ -1,6 +1,9 @@
 # Changelog
 
-## 1.5.9 (Not created yet)
+## 1.5.10 (Not created yet)
+
+## 1.5.9
+- Added index.d.ts to package.json, and more tiny updates to index.d.ts. Thanks to *vasilevich* (https://github.com/APSL/redux-i18n/pull/59)
 
 ## 1.5.8
 - Made parameter propName optional in function localize. Thanks to *vasilevich* (https://github.com/APSL/redux-i18n/pull/58)
