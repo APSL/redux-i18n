@@ -18,6 +18,7 @@ import TransWithJunkParams from './components/TransWithJunkParams'
 import Dates from './components/Dates'
 import {TransPluralize1, TransPluralize2} from './components/TransPlurals'
 import TransWithObjParams from './components/TransWithObjParams'
+import {TransFormPluralize1, TransFormPluralize2} from './components/TransFormPlurals'
 
 const translations = {
   'es': {
@@ -32,6 +33,18 @@ const translations = {
   'de-DE': {
     'Hello': 'Hallo'
   }
+}
+
+const translations2 = {...translations}
+translations2.options = {
+  'plural_rule': 'n > 1',
+  'plural_number': '2'
+}
+
+const translations3 = {...translations}
+translations3.options = {
+  'plural_rule': 'plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2',
+  'plural_number': '3'
 }
 
 describe('component test', function() {
@@ -114,6 +127,70 @@ describe('component test', function() {
       </Provider>
     ))
 
+    this.pluralizeform1 = ReactDOM.findDOMNode(TestUtils.renderIntoDocument(
+      <Provider store={this.store}>
+        <I18n translations={translations2}>
+          <TransFormPluralize1 n={0}/>
+        </I18n>
+      </Provider>
+    ))
+
+    this.pluralizeform2 = ReactDOM.findDOMNode(TestUtils.renderIntoDocument(
+      <Provider store={this.store}>
+        <I18n translations={translations2}>
+          <TransFormPluralize1 n={1}/>
+        </I18n>
+      </Provider>
+    ))
+
+    this.pluralizeform3 = ReactDOM.findDOMNode(TestUtils.renderIntoDocument(
+      <Provider store={this.store}>
+        <I18n translations={translations2}>
+          <TransFormPluralize1 n={2}/>
+        </I18n>
+      </Provider>
+    ))
+
+    this.pluralizeform4 = ReactDOM.findDOMNode(TestUtils.renderIntoDocument(
+      <Provider store={this.store}>
+        <I18n translations={translations3}>
+          <TransFormPluralize2 n={0}/>
+        </I18n>
+      </Provider>
+    ))
+
+    this.pluralizeform5 = ReactDOM.findDOMNode(TestUtils.renderIntoDocument(
+      <Provider store={this.store}>
+        <I18n translations={translations3}>
+          <TransFormPluralize2 n={1}/>
+        </I18n>
+      </Provider>
+    ))
+
+    this.pluralizeform6 = ReactDOM.findDOMNode(TestUtils.renderIntoDocument(
+      <Provider store={this.store}>
+        <I18n translations={translations3}>
+          <TransFormPluralize2 n={2}/>
+        </I18n>
+      </Provider>
+    ))
+
+    this.pluralizeform7 = ReactDOM.findDOMNode(TestUtils.renderIntoDocument(
+      <Provider store={this.store}>
+        <I18n translations={translations3}>
+          <TransFormPluralize2 n={3}/>
+        </I18n>
+      </Provider>
+    ))
+
+    this.pluralizeform8 = ReactDOM.findDOMNode(TestUtils.renderIntoDocument(
+      <Provider store={this.store}>
+        <I18n translations={translations3}>
+          <TransFormPluralize2 n={4}/>
+        </I18n>
+      </Provider>
+    ))
+
   })
 
   it('initial state', function() {
@@ -166,6 +243,19 @@ describe('component test', function() {
     this.store.dispatch(setLanguage('en'))
     expect(this.pluralize1.textContent).toEqual('one night')
     expect(this.pluralize2.textContent).toEqual('5 nights')
+  })
+
+  it('pluralize forms', function() {
+    this.store.dispatch(setLanguage('es'))
+    expect(this.pluralizeform1.textContent).toEqual('0 banane')
+    expect(this.pluralizeform2.textContent).toEqual('1 banane')
+    expect(this.pluralizeform3.textContent).toEqual('2 bananes')
+
+    expect(this.pluralizeform4.textContent).toEqual('plural 3/0')
+    expect(this.pluralizeform5.textContent).toEqual('plural 1/1')
+    expect(this.pluralizeform6.textContent).toEqual('plural 2/2')
+    expect(this.pluralizeform7.textContent).toEqual('plural 2/3')
+    expect(this.pluralizeform8.textContent).toEqual('plural 2/4')
   })
 
   it('de-DE', function() {

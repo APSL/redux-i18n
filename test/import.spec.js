@@ -8,7 +8,7 @@ describe('importing po files', () => {
     let translations = {}
     getTrans('./test/en.po', translations)
 
-    expect(Object.keys(translations).length).toEqual(1)
+    expect(Object.keys(translations).length).toEqual(2)
     expect(Object.keys(translations)[0]).toEqual('en')
     expect(Object.keys(translations.en).length).toEqual(5)
 
@@ -17,6 +17,9 @@ describe('importing po files', () => {
     expect(translations.en['una noche']).toEqual('one night')
     expect(translations.en['{n} noches']).toEqual('{n} nights')
     expect(translations.en['Text \'with\' quotes']).toEqual('Text \'with\' quotes')
+
+    expect(translations.options.plural_rule).toEqual('n != 1')
+    expect(translations.options.plural_number).toEqual(2)
   })
 
   it('from dict to js file', () => {
@@ -31,6 +34,10 @@ describe('importing po files', () => {
     \'una noche\': \'one night\',\n\
     \'{n} noches\': \'{n} nights\',\n\
     \'Text \\\'with\\\' quotes\': \'Text \\\'with\\\' quotes\',\n\
+  },\n\
+  \'options\': {\n\
+    \'plural_rule\': \'n != 1\',\n\
+    \'plural_number\': \'2\',\n\
   },\n\
 }\n')
   })

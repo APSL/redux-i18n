@@ -212,6 +212,26 @@ After extracting the translations to a POT file and opening it with Poedit you w
 
 ![Poedit screenshot](imgs/poedit2.jpg?raw=true "Poedit screenshot")
 
+Also *translations's* object allows set a options node. There you can set a plurals form rule and plurals number. For example:
+
+```javascript
+export const translations = {
+  "es": {
+    "Translate this text": "Traduce este texto",
+    "Hello {n}!": "Hola {n}!",
+  },
+  "options": {
+    "plural_rule": "n > 1",
+    "plural_number": "2",
+  }
+}
+```
+
+When the translations are generated from po import file, this node is created automatically.
+
+*Note*: From version 1.5.10 allows use all existing pluralization rules:
+http://docs.translatehouse.org/projects/localization-guide/en/latest/l10n/pluralforms.html
+
 ## Change language
 
 Use the *setLanguage* action.
