@@ -1,7 +1,10 @@
 # Changelog
 
-## 1.5.10 (Not created yet)
+## 1.5.11 (Not created yet)
+
+## 1.5.10
 - Test script updated for has been run on cross platform (windows, mac and linux). Run "npm install" before for install "cross-env".
+- Plural forms, bug fixed.
 
 ## 1.5.9
 - Added index.d.ts to package.json, and more tiny updates to index.d.ts. Thanks to *vasilevich* (https://github.com/APSL/redux-i18n/pull/59)
