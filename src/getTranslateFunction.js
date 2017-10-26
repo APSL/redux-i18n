@@ -2,6 +2,8 @@
  * Project: redux-i18n
  * File: getTranslateFunction.js
  */
+/* eslint-disable no-new-func */
+
 
 import React from 'react'
 
@@ -41,15 +43,24 @@ const getLangMessages = (translations, lang) => {
   return langMessages;
 }
 
+const getOptionValue = (options, key, defaultValue) => {
+  if (options === undefined) {
+    return defaultValue || null
+  }
+  return options[key] === undefined ? (defaultValue || null)  : options[key]
+}
+
 export default (translations, lang, fallbackLang) => {
   const langMessages = getLangMessages(translations, lang);
   const fallbackLangMessages = fallbackLang ? getLangMessages(translations, fallbackLang) : undefined;
+  const plural_rule = getOptionValue(translations.options, 'plural_rule', 'n != 1')
+  const plural_number = parseInt(getOptionValue(translations.options, 'plural_number', '2'), 10)
 
   return (textKey, params, comment) => {
 
     // Checking if textkey contains a pluralize object.
     if (typeof textKey === 'object') {
-      textKey = textKey[params[textKey[2]] === 1 ? 0 : 1]
+      textKey = textKey[Number(new Function('n', 'return ' + plural_rule)(params[textKey[plural_number]]))]
     }
 
     if (!langMessages && !fallbackLangMessages) {

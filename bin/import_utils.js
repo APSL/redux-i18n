@@ -2,6 +2,7 @@ const fs = require('fs')
 const gtp = require('gettext-parser')
 const po = gtp.po
 const escape_quotes = require('escape-quotes');
+const plural_pattern = new RegExp('(?:([0-9]+)\\;\\s(?:plural\\=\\((.*)\\)\\;))')
 
 exports.getTrans = (file, translations, encoding) => {
   const content = fs.readFileSync(file)
@@ -20,6 +21,16 @@ exports.getTrans = (file, translations, encoding) => {
       if (value.msgid_plural && value.msgid_plural.length) {
         translations[lang][value.msgid_plural] = value.msgstr[1]
       }
+    }
+  }
+
+  // Options
+  translations['options'] = {}
+  if (pocontent.headers && pocontent.headers['plural-forms']) {
+    const result = (plural_pattern.exec(pocontent.headers['plural-forms']))
+    if (result) {
+      translations['options']['plural_rule'] = result[2]
+      translations['options']['plural_number'] = result[1]
     }
   }
 
