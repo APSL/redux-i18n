@@ -292,7 +292,7 @@ export const translations = {
 When the translations are generated from po import file, this node is created automatically.
 
 *Note*: Versions >=1.5.10 allow to use all existing pluralization rules:
-http://docs.translatehouse.org/projects/localization-guide/en/latest/l10n/pluralforms.html
+[http://docs.translatehouse.org/projects/localization-guide/en/latest/l10n/pluralforms.html](http://docs.translatehouse.org/projects/localization-guide/en/latest/l10n/pluralforms.html)
 
 ## Change language
 
