@@ -1,6 +1,6 @@
 {
-  "name": "demo2",
-  "version": "0.1.0",
+  "name": "demo_CRA",
+  "version": "0.2.0",
   "private": true,
   "dependencies": {
     "prop-types": "^15.6.0",
