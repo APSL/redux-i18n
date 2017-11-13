@@ -36,7 +36,7 @@ yarn add redux-i18n
 
 **redux-i18n** offers your app the *t()* function to translate literals.
 
-The *t()* function is available in the components of your app via React [context](https://reactjs.org/docs/context.html). To achieve this you need to wrap your app into the *<I18n>* component from **redux-i18n**
+The *t()* function is available in the components of your app via React [context](https://reactjs.org/docs/context.html). To achieve this you need to wrap your app into the *<I18n>* component from **redux-i18n**.
 
 The *t()* function takes up to three arguments *t(textKey [, params, comments])*, where *textKey* is either the string to be translated or --- for pluralization --- an object as defined below.
 
@@ -47,7 +47,7 @@ To manage the translations in your React app, **redux-i18n** supports two choice
 1. load all your translations into a one big JS object
 1. load your translations into a slice of your redux store
 
-For the latter **redux-i18n** provides an action function creator *setTranslations*. As *setTranslations* is an action function creator you need add *redux-thunk* to your middleware for it to work.
+For the latter **redux-i18n** provides an action function creator *setTranslations*. As *setTranslations* is an action function creator you need to add *redux-thunk* to your middleware for it to work.
 
 **redux-i18n** supports your store in plain JavaScript structures, but also if it managed by help of *immutable.js*.
 
