@@ -12,40 +12,68 @@
 npm i redux-i18n --save
 ```
 
+or 
+
+```
+yarn add redux-i18n
+```
+
 ## Features
 
 * Translate literals.
+* Pluralize literals.
 * Designed for react-redux.
 * Compatible with Immutable.js.
-* Export translations to POT files (make your translations with Poedit).
+* Export translations to POT files (make your translations with [Poedit](https://poedit.net/)).
 * Import translations from .PO files to *translations.js* object (for use in your project).
 * Add comments for translators.
-* Pluralize literals.
 
 ## Requirements
 
 * node >= 4.0.0
+
+## Overview
+
+**redux-i18n** offers your app the *t()* function to translate literals.
+
+The *t()* function is available in the components of your app via React [context](https://reactjs.org/docs/context.html). To achieve this you need to wrap your app into the *<I18n>* component from **redux-i18n**
+
+The *t()* function takes up to three arguments *t(textKey [, params, comments])*, where *textKey* is either the string to be translated or --- for pluralization --- an object as defined below.
+
+For setting the language in the redux store **redux-i18n** offers an action creator *setLanguage*.
+
+To manage the translations in your React app, **redux-i18n** supports two choices: 
+
+1. load all your translations into a one big JS object
+1. load your translations into a slice of your redux store
+
+For the latter **redux-i18n** provides an action function creator *setTranslations*. As *setTranslations* is an action function creator you need add *redux-thunk* to your middleware for it to work.
+
+**redux-i18n** supports your store in plain JavaScript structures, but also if it managed by help of *immutable.js*.
+
+Finally, **redux-i18n** offers scripts to generate a translations object from po files that can be managed in [Poedit](https://poedit.net/)).
+
 
 ## Usage
 
 The package provides a parent component to encapsulate your application as well as helpers functions to translate your project.
 
 ```javascript
+// import ... 
 import I18n from "redux-i18n"
 // with Immutable.js:
 import I18n from "redux-i18n/immutable"
 
 import {translations} from "./translations"
 
-class MainApp extends React.Component {
+class Root extends React.Component {
   render() {
     return (
-      <I18n translations={translations}>
-        <div>
-            <h1>My Project</h1>
-            {this.props.children}
-        </div>
-      </I18n>
+      <Provider store={store}>
+        <I18n translations={translations}>
+          <App />
+        </I18n>
+      </Provider>
     )
   }
 }
@@ -62,7 +90,7 @@ export const translations = {
 }
 ```
 
-Also you can set initial language with *initialLang* attribute:
+You can also set the initial language with the *initialLang* prop:
 
 ```javascript
 <I18n translations={translations} initialLang="es">
@@ -73,7 +101,7 @@ Also you can set initial language with *initialLang* attribute:
 </I18n>
 ```
 
-If you have partial translations, this means that you don't have your translations at 100% and you want to show untranslated literals in other language, you can use fallbackLang.
+If you have partial translations, this means that you don't have your translations at 100% and you want to show untranslated literals in an other language, you can use the *fallbackLang* prop.
 
 ```javascript
 <I18n translations={translations} initialLang="de" fallbackLang="en">
@@ -94,7 +122,7 @@ And this isn't in "de" language, it will show in "en".
 
 ## Redux Reducer
 
-You'll need to add the **i18nState** reducer in your *combineReducers*.
+The language state is managed in a slice of the store named *i18nState*. Therefore, you have to add the **i18nState** reducer in your *combineReducers*.
 
 ```javascript
 import {otherreducers} from "./Yourproject"
@@ -109,17 +137,42 @@ const appReducer = combineReducers({
 })
 ```
 
-This allows you to access the *lang* attribute in your component, which contains the current language:
+The current language is contained in the *lang* key of *i18nState*.
+
+The *i18nState* is initially defined as
+
+```javascript
+const defaultI18nState = {
+  lang: 'en',
+  translations: {},
+  forceRefresh: false
+}
+
+// immutablejs
+const defaultI18nState = new Map({
+  lang: 'en',
+  translations: {},
+  forceRefresh: false
+})
+```
+
+When you [map your state to props with connect](https://github.com/reactjs/react-redux/blob/master/docs/api.md#connectmapstatetoprops-mapdispatchtoprops-mergeprops-options) you can also access the *lang* attribute in your components:
 
 ```javascript
 export default connect(state => ({
   lang: state.i18nState.lang,
 }))(Home)
+
+// with Immutable.js:
+export default connect(state => ({
+  lang: state.getIn(['i18nState', 'lang']),
+}))(Home)
+
 ```
 
 ## Translate literals
 
-You can access *I18n's* functions using your component's context. For example:
+You can access the functions of *<I18n />* using your component's context. For example:
 
 ```javascript
 Home.contextTypes = {
@@ -127,7 +180,7 @@ Home.contextTypes = {
 }
 ```
 
-...you will then be able to use the *t* method in your component.
+...you will then be able to use the *t()* method in your component.
 
 ```javascript
 render() {
@@ -135,14 +188,23 @@ render() {
       <div>
         <strong>Your current language, is: {this.props.lang}</strong><br/>
         {this.context.t("Translate this text")}<br/>
-        {this.context.t("Hello {n}!", {n: "Cesc"})}<br/><br/>
+        {this.context.t("Hello {n}!", {n: "World"})}<br/><br/>
         <button onClick={this.changeLanguage.bind(this)}>Change Language</button>
       </div>
     )
 }
 ```
 
-Translate date formats.
+You can also use the *t()* function to change date formats
+
+```javascript
+export const translations = {
+  "de": {
+    "YYYY-MM-DD": "DD.MM.YYYY"
+  }
+}
+```
+
 
 ```javascript
 render() {
@@ -177,7 +239,7 @@ Here's how *Poedit* will show the comments:
 ### HTML Object as parameter
 
 ```javascript
-const user = {name: 'Cesc'}
+const user = {name: 'World'}
 const name = <span>{user.name}</span>
 return <div dangerouslySetInnerHTML={{ __html: context.t('Hello {name}', {name: name}) }}/>
 ```
@@ -212,7 +274,7 @@ After extracting the translations to a POT file and opening it with Poedit you w
 
 ![Poedit screenshot](imgs/poedit2.jpg?raw=true "Poedit screenshot")
 
-Also *translations's* object allows set a options node. There you can set a plurals form rule and plurals number. For example:
+Also the *translations* object allows to set an options node. There you can set a plurals form rule and a plurals number. For example:
 
 ```javascript
 export const translations = {
@@ -229,7 +291,7 @@ export const translations = {
 
 When the translations are generated from po import file, this node is created automatically.
 
-*Note*: From version 1.5.10 allows use all existing pluralization rules:
+*Note*: Versions >=1.5.10 allow to use all existing pluralization rules:
 http://docs.translatehouse.org/projects/localization-guide/en/latest/l10n/pluralforms.html
 
 ## Change language
