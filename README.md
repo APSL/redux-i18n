@@ -49,7 +49,7 @@ To manage the translations in your React app, **redux-i18n** supports two choice
 
 For the latter **redux-i18n** provides an action function creator *setTranslations*. As *setTranslations* is an action function creator you need to add *redux-thunk* to your middleware for it to work.
 
-**redux-i18n** supports your store in plain JavaScript structures, but also if it managed by help of *immutable.js*.
+**redux-i18n** supports your store in plain JavaScript structures, but also if it is managed by help of *immutable.js*.
 
 Finally, **redux-i18n** offers scripts to generate a translations object from po files that can be managed in [Poedit](https://poedit.net/)).
 
