@@ -1,6 +1,8 @@
 # Changelog
 
 ## 1.5.11 (Not created yet)
+- Documentation improved. Thanks to *karland* (https://github.com/APSL/redux-i18n/pull/62)
+- New demo app based in "create react app". Thanks to *karland* (https://github.com/APSL/redux-i18n/pull/63)
 
 ## 1.5.10
 - Test script updated for has been run on cross platform (windows, mac and linux). Run "npm install" before for install "cross-env".
