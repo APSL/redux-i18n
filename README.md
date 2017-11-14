@@ -39,7 +39,14 @@ yarn add redux-i18n
 The `t()` function is available in the components of your app via React [context](https://reactjs.org/docs/context.html). To achieve this you need to wrap your app into the `<I18n />` component from **redux-i18n** that provides for the context. Furthermore, for all components that want to use the `t()` function you need to define `contextTypes`, e.g.:
 
 ```javascript
+// import ...
 import PropTypes from 'prop-types'
+
+class MyComponent extends React.Component {
+  render() {
+    return <div>{this.context.t("Hello World!")}</div>
+  }
+}
 
 MyComponent.contextTypes = {
   t: PropTypes.func
