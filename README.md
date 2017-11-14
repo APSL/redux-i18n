@@ -132,8 +132,8 @@ import {i18nState} from "redux-i18n"
 import {i18nState} from "redux-i18n/immutable"
 
 const appReducer = combineReducers({
-    otherreducers,
-    i18nState
+  otherreducers,
+  i18nState
 })
 ```
 
@@ -184,14 +184,14 @@ Home.contextTypes = {
 
 ```javascript
 render() {
-    return (
-      <div>
-        <strong>Your current language, is: {this.props.lang}</strong><br/>
-        {this.context.t("Translate this text")}<br/>
-        {this.context.t("Hello {n}!", {n: "World"})}<br/><br/>
-        <button onClick={this.changeLanguage.bind(this)}>Change Language</button>
-      </div>
-    )
+  return (
+    <div>
+      <strong>Your current language, is: {this.props.lang}</strong><br/>
+      {this.context.t("Translate this text")}<br/>
+      {this.context.t("Hello {n}!", {n: "World"})}<br/><br/>
+      <button onClick={this.changeLanguage.bind(this)}>Change Language</button>
+    </div>
+  )
 }
 ```
 
@@ -208,12 +208,12 @@ export const translations = {
 
 ```javascript
 render() {
-    let today = moment()
+  let today = moment()
     return (
       <div>
         {today.format(this.context.t("YYYY-MM-DD"))}
       </div>
-    )
+  )
 }
 ```
 
@@ -221,14 +221,14 @@ Add comments for translators.
 
 ```javascript
 render() {
-    return (
-      <div>
-        {this.context.t("Translate this text", {},
-                        "This is a comment for translators.")}
-        {this.context.t("Hello {n}!", {n: "Cesc"},
-                        "This is another comment.")}
-      </div>
-    )
+  return (
+    <div>
+      {this.context.t("Translate this text", {},
+                      "This is a comment for translators.")}
+      {this.context.t("Hello {n}!", {n: "Cesc"},
+                      "This is another comment.")}
+    </div>
+  )
 }
 ```
 
@@ -302,7 +302,7 @@ Use the *setLanguage* action.
 import {setLanguage} from "redux-i18n"
 
 componentWillMount() {
-    this.props.dispatch(setLanguage("es"))
+  this.props.dispatch(setLanguage("es"))
 }
 ```
 
@@ -323,15 +323,15 @@ export const translations = {
 
 ## Extract/Import scripts
 
-**redux-i18n** includes a script to extract your translation strings to a .pot template which you can use in *Poedit*, and another to import strings from *po* files to a `translation.js`.
+**redux-i18n** includes a script to extract your translation strings to a *.pot* template which you can use in *Poedit*, and another to import strings from *po* files to a `translation.js`.
 
 Add the scripts in your *package.json* for this purpose:
 
 ```json
-    "scripts": {
-        "extract": "i18n_extract",
-        "import": "i18n_import"
-    }
+"scripts": {
+  "extract": "i18n_extract",
+  "import": "i18n_import"
+}
 ```
 
 You can then run the following commands in your terminal:
@@ -352,45 +352,45 @@ By default, this script will search for all literals inside your **src** folder 
 If you want to set other source folder, you can use the `--source` switch.
 
 ```json
-    "scripts": {
-        "extract": "i18n_extract --source=mysourcefolder",
-        "import": "i18n_import"
-    }
+"scripts": {
+  "extract": "i18n_extract --source=mysourcefolder",
+  "import": "i18n_import"
+}
 ```
 
 Or if you want to export your locales to a different folder...
 
 ```json
-    "scripts": {
-        "extract": "i18n_extract --source=mysourcefolder --locales=mylocalesfolder",
-        "import": "i18n_import"
-    }
+"scripts": {
+  "extract": "i18n_extract --source=mysourcefolder --locales=mylocalesfolder",
+  "import": "i18n_import"
+}
 ```
 
 By default this command find in all *.js* and *.jsx* file extensions, but you can customize it with *fexts* parameter. Check out this example:
 
 ```json
-    "scripts": {
-        "extract": "i18n_extract --fexts=js,jsx,cofee",
-        "import": "i18n_import"
-    }
+"scripts": {
+  "extract": "i18n_extract --fexts=js,jsx,cofee",
+  "import": "i18n_import"
+}
 ```
 
 The default regular expression will search all occurrences of `this.context.t` string, but you can also supply your own custom pattern, as in the following example:
 
 ```javascript
 export default function App({aProp, bProp}, {t: translate}) {
-    return <div>{translate('Hello world!')}</div>;
+  return <div>{translate('Hello world!')}</div>;
 }
 ```
 
 You will then need to set the `--pattern` flag in *package.json*:
 
 ```json
-    "scripts": {
-        "extract": "i18n_extract --pattern=translate",
-        "import": "i18n_import"
-    }
+"scripts": {
+  "extract": "i18n_extract --pattern=translate",
+  "import": "i18n_import"
+}
 ```
 
 ### Import .po files
@@ -406,27 +406,27 @@ This script read all *po* files inside your *locales* folder, extract all transl
 You can also set another *locales* folder:
 
 ```json
-    "scripts": {
-        "extract": "i18n_extract --source=mysource --locales=mylocales",
-        "import": "i18n_import --locales=mylocales"
-    }
+"scripts": {
+  "extract": "i18n_extract --source=mysource --locales=mylocales",
+  "import": "i18n_import --locales=mylocales"
+}
 ```
 
 Or, save *translation.js* to a different location:
 
 ```json
-    "scripts": {
-        "extract": "i18n_extract --source=mysource --locales=mylocales",
-        "import": "i18n_import --locales=mylocales --translations=myfolder"
-    }
+"scripts": {
+  "extract": "i18n_extract --source=mysource --locales=mylocales",
+  "import": "i18n_import --locales=mylocales --translations=myfolder"
+}
 ```
 
 You can also change the encoding for your extraction from PO (default is iso-8859-1)
 ```json
-    "scripts": {
-        "extract": "i18n_extract --source=mysource --locales=mylocales",
-        "import": "i18n_import --encoding=utf-8"
-    }
+"scripts": {
+  "extract": "i18n_extract --source=mysource --locales=mylocales",
+  "import": "i18n_import --encoding=utf-8"
+}
 ```
 
 ## Async translations
@@ -436,11 +436,11 @@ When applications grow, translations tend to bigger as well, adding a lot to the
 You can set an empty translations object to the `<i18n/>` component and set the `useReducer` prop to true to use the store as the source of strings. For example:
 
 ```javascript
-    <Provider store={this.store}>
-        <I18n translations={{}} useReducer={true}>
-            <MainApp/>
-        </I18n>
-    </Provider>
+<Provider store={this.store}>
+  <I18n translations={{}} useReducer={true}>
+    <MainApp/>
+  </I18n>
+</Provider>
 ```
 
 Then you can use the `setTranslations` action.
@@ -478,29 +478,29 @@ Sometimes language is set initially by the redux store creation, or in an isomor
 If you want to isolate the use of context from your components, you can import the Localize Hoc to provide the translate function as a prop to your component. For example:
 
 ```javascript
-  import { localize } from 'redux-i18n'
+import { localize } from 'redux-i18n'
 
-  class SomeComponent extends Component {
-    render() {
-      return this.props.t('hello world')
-    }
+class SomeComponent extends Component {
+  render() {
+    return this.props.t('hello world')
   }
+}
 
-  export default localize()(SomeComponent)
+export default localize()(SomeComponent)
 ```
 
 You can also change the name of the provided prop:
 
 ```javascript
-  import { localize } from 'redux-i18n'
+import { localize } from 'redux-i18n'
 
-  class SomeComponent extends Component {
-    render() {
-      return this.props.translate('hello world')
-    }
+class SomeComponent extends Component {
+  render() {
+    return this.props.translate('hello world')
   }
+}
 
-  export default localize('translate')(SomeComponent)
+export default localize('translate')(SomeComponent)
 ```
 
 ---
