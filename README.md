@@ -433,7 +433,7 @@ You can also change the encoding for your extraction from PO (default is iso-885
 
 When applications grow, translations tend to bigger as well, adding a lot to the overall size of the js bundle.
 
-You can set an empty translations object to the `<i18n/>` component and set the `useReducer` prop to true to use the store as the source of strings. For example:
+You can set an empty translations object to the `<I18n/>` component and set the `useReducer` prop to true to use the store as the source of strings. For example:
 
 ```javascript
 <Provider store={this.store}>
