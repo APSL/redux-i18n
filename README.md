@@ -36,7 +36,7 @@ yarn add redux-i18n
 
 **redux-i18n** offers your app the *t()* function to translate literals.
 
-The *t()* function is available in the components of your app via React [context](https://reactjs.org/docs/context.html). To achieve this you need to wrap your app into the *<I18n />>* component from **redux-i18n**.
+The *t()* function is available in the components of your app via React [context](https://reactjs.org/docs/context.html). To achieve this you need to wrap your app into the `<I18n />` component from **redux-i18n**.
 
 The *t()* function takes up to three arguments *t(textKey [, params, comments])*, where *textKey* is either the string to be translated or --- for pluralization --- an object as defined below.
 
