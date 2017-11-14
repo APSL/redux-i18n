@@ -36,18 +36,18 @@ yarn add redux-i18n
 
 **redux-i18n** offers your app the *t()* function to translate literals.
 
-The *t()* function is available in the components of your app via React [context](https://reactjs.org/docs/context.html). To achieve this you need to wrap your app into the `<I18n />` component from **redux-i18n**.
+The `t()` function is available in the components of your app via React [context](https://reactjs.org/docs/context.html). To achieve this you need to wrap your app into the `<I18n />` component from **redux-i18n**.
 
-The *t()* function takes up to three arguments *t(textKey [, params, comments])*, where *textKey* is either the string to be translated or --- for pluralization --- an object as defined below.
+The `t()` function takes up to three arguments `t(textKey [, params, comments])`, where `textKey` is either the string to be translated or --- for pluralization --- an object as defined below.
 
-For setting the language in the redux store **redux-i18n** offers an action creator *setLanguage*.
+For setting the language in the redux store **redux-i18n** offers an action creator `setLanguage`.
 
 To manage the translations in your React app, **redux-i18n** supports two choices: 
 
 1. load all your translations into a one big JS object
 1. load your translations into a slice of your redux store
 
-For the latter **redux-i18n** provides an action function creator *setTranslations*. As *setTranslations* is an action function creator you need to add *redux-thunk* to your middleware for it to work.
+For the latter **redux-i18n** provides an action function creator `setTranslations`. As `setTranslations` is an action function creator you need to add *redux-thunk* to your middleware for it to work.
 
 **redux-i18n** supports your store in plain JavaScript structures, but also if it is managed by help of *immutable.js*.
 
@@ -79,7 +79,7 @@ class Root extends React.Component {
 }
 ```
 
-Where *translations* is a dictionary similar to this:
+Where `translations` is a dictionary similar to this:
 
 ```javascript
 export const translations = {
@@ -101,7 +101,7 @@ You can also set the initial language with the *initialLang* prop:
 </I18n>
 ```
 
-If you have partial translations, this means that you don't have your translations at 100% and you want to show untranslated literals in an other language, you can use the *fallbackLang* prop.
+If you have partial translations, this means that you don't have your translations at 100% and you want to show untranslated literals in an other language, you can use the `fallbackLang` prop.
 
 ```javascript
 <I18n translations={translations} initialLang="de" fallbackLang="en">
@@ -122,7 +122,7 @@ And this isn't in "de" language, it will show in "en".
 
 ## Redux Reducer
 
-The language state is managed in a slice of the store named *i18nState*. Therefore, you have to add the **i18nState** reducer in your *combineReducers*.
+The language state is managed in a slice of the store named `i18nState`. Therefore, you have to add the **i18nState** reducer in your `combineReducers`.
 
 ```javascript
 import {otherreducers} from "./Yourproject"
@@ -137,9 +137,9 @@ const appReducer = combineReducers({
 })
 ```
 
-The current language is contained in the *lang* key of *i18nState*.
+The current language is contained in the `lang` key of `i18nState`.
 
-The *i18nState* is initially defined as
+The `i18nState` is initially defined as
 
 ```javascript
 const defaultI18nState = {
@@ -156,7 +156,7 @@ const defaultI18nState = new Map({
 })
 ```
 
-When you [map your state to props with connect](https://github.com/reactjs/react-redux/blob/master/docs/api.md#connectmapstatetoprops-mapdispatchtoprops-mergeprops-options) you can also access the *lang* attribute in your components:
+When you [map your state to props with connect](https://github.com/reactjs/react-redux/blob/master/docs/api.md#connectmapstatetoprops-mapdispatchtoprops-mergeprops-options) you can also access the `lang` attribute in your components:
 
 ```javascript
 export default connect(state => ({
@@ -172,7 +172,7 @@ export default connect(state => ({
 
 ## Translate literals
 
-You can access the functions of *<I18n />* using your component's context. For example:
+You can access the functions of `<I18n />` using your component's context. For example:
 
 ```javascript
 Home.contextTypes = {
@@ -180,7 +180,7 @@ Home.contextTypes = {
 }
 ```
 
-...you will then be able to use the *t()* method in your component.
+...you will then be able to use the `t()` method in your component.
 
 ```javascript
 render() {
@@ -195,7 +195,7 @@ render() {
 }
 ```
 
-You can also use the *t()* function to change date formats
+You can also use the `t()` function to change date formats
 
 ```javascript
 export const translations = {
@@ -274,7 +274,7 @@ After extracting the translations to a POT file and opening it with Poedit you w
 
 ![Poedit screenshot](imgs/poedit2.jpg?raw=true "Poedit screenshot")
 
-Also the *translations* object allows to set an options node. There you can set a plurals form rule and a plurals number. For example:
+Also the `translations` object allows to set an options node. There you can set a plurals form rule and a plurals number. For example:
 
 ```javascript
 export const translations = {
@@ -306,7 +306,7 @@ componentWillMount() {
 }
 ```
 
-If you work with combined languages like *es-ES*, *en-GB*, but your translations object doesn't include those properties...
+If you work with combined languages like `"es-ES"`, `"en-GB"`, but your translations object doesn't include those properties...
 
 ```javascript
 export const translations = {
@@ -319,11 +319,11 @@ export const translations = {
 }
 ```
 
-...*redux-i18n* will fallback on the closest property. In this case, *es* or *en*.
+...*redux-i18n* will fallback on the closest property. In this case, `"es"` or `"en"`.
 
 ## Extract/Import scripts
 
-*redux-i18n* includes a script to extract your translation strings to a .pot template which you can use in *Poedit*, and another to import strings from *po* files to a *translation.js*.
+**redux-i18n** includes a script to extract your translation strings to a .pot template which you can use in *Poedit*, and another to import strings from *po* files to a `translation.js`.
 
 Add the scripts in your *package.json* for this purpose:
 
@@ -349,7 +349,7 @@ npm run extract
 
 By default, this script will search for all literals inside your **src** folder with a regular expression and build a **locales/template.pot** file. This file can then be used in [Poedit](https://poedit.net/) to build *en.po*, *es.po*, etc. files.
 
-If you want to set other source folder, you can use the *source* parameter.
+If you want to set other source folder, you can use the `--source` switch.
 
 ```json
     "scripts": {
@@ -376,7 +376,7 @@ By default this command find in all *.js* and *.jsx* file extensions, but you ca
     }
 ```
 
-The default regular expression will search all occurrences of *this.context.t* string, but you can also supply your own custom pattern, as in the following example:
+The default regular expression will search all occurrences of `this.context.t` string, but you can also supply your own custom pattern, as in the following example:
 
 ```javascript
 export default function App({aProp, bProp}, {t: translate}) {
@@ -384,7 +384,7 @@ export default function App({aProp, bProp}, {t: translate}) {
 }
 ```
 
-You will then need to set the --pattern flag in *package.json*:
+You will then need to set the `--pattern` flag in *package.json*:
 
 ```json
     "scripts": {
@@ -433,7 +433,7 @@ You can also change the encoding for your extraction from PO (default is iso-885
 
 When applications grow, translations tend to bigger as well, adding a lot to the overall size of the js bundle.
 
-You can set an empty translations object to the `<i18n/>` component and set the *useReducer* prop to true to use the store as the source of strings. For example:
+You can set an empty translations object to the `<i18n/>` component and set the `useReducer` prop to true to use the store as the source of strings. For example:
 
 ```javascript
     <Provider store={this.store}>
@@ -443,7 +443,7 @@ You can set an empty translations object to the `<i18n/>` component and set the 
     </Provider>
 ```
 
-Then you can use the *setTranslations* action.
+Then you can use the `setTranslations` action.
 
 ```javascript
 import {setTranslations} from 'redux-i18n'
