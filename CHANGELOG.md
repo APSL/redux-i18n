@@ -1,7 +1,7 @@
 # Changelog
 
 ## 1.5.11 (Not created yet)
-- Documentation improved. Thanks to *karland* (https://github.com/APSL/redux-i18n/pull/62)
+- Documentation improved. Thanks to *karland* (https://github.com/APSL/redux-i18n/pull/62, https://github.com/APSL/redux-i18n/pull/65)
 - New demo app based in "create react app". Thanks to *karland* (https://github.com/APSL/redux-i18n/pull/63)
 
 ## 1.5.10

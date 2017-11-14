@@ -2,3 +2,4 @@ node_modules
 locales
 envs
 src_tmp
+package-lock.json
