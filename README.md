@@ -388,7 +388,7 @@ By default this command find in all *.js* and *.jsx* file extensions, but you ca
 
 ```json
 "scripts": {
-  "extract": "i18n_extract --fexts=js,jsx,cofee",
+  "extract": "i18n_extract --fexts=js,jsx,coffee",
   "import": "i18n_import"
 }
 ```
