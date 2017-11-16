@@ -34,7 +34,7 @@ yarn add redux-i18n
 
 ## Overview
 
-**redux-i18n** offers your app the *t()* function to translate literals.
+**redux-i18n** offers your app the `t()` function to translate literals.
 
 The `t()` function is available in the components of your app via React [context](https://reactjs.org/docs/context.html). To achieve this you need to wrap your app into the `<I18n />` component from **redux-i18n** that provides for the context. Furthermore, for all components that want to use the `t()` function you need to define `contextTypes`, e.g.:
 
@@ -111,10 +111,10 @@ You can also set the initial language with the *initialLang* prop:
 
 ```javascript
 <I18n translations={translations} initialLang="es">
-    <div>
-        <h1>My Project</h1>
-        {this.props.children}
-    </div>
+  <div>
+    <h1>My Project</h1>
+    {this.props.children}
+  </div>
 </I18n>
 ```
 
@@ -122,10 +122,10 @@ If you have partial translations, this means that you don't have your translatio
 
 ```javascript
 <I18n translations={translations} initialLang="de" fallbackLang="en">
-    <div>
-        <h1>My Project</h1>
-        {this.props.children}
-    </div>
+  <div>
+    <h1>My Project</h1>
+    {this.props.children}
+  </div>
 </I18n>
 ```
 
