@@ -226,10 +226,10 @@ export const translations = {
 ```javascript
 render() {
   let today = moment()
-    return (
-      <div>
-        {today.format(this.context.t("YYYY-MM-DD"))}
-      </div>
+  return (
+    <div>
+      {today.format(this.context.t("YYYY-MM-DD"))}
+    </div>
   )
 }
 ```
