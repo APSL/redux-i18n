@@ -1,5 +1,5 @@
 {
-  "name": "demo_CRA",
+  "name": "demoCRA",
   "version": "0.2.0",
   "private": true,
   "dependencies": {
@@ -18,6 +18,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  }
+    "eject": "react-scripts eject",
+    "extract": "i18n_extract",
+    "import": "i18n_import"    
 }
+
