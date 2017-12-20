@@ -7,6 +7,10 @@ const plural_pattern = new RegExp('(?:([0-9]+)\\;\\s(?:plural\\=\\((.*)\\)\\;))'
 exports.getTrans = (file, translations, encoding) => {
   const content = fs.readFileSync(file)
   const pocontent = po.parse(content, encoding)
+  if (!pocontent.headers.language) {
+      console.log(`\nError! language header not defined. \n`.red)
+      throw `Define language in ${file}`
+  }
   const trans = pocontent.translations['']
   const lang = pocontent.headers.language.replace('_', '-')
 
