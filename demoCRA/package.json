@@ -21,5 +21,6 @@
     "eject": "react-scripts eject",
     "extract": "i18n_extract",
     "import": "i18n_import"    
+  }
 }
 
