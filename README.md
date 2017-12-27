@@ -419,6 +419,8 @@ npm run import
 ```
 
 This script read all *po* files inside your *locales* folder, extract all translations and build a **src/translations.js** that you can then use in your project.
+ 
+Your *.po* files must define header language, check [mininal format](https://gist.github.com/Salec/3ddcf037e9cc4c44082441f379bf0165) for more information. 
 
 You can also set another *locales* folder:
 
