@@ -3,3 +3,5 @@ locales
 envs
 src_tmp
 package-lock.json
+.idea
+npm-debug.log
