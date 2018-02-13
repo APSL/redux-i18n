@@ -1,6 +1,7 @@
 # Changelog
 
 ## 1.5.13 (Not created yet)
+- Readme updated. Thanks to *jhta* (https://github.com/APSL/redux-i18n/pull/76)
 
 ## 1.5.12
 - Added explanation about .po format and rise exception when it's not set. Thanks to *Salec* (https://github.com/APSL/redux-i18n/pull/72)
