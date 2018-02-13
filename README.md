@@ -193,7 +193,7 @@ You can access the functions of `<I18n />` using your component's context. For e
 
 ```javascript
 Home.contextTypes = {
-  t: React.PropTypes.func.isRequired
+  t: PropTypes.func.isRequired
 }
 ```
 
