@@ -63,7 +63,7 @@ class I18nProvider extends React.Component {
   }
 }
 
-I18n.propTypes = {
+I18nProvider.propTypes = {
   translations: PropTypes.object.isRequired,
   useReducer: PropTypes.bool,
   initialLang: PropTypes.string,
@@ -71,7 +71,7 @@ I18n.propTypes = {
   initialized: PropTypes.bool
 };
 
-I18n.defaultProps = {
+I18nProvider.defaultProps = {
   useReducer: false,
   initialLang: 'en',
   fallbackLang: null
