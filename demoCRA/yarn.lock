@@ -5364,7 +5364,7 @@ reduce-function-call@^1.0.1:
 
 "redux-i18n@https://github.com/p10ns11y/redux-i18n#master":
   version "1.5.12"
-  resolved "https://github.com/p10ns11y/redux-i18n#d0e02337bc0989f41fde5ec5ca399e86deea5b8a"
+  resolved "https://github.com/p10ns11y/redux-i18n#3361534c2f62302e72ba02cfdb7a292ddcfb99d3"
   dependencies:
     colors "^1.1.2"
     escape-quotes "^1.0.2"
