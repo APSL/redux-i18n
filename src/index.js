@@ -4,8 +4,10 @@
  */
 
 export default from './component';
-export {I18nContext} from './contextProvider';
-export {I18nContextProvider} from './contextProvider';
+export {
+  default as I18nContextProvider,
+  I18nContext
+} from './component/contextProvider';
 
 export {i18nState} from './reducer';
 export {setLanguage, setTranslations} from './actions';

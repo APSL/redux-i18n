@@ -6,6 +6,8 @@
 import React, { createContext } from 'react'; // Assuming react 16.3.0
 import { PropTypes } from 'prop-types';
 import deepForceUpdate from 'react-deep-force-update';
+import {connect} from 'react-redux'
+
 import { setForceRefresh, setLanguage } from '../actions';
 import getTranslateFunction from '../getTranslateFunction';
 
@@ -77,4 +79,8 @@ I18nProvider.defaultProps = {
   fallbackLang: null
 };
 
-export default I18nProvider;
+export default connect(state => ({
+  lang: state.i18nState.lang,
+  translations_reducer: state.i18nState.translations,
+  forceRefresh: state.i18nState.forceRefresh
+}))(I18nProvider);
