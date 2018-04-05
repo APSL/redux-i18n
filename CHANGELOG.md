@@ -1,7 +1,10 @@
 # Changelog
 
-## 1.5.13 (Not created yet)
+## 1.5.14 (Not created yet)
+
+## 1.5.13
 - Readme updated. Thanks to *jhta* (https://github.com/APSL/redux-i18n/pull/76)
+- Support multi-line strings. Thanks to *tuyakhov* (https://github.com/APSL/redux-i18n/pull/80)
 
 ## 1.5.12
 - Added explanation about .po format and rise exception when it's not set. Thanks to *Salec* (https://github.com/APSL/redux-i18n/pull/72)
@@ -34,16 +37,16 @@
 - Isomorphic. Thanks to *stayman* (https://github.com/APSL/redux-i18n/pull/52)
 - Move translate behavior into an isolated import. Thanks to *TheActualWalko* (https://github.com/APSL/redux-i18n/pull/53)
 
-## 1.5.4 
+## 1.5.4
 - Fix: use fallback lang translation if current lang is unknown. Thanks to *tagoro9* (https://github.com/APSL/redux-i18n/pull/43)
 
 ## 1.5.3
 - Allow react component interpolation. Thanks to *staymain* (https://github.com/APSL/redux-i18n/pull/41)
 
-## 1.5.2 
+## 1.5.2
 - Multiple comments fix. Thanks to *stayman* (https://github.com/APSL/redux-i18n/pull/40)
 
-## 1.5.1 
+## 1.5.1
 - *setTranslations* now can merge translations. Thanks to *tagoro9* (https://github.com/APSL/redux-i18n/pull/38)
 - Extract regex improved. Thanks to *stayman* (https://github.com/APSL/redux-i18n/pull/39)
 
@@ -68,12 +71,12 @@
 ## 1.2.2
 - 'Extract' action and tests improved.
 
-## 1.2.1 
+## 1.2.1
 - English grammar improved in documentation. Thanks to *doei* (https://github.com/APSL/redux-i18n/pull/19).
 
 ## 1.2.0
 - Now is possible use reducer for store your translations. You can load async translations and then store there. Read documentation https://github.com/APSL/redux-i18n#async-translations
-- Documentation updated for explain how use html object as a param. (https://github.com/APSL/redux-i18n#html-object-as-parameter) 
+- Documentation updated for explain how use html object as a param. (https://github.com/APSL/redux-i18n#html-object-as-parameter)
 
 ## 1.1.5
 - Changelog format improved.
@@ -85,7 +88,7 @@
 
 ## 1.1.3
 - Fixed import action when there was quotes.
-- Demo app added. 
+- Demo app added.
 
 ## 1.1.2
 - Some tests added.
