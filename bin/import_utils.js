@@ -3,6 +3,7 @@ const gtp = require('gettext-parser')
 const po = gtp.po
 const escape_quotes = require('escape-quotes');
 const plural_pattern = new RegExp('(?:([0-9]+)\\;\\s(?:plural\\=\\((.*)\\)\\;))')
+const chars = '\'\n'; // characters to escape
 
 exports.getTrans = (file, translations, encoding) => {
   const content = fs.readFileSync(file)
@@ -47,7 +48,7 @@ exports.transToTxt = (trans) => {
     txt += `  '${lang}': {\n`
 
     for (let k in trans[lang]) {
-      txt += `    '${escape_quotes(k)}': '${escape_quotes(trans[lang][k])}',\n`
+      txt += `    '${escape_quotes(k, chars)}': '${escape_quotes(trans[lang][k], chars)}',\n`
     }
 
     txt += `  },\n`

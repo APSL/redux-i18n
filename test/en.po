@@ -30,3 +30,13 @@ msgstr[1] "{n} nights"
 #: src/file1.js src/file2.js
 msgid "Text 'with' quotes"
 msgstr "Text 'with' quotes"
+
+#: src/file1.js src/file2.js
+msgid ""
+"Text\n"
+"with\n"
+"newlines\n"
+msgstr ""
+"Text\n"
+"with\n"
+"newlines\n"

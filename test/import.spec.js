@@ -10,7 +10,7 @@ describe('importing po files', () => {
 
     expect(Object.keys(translations).length).toEqual(2)
     expect(Object.keys(translations)[0]).toEqual('en')
-    expect(Object.keys(translations.en).length).toEqual(5)
+    expect(Object.keys(translations.en).length).toEqual(6)
 
     expect(translations.en['Traducir este texto']).toEqual('Translate this text')
     expect(translations.en['Hola {n}!']).toEqual('Hello {n}!')
@@ -34,6 +34,7 @@ describe('importing po files', () => {
     \'una noche\': \'one night\',\n\
     \'{n} noches\': \'{n} nights\',\n\
     \'Text \\\'with\\\' quotes\': \'Text \\\'with\\\' quotes\',\n\
+    \'Text\\\nwith\\\nnewlines\\\n\': \'Text\\\nwith\\\nnewlines\\\n\',\n\
   },\n\
   \'options\': {\n\
     \'plural_rule\': \'n != 1\',\n\
