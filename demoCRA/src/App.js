@@ -1,12 +1,14 @@
 import React, { Component } from "react"
 import { Provider } from "react-redux"
 
-import I18n from "redux-i18n"
+import I18n, { I18nContextProvider } from "redux-i18n"
 
 import { store } from "./store"
 import { translations } from "./translations"
 
 import Main from "./Main"
+import MainNew from "./MainNew"
+
 import MainReducer from "./MainReducer"
 
 class App extends Component {
@@ -14,6 +16,9 @@ class App extends Component {
     return (
       <Provider store={store}>
         <div>
+          <I18nContextProvider translations={translations}>
+            <MainNew />
+          </I18nContextProvider>
           {/* Get translations from file*/}
           <I18n translations={translations}>
             <Main />

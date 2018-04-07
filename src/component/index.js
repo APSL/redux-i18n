@@ -4,7 +4,7 @@
  */
 
 import {connect} from 'react-redux'
-import I18n from './component'
+import I18n from './component';
 
 export default connect(state => ({
   lang: state.i18nState.lang,
