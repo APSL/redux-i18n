@@ -1,7 +1,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 
-import { I18nContext } from '../../dist/component/contextProvider';
+import { I18nContext } from '../../dist';
 
 class TransWithoutParams extends React.Component {
   render() {
