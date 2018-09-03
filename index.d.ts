@@ -50,7 +50,7 @@ declare module 'redux-i18n' {
 
     export function setLanguage(lang: string): ISetLanguageAction
 
-    export function setTranslations(translations: ITranslations, languageOrOptions?: IlanguageOrOptions | string): ThunkAction<any, IreduxI18nState, any>
+    export function setTranslations(translations: ITranslations, languageOrOptions?: IlanguageOrOptions | string): ThunkAction<any, IreduxI18nState, any, any>
 
     export function setForceRefresh(force: boolean): ISetForceRefreshAction
 
