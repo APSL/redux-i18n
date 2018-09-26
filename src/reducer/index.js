@@ -5,8 +5,8 @@
 
 const reduxI18nState = {
   lang: 'en',
+  newFallbackLang: null,
   translations: {},
-  fallbackLang: null,
   forceRefresh: false
 }
 
@@ -15,7 +15,7 @@ export function i18nState(state = reduxI18nState, action) {
     case 'REDUX_I18N_SET_LANGUAGE':
       return {...state, lang: action.lang}
     case 'REDUX_I18N_SET_FALLBACK_LANGUAGE':
-      return {...state, fallbackLang: action.fallbackLang}
+      return {...state, newFallbackLang: action.newFallbackLang}
     case 'REDUX_I18N_SET_TRANSLATIONS':
       return {...state, translations: action.translations}
     case 'REDUX_I18N_SET_FORCE_REFRESH':

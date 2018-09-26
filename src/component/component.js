@@ -14,12 +14,12 @@ import getTranslateFunction from '../getTranslateFunction';
 class I18n extends React.Component {
 
   getChildContext() {
-    const {lang, fallbackLang, useReducer, translations_reducer, translations} = this.props;
+    const {lang, fallbackLang, useReducer, translations_reducer, translations, newFallbackLang} = this.props;
     return {
       t: getTranslateFunction(
         useReducer ? translations_reducer : translations,
         lang,
-        fallbackLang
+        newFallbackLang ? newFallbackLang : fallbackLang
       )
     };
   }
