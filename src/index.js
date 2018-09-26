@@ -5,6 +5,6 @@
 
 export default from './component'
 export {i18nState} from './reducer'
-export {setLanguage, setTranslations} from './actions'
+export {setLanguage, setFallbackLanguage, setTranslations} from './actions'
 export localize from './hoc'
 export getTranslateFunction from './getTranslateFunction';

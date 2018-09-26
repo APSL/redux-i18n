@@ -7,9 +7,14 @@ export function setLanguage(lang) {
   return {type: 'REDUX_I18N_SET_LANGUAGE', lang}
 }
 
+export function setFallbackLanguage(fallbackLang) {
+  return {type: 'REDUX_I18N_SET_FALLBACK_LANGUAGE', fallbackLang}
+}
+
 function updateTranslations(translations) {
   return {type: 'REDUX_I18N_SET_TRANSLATIONS', translations}
 }
+
 
 export function setTranslations(translations, languageOrOptions) {
   return function(dispatch, getState) {
