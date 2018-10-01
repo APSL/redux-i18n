@@ -13,12 +13,17 @@ declare module 'redux-i18n' {
 
     export interface IreduxI18nState {
         lang: string;
+        fallbackLang: string;
         translations: ITranslations;
         forceRefresh: boolean;
     }
 
     export interface ISetLanguageAction extends Action {
         lang: string;
+    }
+
+    export interface ISetFallbackLanguageAction extends Action {
+        fallbackLang: string;
     }
 
     export interface ISetForceRefreshAction extends Action {
@@ -49,6 +54,8 @@ declare module 'redux-i18n' {
     export function i18nState(state: IreduxI18nState, action: Action): IreduxI18nState
 
     export function setLanguage(lang: string): ISetLanguageAction
+
+    export function setFallbackLanguage(fallbackLang: string): ISetFallbackLanguageAction
 
     export function setTranslations(translations: ITranslations, languageOrOptions?: IlanguageOrOptions | string): ThunkAction<any, IreduxI18nState, any>
 

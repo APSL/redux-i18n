@@ -1,6 +1,9 @@
 # Changelog
 
-## 1.5.14 (Not created yet)
+## 1.5.15 (Not created yet)
+
+## 1.5.14 
+- Fallback language is stored to state. It's changable via setFallbackLanguage(lang) methοd. 
 
 ## 1.5.13
 - Readme updated. Thanks to *jhta* (https://github.com/APSL/redux-i18n/pull/76)
