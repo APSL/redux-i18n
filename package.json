@@ -10,6 +10,7 @@
   },
   "scripts": {
     "build": "babel src --out-dir dist",
+    "watch-build": "babel src --watch --out-dir dist",
     "lint": "eslint src",
     "test": "cross-env NODE_ENV=test mocha --compilers js:babel-core/register --recursive && npm run lint"
   },

@@ -5,7 +5,7 @@
 /* eslint-disable no-new-func */
 
 
-import React from 'react'
+import React from 'react';
 
 const interpolateParams = (text, params) => {
   if (!params) {
@@ -17,7 +17,7 @@ const interpolateParams = (text, params) => {
       const match = /{(.+)}/g.exec(child);
       if (match) {
         const param = params[match[1]];
-        return param ? param : String(param)
+        return param ? param : String(param);
       }
 
       return child;
@@ -37,30 +37,33 @@ const getLangMessages = (translations, lang) => {
 
   // Fall back lang
   if (langMessages === undefined && lang.indexOf('-') > -1) {
-    langMessages = translations[lang.split('-')[0]]
+    langMessages = translations[lang.split('-')[0]];
   }
 
   return langMessages;
-}
+};
 
 const getOptionValue = (options, key, defaultValue) => {
   if (options === undefined) {
-    return defaultValue || null
+    return defaultValue || null;
   }
-  return options[key] === undefined ? (defaultValue || null)  : options[key]
-}
+  return options[key] === undefined ? (defaultValue || null)  : options[key];
+};
 
 export default (translations, lang, fallbackLang) => {
   const langMessages = getLangMessages(translations, lang);
   const fallbackLangMessages = fallbackLang ? getLangMessages(translations, fallbackLang) : undefined;
-  const plural_rule = getOptionValue(translations.options, 'plural_rule', 'n != 1')
-  const plural_number = parseInt(getOptionValue(translations.options, 'plural_number', '2'), 10)
+  const plural_rule = getOptionValue(translations.options, 'plural_rule', 'n != 1');
+  const plural_number = parseInt(getOptionValue(translations.options, 'plural_number', '2'), 10);
 
   return (textKey, params, comment) => {
-
     // Checking if textkey contains a pluralize object.
     if (typeof textKey === 'object') {
-      textKey = textKey[Number(new Function('n', 'return ' + plural_rule)(params[textKey[plural_number]]))]
+      textKey = textKey[Number(new Function('n', 'return ' + plural_rule)(params[textKey[plural_number]]))];
+    }
+
+    if (typeof comment === 'string' || !comment) {
+      console.warn(`Comment is mandatory for "${textKey}"`);
     }
 
     if (!langMessages && !fallbackLangMessages) {
@@ -72,7 +75,7 @@ export default (translations, lang, fallbackLang) => {
       // If don't have literal translation and have fallback lang, try
       // to get from there.
       if (fallbackLangMessages) {
-        let literal = fallbackLangMessages[textKey]
+        let literal = fallbackLangMessages[textKey];
         if (literal !== undefined && literal !== '') {
           return interpolateParams(literal, params);
         }
