@@ -30,7 +30,7 @@ const interpolateParams = (text, params) => {
     // removing the extra dom node
     ? React.createElement('span', null, ...children)
     : children.join('');
-}
+};
 
 const getLangMessages = (translations, lang) => {
   let langMessages = translations[lang];
@@ -41,24 +41,24 @@ const getLangMessages = (translations, lang) => {
   }
 
   return langMessages;
-}
+};
 
 const getOptionValue = (options, key, defaultValue) => {
   if (options === undefined) {
     return defaultValue || null
   }
   return options[key] === undefined ? (defaultValue || null)  : options[key]
-}
+};
 
 export default (translations, lang, fallbackLang) => {
   const langMessages = getLangMessages(translations, lang);
   const fallbackLangMessages = fallbackLang ? getLangMessages(translations, fallbackLang) : undefined;
-  const plural_rule = getOptionValue(translations.options, 'plural_rule', 'n != 1')
-  const plural_number = parseInt(getOptionValue(translations.options, 'plural_number', '2'), 10)
+  const plural_rule = getOptionValue(translations.options, 'plural_rule', 'n != 1');
+  const plural_number = parseInt(getOptionValue(translations.options, 'plural_number', '2'), 10);
 
   return (textKey, params, comment) => {
 
-    // Checking if textkey contains a pluralize object.
+    // Checking if textKey contains a pluralize object.
     if (typeof textKey === 'object') {
       textKey = textKey[Number(new Function('n', 'return ' + plural_rule)(params[textKey[plural_number]]))]
     }
@@ -71,8 +71,9 @@ export default (translations, lang, fallbackLang) => {
     if (message === undefined || message === '') {
       // If don't have literal translation and have fallback lang, try
       // to get from there.
+      console.warn(`Missing translation for id ${textKey} in language ${lang}`);
       if (fallbackLangMessages) {
-        let literal = fallbackLangMessages[textKey]
+        let literal = fallbackLangMessages[textKey];
         if (literal !== undefined && literal !== '') {
           return interpolateParams(literal, params);
         }
