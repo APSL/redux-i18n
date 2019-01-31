@@ -1,6 +1,7 @@
 # Changelog
 
 ## 1.5.16 (Not created yet)
+- Updated some library versions of demo project for fix vulnerabilities.
 
 ## 1.5.15
 - Warn when a translation is missing. Thanks to *aHerbots* (https://github.com/APSL/redux-i18n/pull/96)
