@@ -1,6 +1,10 @@
 # Changelog
 
-## 1.5.15 (Not created yet)
+## 1.5.16 (Not created yet)
+
+## 1.5.15
+- Warn when a translation is missing. Thanks to *aHerbots* (https://github.com/APSL/redux-i18n/pull/96)
+- Improve import multiline handling. Thanks to *EvertEt* (https://github.com/APSL/redux-i18n/pull/97)
 
 ## 1.5.14 
 - Fallback language is stored to state. It's changable via setFallbackLanguage(lang) methοd. Thanks to *DimitrisD* (https://github.com/APSL/redux-i18n/pull/93)
