@@ -34,7 +34,7 @@ describe('importing po files', () => {
     \'una noche\': \'one night\',\n\
     \'{n} noches\': \'{n} nights\',\n\
     \'Text \\\'with\\\' quotes\': \'Text \\\'with\\\' quotes\',\n\
-    \'Text\\\nwith\\\nnewlines\\\n\': \'Text\\\nwith\\\nnewlines\\\n\',\n\
+    \'Text\\nwith\\nnewlines\\n\': \'Text\\nwith\\nnewlines\\n\',\n\
   },\n\
   \'options\': {\n\
     \'plural_rule\': \'n != 1\',\n\
