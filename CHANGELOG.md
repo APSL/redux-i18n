@@ -1,7 +1,11 @@
 # Changelog
 
-## 1.5.16 (Not created yet)
+## 1.5.17 (Not created yet)
+
+## 1.5.16
 - Updated some library versions of demo project for fix vulnerabilities.
+- Fix plural fallback. Thanks to *EvertEt* (https://github.com/APSL/redux-i18n/pull/100)
+- react-deep-force-update package upgraded to 2.1.3 version.
 
 ## 1.5.15
 - Warn when a translation is missing. Thanks to *aHerbots* (https://github.com/APSL/redux-i18n/pull/96)
