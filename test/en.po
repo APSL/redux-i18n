@@ -28,6 +28,12 @@ msgstr[0] "one night"
 msgstr[1] "{n} nights"
 
 #: src/file1.js src/file2.js
+msgid "una semana"
+msgid_plural "{n} semanas"
+msgstr[0] "one week"
+msgstr[1] ""
+
+#: src/file1.js src/file2.js
 msgid "Text 'with' quotes"
 msgstr "Text 'with' quotes"
 
