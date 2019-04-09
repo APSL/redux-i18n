@@ -1,6 +1,9 @@
 # Changelog
 
-## 1.5.17 (Not created yet)
+## 1.5.18 (Not created yet)
+
+## 1.5.17
+- Improve fallback handling. Thanks to *EvertEt* (https://github.com/APSL/redux-i18n/pull/101)
 
 ## 1.5.16
 - Updated some library versions of demo project for fix vulnerabilities.
