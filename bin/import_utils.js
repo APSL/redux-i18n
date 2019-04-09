@@ -23,7 +23,7 @@ exports.getTrans = (file, translations, encoding) => {
     if (value.msgid && value.msgstr.length) {
       translations[lang][value.msgid] = value.msgstr[0]
       if (value.msgid_plural && value.msgid_plural.length) {
-        translations[lang][value.msgid_plural] = value.msgstr[1] || ''
+        translations[lang][value.msgid_plural] = value.msgstr[1] != null ? value.msgstr[1] : value.msgstr[0] // #78
       }
     }
   }

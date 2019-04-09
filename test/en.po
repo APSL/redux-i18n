@@ -34,6 +34,11 @@ msgstr[0] "one week"
 msgstr[1] ""
 
 #: src/file1.js src/file2.js
+msgid "1 site"
+msgid_plural "{n} sites"
+msgstr[0] "{n}つの用地"
+
+#: src/file1.js src/file2.js
 msgid "Text 'with' quotes"
 msgstr "Text 'with' quotes"
 
