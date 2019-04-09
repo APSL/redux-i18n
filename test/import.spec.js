@@ -10,7 +10,7 @@ describe('importing po files', () => {
 
     expect(Object.keys(translations).length).toEqual(2)
     expect(Object.keys(translations)[0]).toEqual('en')
-    expect(Object.keys(translations.en).length).toEqual(8)
+    expect(Object.keys(translations.en).length).toEqual(10)
 
     expect(translations.en['Traducir este texto']).toEqual('Translate this text')
     expect(translations.en['Hola {n}!']).toEqual('Hello {n}!')
@@ -18,6 +18,8 @@ describe('importing po files', () => {
     expect(translations.en['{n} noches']).toEqual('{n} nights')
     expect(translations.en['una semana']).toEqual('one week')
     expect(translations.en['{n} semanas']).toEqual('')
+    expect(translations.en['1 site']).toEqual('{n}つの用地')
+    expect(translations.en['{n} sites']).toEqual('{n}つの用地')
     expect(translations.en['Text \'with\' quotes']).toEqual('Text \'with\' quotes')
 
     expect(translations.options.plural_rule).toEqual('n != 1')
@@ -37,6 +39,8 @@ describe('importing po files', () => {
     \'{n} noches\': \'{n} nights\',\n\
     \'una semana\': \'one week\',\n\
     \'{n} semanas\': \'\',\n\
+    \'1 site\': \'{n}つの用地\',\n\
+    \'{n} sites\': \'{n}つの用地\',\n\
     \'Text \\\'with\\\' quotes\': \'Text \\\'with\\\' quotes\',\n\
     \'Text\\nwith\\nnewlines\\n\': \'Text\\nwith\\nnewlines\\n\',\n\
   },\n\
