@@ -1,6 +1,9 @@
 # Changelog
 
-## 1.5.18 (Not created yet)
+## 1.5.19 (Not created yet)
+
+## 1.5.18
+- Fix redux-thunk type definition for version 2.3.0. Thanks to *WhiteHatTux* (https://github.com/APSL/redux-i18n/pull/102)
 
 ## 1.5.17
 - Improve fallback handling. Thanks to *EvertEt* (https://github.com/APSL/redux-i18n/pull/101)
