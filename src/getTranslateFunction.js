@@ -55,6 +55,7 @@ export default (translations, lang, fallbackLang) => {
   const fallbackLangMessages = fallbackLang ? getLangMessages(translations, fallbackLang) : undefined;
   const plural_rule = getOptionValue(translations.options, 'plural_rule', 'n != 1');
   const plural_number = parseInt(getOptionValue(translations.options, 'plural_number', '2'), 10);
+  const suppress_warnings = getOptionValue(translations.options, 'suppress_warnings', false);
 
   return (textKey, params, comment) => {
 
@@ -69,9 +70,12 @@ export default (translations, lang, fallbackLang) => {
 
     let message = langMessages ? langMessages[textKey] : undefined;
     if (message === undefined || message === '') {
+      if (!suppress_warnings) {
+        console.warn(`Missing translation for id ${textKey} in language ${lang}`);
+      }
+
       // If don't have literal translation and have fallback lang, try
       // to get from there.
-      console.warn(`Missing translation for id ${textKey} in language ${lang}`);
       if (fallbackLangMessages) {
         let literal = fallbackLangMessages[textKey];
         if (literal !== undefined && literal !== '') {
