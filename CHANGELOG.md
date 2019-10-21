@@ -1,6 +1,10 @@
 # Changelog
 
-## 1.5.19 (Not created yet)
+## 1.5.20 (Not created yet)
+
+## 1.5.19
+- Adds ability to suppress console warnings. Thanks to *erdemr* (https://github.com/APSL/redux-i18n/pull/106)
+- Support React.forwardRef(), React.memo() and latest react-redux. Thanks to *topaxi* (https://github.com/APSL/redux-i18n/pull/103)
 
 ## 1.5.18
 - Fix redux-thunk type definition for version 2.3.0. Thanks to *WhiteHatTux* (https://github.com/APSL/redux-i18n/pull/102)
