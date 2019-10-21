@@ -2,7 +2,5 @@ node_modules
 locales
 envs
 src_tmp
-package-lock.json
-yarn.lock
 .idea
 npm-debug.log
