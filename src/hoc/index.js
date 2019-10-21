@@ -2,12 +2,13 @@ import {Component, createElement}  from 'react'
 import PropTypes from 'prop-types'
 import hoistStatics from 'hoist-non-react-statics'
 import invariant from 'invariant';
+import { isValidElementType } from 'react-is'
 
 
 export default function localize(propName = 't') {
   return function wrapWithLocalized(WrappedComponent) {
     invariant(
-      typeof WrappedComponent === 'function',
+      isValidElementType(WrappedComponent),
       `You must pass a component to the function returned by localize.
       Instead received ${JSON.stringify(WrappedComponent)}`
     )
