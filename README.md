@@ -291,7 +291,7 @@ After extracting the translations to a POT file and opening it with Poedit you w
 
 ![Poedit screenshot](imgs/poedit2.jpg?raw=true "Poedit screenshot")
 
-Also the `translations` object allows to set an options node. There you can set a plurals form rule and a plurals number. For example:
+Also the `translations` object allows to set an options node. There you can set a plurals form rule and a plurals number. Also, you can suppress warnings logged in console. For example:
 
 ```javascript
 export const translations = {
@@ -302,6 +302,8 @@ export const translations = {
   "options": {
     "plural_rule": "n > 1",
     "plural_number": "2",
+    "suppress_warnings": true, // defaults to false
+
   }
 }
 ```
