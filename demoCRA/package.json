@@ -5,7 +5,7 @@
   "dependencies": {
     "prop-types": "^15.6.0",
     "react": "^16.1.0",
-    "react-dom": "^16.1.0",
+    "react-dom": "^16.1.2",
     "react-redux": "^5.0.6",
     "react-scripts": "1.0.17",
     "redux": "^3.7.2",
@@ -20,7 +20,6 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "extract": "i18n_extract",
-    "import": "i18n_import"    
+    "import": "i18n_import"
   }
 }
-
