@@ -1,6 +1,9 @@
 # Changelog
 
-## 1.5.20 (Not created yet)
+## 1.5.21 (Not created yet)
+
+## 1.5.20
+- Some demoCRA packages upgraded for fix security alerts.
 
 ## 1.5.19
 - Adds ability to suppress console warnings. Thanks to *erdemr* (https://github.com/APSL/redux-i18n/pull/106)

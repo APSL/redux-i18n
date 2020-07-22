@@ -24,7 +24,7 @@ npm run build
 
 * Edit the *version* attribute inside *package.json* file.
 * Edit *CHANGELOG.md" file, adding the new features.
-* Commit the changes.
+* Commit changes.
 * Create a new tag.
 * Push commits with *follow tags" param.
-* Publish the new package to npm.
+* Publish new package to npm.
