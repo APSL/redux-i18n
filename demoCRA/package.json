@@ -3,19 +3,16 @@
   "version": "0.2.0",
   "private": true,
   "dependencies": {
-    "prop-types": "^15.6.0",
-    "react": "^16.1.0",
-    "react-dom": "^16.1.2",
-    "react-redux": "^5.0.6",
+    "prop-types": "^15.7.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-redux": "^7.2.0",
     "react-scripts": "1.0.17",
-    "redux": "^3.7.2",
-    "redux-i18n": "^1.5.10",
+    "redux": "^4.0.5",
+    "redux-i18n": "^1.5.19",
     "redux-logger": "^3.0.6",
-    "redux-promise": "^0.5.3",
-    "redux-thunk": "^2.2.0",
-    "minimist": "^1.2.5",
-    "acorn": "^7.3.1",
-    "kind-of": "^6.0.3"
+    "redux-promise": "^0.6.0",
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
