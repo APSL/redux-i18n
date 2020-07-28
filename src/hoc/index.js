@@ -18,13 +18,9 @@ export default function localize(propName = 't') {
         t: PropTypes.func.isRequired
       }
 
-      constructor(props, context) {
-        super(props, context)
-        this.t = context.t
-      }
-
       render() {
-        return createElement(WrappedComponent, {...this.props, [propName]: this.t})
+        const { t } = this.context;
+        return createElement(WrappedComponent, {...this.props, [propName]: t})
       }
 
     }
