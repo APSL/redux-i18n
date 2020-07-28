@@ -1,6 +1,9 @@
 # Changelog
 
-## 1.5.21 (Not created yet)
+## 1.5.22 (Not created yet)
+
+## 1.5.21
+- Use dynamic t function in HOC to rerender with new translations. Thanks to *bjackson* (https://github.com/APSL/redux-i18n/pull/114)
 
 ## 1.5.20
 - Some demoCRA packages upgraded for fix security alerts.
