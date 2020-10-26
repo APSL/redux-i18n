@@ -41,7 +41,7 @@ class I18n extends React.Component {
     }
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     if (!this.props.initialized) {
       this.props.dispatch(setLanguage(this.props.initialLang))
     }
