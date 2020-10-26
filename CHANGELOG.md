@@ -1,6 +1,7 @@
 # Changelog
 
 ## 1.5.22 (Not created yet)
+- Component lifecycles react17. Thanks to *uullrich* (https://github.com/APSL/redux-i18n/pull/116)
 
 ## 1.5.21
 - Use dynamic t function in HOC to rerender with new translations. Thanks to *bjackson* (https://github.com/APSL/redux-i18n/pull/114)
