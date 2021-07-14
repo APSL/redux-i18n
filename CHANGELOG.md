@@ -1,6 +1,7 @@
 # Changelog
 
-## 1.5.23 (Not created yet)
+## 1.5.23
+- [Fixed] Use react forceUpdate instead of deep-force-update. Thanks to *nicolascrop* (https://github.com/APSL/redux-i18n/pull/130)
 
 ## 1.5.22
 - Component lifecycles react17. Thanks to *uullrich* (https://github.com/APSL/redux-i18n/pull/116)
