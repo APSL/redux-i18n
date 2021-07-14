@@ -6,7 +6,6 @@
 
 import React from 'react'
 import {PropTypes} from 'prop-types'
-import deepForceUpdate from 'react-deep-force-update'
 import {setForceRefresh, setLanguage} from '../actions'
 import getTranslateFunction from '../getTranslateFunction';
 
@@ -33,7 +32,7 @@ class I18n extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.lang !== this.props.lang || (!prevProps.forceRefresh && this.props.forceRefresh)) {
-      deepForceUpdate(this)
+      this.forceUpdate();
 
       if (this.props.forceRefresh) {
         this.props.dispatch(setForceRefresh(false))
