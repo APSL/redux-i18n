@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.5.24
+- [Fixed] Fix interface definition for IGetTranslateFunctionResponse. Thanks to *JosephBrooksbank* (https://github.com/APSL/redux-i18n/pull/137)
+
 ## 1.5.23
 - [Fixed] Use react forceUpdate instead of deep-force-update. Thanks to *nicolascrop* (https://github.com/APSL/redux-i18n/pull/130)
 
