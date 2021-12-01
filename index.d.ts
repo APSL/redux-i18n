@@ -35,7 +35,7 @@ declare module 'redux-i18n' {
     }
 
     export interface IGetTranslateFunctionResponse {
-        (textKey: string, params?: string[], comment?: string): string;
+        (textKey: string, params?: string[] | {[key: string]: string}, comment?: string): string;
     }
 
     export interface ITranslation {
