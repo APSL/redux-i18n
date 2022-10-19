@@ -3,7 +3,7 @@ var glob = require('glob'),
     fs = require('fs'),
     colors = require('colors'),
     readline = require('readline'),
-    args = require('optimist')(process.argv.slice(2));
+    args = require('minimist')(process.argv.slice(2));
 
 var exts = args.fexts || 'js*'
 
