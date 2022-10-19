@@ -46,7 +46,7 @@
     "glob": "^7.0.5",
     "hoist-non-react-statics": "^2.2.0",
     "invariant": "^2.2.2",
-    "optimist": "^0.6.1",
+    "minimist": "^1.2.7",
     "prop-types": "^15.5.8",
     "react-is": "^16.8.6"
   },
