@@ -1,20 +1,19 @@
-import React, {Component, Children} from 'react'
+import React, { Component, Children } from 'react'
 import PropTypes from 'prop-types'
 import ReactDOM from 'react-dom'
 import TestUtils from 'react-dom/test-utils'
 import expect from 'expect'
-import {describe, it} from 'mocha'
+import { describe, it } from 'mocha'
 import localize from '../dist/hoc'
 
-describe('hoc test', function() {
+describe('hoc test', function () {
   class ProviderMock extends Component {
-
     static childContextTypes = {
       t: PropTypes.func.isRequired
     }
 
     getChildContext() {
-      return {t: this.props.t}
+      return { t: this.props.t }
     }
 
     render() {
@@ -28,10 +27,10 @@ describe('hoc test', function() {
     }
   }
 
-  it('should receive the translation func in context', function() {
+  it('should receive the translation func in context', function () {
     function translation() {}
 
-    const Container = localize()(Passthrough);
+    const Container = localize()(Passthrough)
 
     const tree = TestUtils.renderIntoDocument(
       <ProviderMock t={translation}>
@@ -39,11 +38,11 @@ describe('hoc test', function() {
       </ProviderMock>
     )
 
-    const container = TestUtils.findRenderedComponentWithType(tree, Container);
+    const container = TestUtils.findRenderedComponentWithType(tree, Container)
     expect(container.context.t).toEqual(translation)
   })
 
-  it('should pass props to the given component', function() {
+  it('should pass props to the given component', function () {
     function translation() {}
 
     const Container = localize()(Passthrough)
@@ -59,7 +58,7 @@ describe('hoc test', function() {
     expect(stub.props.t).toEqual(translation)
   })
 
-  it('should allow you to set the prop name in the child component by passing an arg to localize', function() {
+  it('should allow you to set the prop name in the child component by passing an arg to localize', function () {
     function translation() {}
     const Container = localize('translate')(Passthrough)
 

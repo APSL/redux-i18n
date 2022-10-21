@@ -39,17 +39,17 @@ The `t()` function is available in the components of your app via React [context
 
 ```javascript
 // import ...
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types'
 
 class MyComponent extends React.Component {
   render() {
-    return <div>{this.context.t("Hello World!")}</div>;
+    return <div>{this.context.t('Hello World!')}</div>
   }
 }
 
 MyComponent.contextTypes = {
-  t: PropTypes.func,
-};
+  t: PropTypes.func
+}
 ```
 
 If `contextTypes` is not defined, then context will be an empty object.
@@ -75,11 +75,11 @@ The package provides a parent component to encapsulate your application as well 
 
 ```javascript
 // import ...
-import I18n from "redux-i18n";
+import I18n from 'redux-i18n'
 // with Immutable.js:
-import I18n from "redux-i18n/immutable";
+import I18n from 'redux-i18n/immutable'
 
-import { translations } from "./translations";
+import { translations } from './translations'
 
 class Root extends React.Component {
   render() {
@@ -89,7 +89,7 @@ class Root extends React.Component {
           <App />
         </I18n>
       </Provider>
-    );
+    )
   }
 }
 ```
@@ -99,10 +99,10 @@ Where `translations` is a dictionary similar to this:
 ```javascript
 export const translations = {
   es: {
-    "Translate this text": "Traduce este texto",
-    "Hello {n}!": "Hola {n}!",
-  },
-};
+    'Translate this text': 'Traduce este texto',
+    'Hello {n}!': 'Hola {n}!'
+  }
+}
 ```
 
 You can also set the initial language with the _initialLang_ prop:
@@ -140,16 +140,16 @@ And this isn't in "de" language, it will show in "en".
 The language state is managed in a slice of the store named `i18nState`. Therefore, you have to add the **i18nState** reducer in your `combineReducers`.
 
 ```javascript
-import { otherreducers } from "./Yourproject";
+import { otherreducers } from './Yourproject'
 
-import { i18nState } from "redux-i18n";
+import { i18nState } from 'redux-i18n'
 // with Immutable.js:
-import { i18nState } from "redux-i18n/immutable";
+import { i18nState } from 'redux-i18n/immutable'
 
 const appReducer = combineReducers({
   otherreducers,
-  i18nState,
-});
+  i18nState
+})
 ```
 
 The current language is contained in the `lang` key of `i18nState`.
@@ -158,17 +158,17 @@ The `i18nState` is initially defined as
 
 ```javascript
 const defaultI18nState = {
-  lang: "en",
+  lang: 'en',
   translations: {},
-  forceRefresh: false,
-};
+  forceRefresh: false
+}
 
 // immutablejs
 const defaultI18nState = new Map({
-  lang: "en",
+  lang: 'en',
   translations: {},
-  forceRefresh: false,
-});
+  forceRefresh: false
+})
 ```
 
 When you [map your state to props with connect](https://github.com/reactjs/react-redux/blob/master/docs/api.md#connectmapstatetoprops-mapdispatchtoprops-mergeprops-options) you can also access the `lang` attribute in your components:
@@ -191,8 +191,8 @@ You can access the functions of `<I18n />` using your component's context. For e
 
 ```javascript
 Home.contextTypes = {
-  t: PropTypes.func.isRequired,
-};
+  t: PropTypes.func.isRequired
+}
 ```
 
 ...you will then be able to use the `t()` method in your component.
@@ -215,9 +215,9 @@ You can also use the `t()` function to change date formats
 ```javascript
 export const translations = {
   de: {
-    "YYYY-MM-DD": "DD.MM.YYYY",
-  },
-};
+    'YYYY-MM-DD': 'DD.MM.YYYY'
+  }
+}
 ```
 
 ```javascript
@@ -248,20 +248,14 @@ render() {
 
 Here's how _Poedit_ will show the comments:
 
-![Poedit screenshot](imgs/poedit1.jpg?raw=true "Poedit screenshot")
+![Poedit screenshot](imgs/poedit1.jpg?raw=true 'Poedit screenshot')
 
 ### HTML Object as parameter
 
 ```javascript
-const user = { name: "World" };
-const name = <span>{user.name}</span>;
-return (
-  <div
-    dangerouslySetInnerHTML={{
-      __html: context.t("Hello {name}", { name: name }),
-    }}
-  />
-);
+const user = { name: 'World' }
+const name = <span>{user.name}</span>
+return <div dangerouslySetInnerHTML={{ __html: context.t('Hello {name}', { name: name }) }} />
 ```
 
 Result:
@@ -277,7 +271,7 @@ Notice that for [security reasons](https://facebook.github.io/react/docs/dom-ele
 Example:
 
 ```javascript
-const Foo = ({}, context) => <h1>{context.t("Hello World")}</h1>;
+const Foo = ({}, context) => <h1>{context.t('Hello World')}</h1>
 ```
 
 ## Pluralize
@@ -285,29 +279,29 @@ const Foo = ({}, context) => <h1>{context.t("Hello World")}</h1>;
 To use plurals in your translations.
 
 ```javascript
-<div>{this.context.t(["una noche", "{n} noches", "n"], { n: 1 })}</div>
+<div>{this.context.t(['una noche', '{n} noches', 'n'], { n: 1 })}</div>
 ```
 
 Pass an array instead of a string as first parameter. The first element is a singular term, the second is the plural form and the last one is an object used to set the quantity.
 
 After extracting the translations to a POT file and opening it with Poedit you will see the following:
 
-![Poedit screenshot](imgs/poedit2.jpg?raw=true "Poedit screenshot")
+![Poedit screenshot](imgs/poedit2.jpg?raw=true 'Poedit screenshot')
 
 Also the `translations` object allows to set an options node. There you can set a plurals form rule and a plurals number. Also, you can suppress warnings logged in console. For example:
 
 ```javascript
 export const translations = {
   es: {
-    "Translate this text": "Traduce este texto",
-    "Hello {n}!": "Hola {n}!",
+    'Translate this text': 'Traduce este texto',
+    'Hello {n}!': 'Hola {n}!'
   },
   options: {
-    plural_rule: "n > 1",
-    plural_number: "2",
-    suppress_warnings: true, // defaults to false
-  },
-};
+    plural_rule: 'n > 1',
+    plural_number: '2',
+    suppress_warnings: true // defaults to false
+  }
+}
 ```
 
 When the translations are generated from po import file, this node is created automatically.
@@ -401,7 +395,7 @@ The default regular expression will search all occurrences of `this.context.t` s
 
 ```javascript
 export default function App({ aProp, bProp }, { t: translate }) {
-  return <div>{translate("Hello world!")}</div>;
+  return <div>{translate('Hello world!')}</div>
 }
 ```
 
@@ -470,19 +464,15 @@ You can set an empty translations object to the `<I18n/>` component and set the 
 Then you can use the `setTranslations` action.
 
 ```javascript
-import { setTranslations } from "redux-i18n";
-api
-  .get("...")
-  .then((r) => this.props.dispatch(setTranslations(r.translations)));
+import { setTranslations } from 'redux-i18n'
+api.get('...').then((r) => this.props.dispatch(setTranslations(r.translations)))
 ```
 
 You can pass a second parameter to the action to set the language.
 Depending on your response's structure, it could look like this:
 
 ```javascript
-api
-  .get("...")
-  .then((r) => this.props.dispatch(setTranslations(r.translations, "en")));
+api.get('...').then((r) => this.props.dispatch(setTranslations(r.translations, 'en')))
 ```
 
 Since version 1.5.1 is possible pass a dictionary as a second param with some options. This allows us set more functionalities to method.
@@ -493,8 +483,8 @@ Since version 1.5.1 is possible pass a dictionary as a second param with some op
 Some examples:
 
 ```javascript
-setTranslations(newTranslations, { preserveExisting: true });
-setTranslations({ Hello: "Hallo" }, { language: "de" });
+setTranslations(newTranslations, { preserveExisting: true })
+setTranslations({ Hello: 'Hallo' }, { language: 'de' })
 ```
 
 ## InitialState
@@ -506,29 +496,29 @@ Sometimes language is set initially by the redux store creation, or in an isomor
 If you want to isolate the use of context from your components, you can import the Localize Hoc to provide the translate function as a prop to your component. For example:
 
 ```javascript
-import { localize } from "redux-i18n";
+import { localize } from 'redux-i18n'
 
 class SomeComponent extends Component {
   render() {
-    return this.props.t("hello world");
+    return this.props.t('hello world')
   }
 }
 
-export default localize()(SomeComponent);
+export default localize()(SomeComponent)
 ```
 
 You can also change the name of the provided prop:
 
 ```javascript
-import { localize } from "redux-i18n";
+import { localize } from 'redux-i18n'
 
 class SomeComponent extends Component {
   render() {
-    return this.props.translate("hello world");
+    return this.props.translate('hello world')
   }
 }
 
-export default localize("translate")(SomeComponent);
+export default localize('translate')(SomeComponent)
 ```
 
 ---

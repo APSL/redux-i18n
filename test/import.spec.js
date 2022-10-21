@@ -1,6 +1,6 @@
 // Testing: import po
-import {getTrans, transToTxt} from '../bin/import_utils'
-import {describe, it} from 'mocha'
+import { getTrans, transToTxt } from '../bin/import_utils'
+import { describe, it } from 'mocha'
 import expect from 'expect'
 
 describe('importing po files', () => {
@@ -20,7 +20,7 @@ describe('importing po files', () => {
     expect(translations.en['{n} semanas']).toEqual('')
     expect(translations.en['1 site']).toEqual('{n}つの用地')
     expect(translations.en['{n} sites']).toEqual('{n}つの用地')
-    expect(translations.en['Text \'with\' quotes']).toEqual('Text \'with\' quotes')
+    expect(translations.en["Text 'with' quotes"]).toEqual("Text 'with' quotes")
 
     expect(translations.options.plural_rule).toEqual('n != 1')
     expect(translations.options.plural_number).toEqual(2)
@@ -31,23 +31,25 @@ describe('importing po files', () => {
     getTrans('./test/en.po', translations)
 
     const txt = transToTxt(translations)
-    expect(txt).toEqual('export const translations = {\n\
-  \'en\': {\n\
-    \'Traducir este texto\': \'Translate this text\',\n\
-    \'Hola {n}!\': \'Hello {n}!\',\n\
-    \'una noche\': \'one night\',\n\
-    \'{n} noches\': \'{n} nights\',\n\
-    \'una semana\': \'one week\',\n\
-    \'{n} semanas\': \'\',\n\
-    \'1 site\': \'{n}つの用地\',\n\
-    \'{n} sites\': \'{n}つの用地\',\n\
-    \'Text \\\'with\\\' quotes\': \'Text \\\'with\\\' quotes\',\n\
-    \'Text\\nwith\\nnewlines\\n\': \'Text\\nwith\\nnewlines\\n\',\n\
+    expect(txt).toEqual(
+      "export const translations = {\n\
+  'en': {\n\
+    'Traducir este texto': 'Translate this text',\n\
+    'Hola {n}!': 'Hello {n}!',\n\
+    'una noche': 'one night',\n\
+    '{n} noches': '{n} nights',\n\
+    'una semana': 'one week',\n\
+    '{n} semanas': '',\n\
+    '1 site': '{n}つの用地',\n\
+    '{n} sites': '{n}つの用地',\n\
+    'Text \\'with\\' quotes': 'Text \\'with\\' quotes',\n\
+    'Text\\nwith\\nnewlines\\n': 'Text\\nwith\\nnewlines\\n',\n\
   },\n\
-  \'options\': {\n\
-    \'plural_rule\': \'n != 1\',\n\
-    \'plural_number\': \'2\',\n\
+  'options': {\n\
+    'plural_rule': 'n != 1',\n\
+    'plural_number': '2',\n\
   },\n\
-}\n')
+}\n"
+    )
   })
 })
