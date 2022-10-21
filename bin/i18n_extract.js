@@ -3,9 +3,8 @@ var glob = require('glob'),
     fs = require('fs'),
     colors = require('colors'),
     readline = require('readline'),
-    optimist = require('optimist');
+    args = require('minimist')(process.argv.slice(2));
 
-var args = optimist.argv;
 var exts = args.fexts || 'js*'
 
 if (exts.split(',').length > 1) {

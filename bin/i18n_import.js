@@ -3,12 +3,11 @@
 const glob = require('glob');
 const fs = require('fs');
 const color = require('colors');
-const optimist = require('optimist');
+const args = require('minimist')(process.argv.slice(2));
 const importUtils = require('./import_utils');
 const getTrans = importUtils.getTrans
 const transToTxt = importUtils.transToTxt
 
-const args = optimist.argv;
 const localesPath = `${args.locales || 'locales'}/*.po`;
 const encoding = args.encoding;
 let translations = {};
