@@ -4,6 +4,7 @@
 
 - [Fixed] Replace optimist with minimist. Thanks to _AndreeWille_ (https://github.com/APSL/redux-i18n/pull/150)
 - [Removed] Demo and DemoCRA projects has been removed because it contains a lot of vulnerabilities. It will be moved to a separated repository.
+- [Changed] Replaced Travis by GHA
 
 ## 1.5.24
 

@@ -1,6 +1,6 @@
-import {pattern, getAllMatches, potFileContent, groupByText} from '../bin/extract_utils'
+import { pattern, getAllMatches, potFileContent, groupByText } from '../bin/extract_utils'
 import expect from 'expect'
-import {describe, it} from 'mocha'
+import { describe, it } from 'mocha'
 
 const html = `
 <div>
@@ -55,7 +55,6 @@ const Foo = ({}, context) => <h1>{context.t("Hello World")}</h1>
 
 describe('extract texts', () => {
   it('extracting basic texts', () => {
-
     const matches = getAllMatches(pattern(), html)
 
     expect(matches.length).toEqual(17)
@@ -114,20 +113,18 @@ describe('extract texts', () => {
     expect(matches[13].text).toEqual("Tom's house is very big")
     expect(matches[13].plural).toEqual(null)
     expect(matches[13].comment).toEqual(null)
-  });
+  })
 
   it('accepts a custom getText function name', () => {
-
-    const matches = getAllMatches(pattern('translate'), html);
+    const matches = getAllMatches(pattern('translate'), html)
 
     expect(matches.length).toEqual(1)
     expect(matches[0].text).toEqual('Also translate this text')
     expect(matches[0].plural).toEqual(null)
     expect(matches[0].comment).toEqual(null)
-  });
+  })
 
   it('check pot file content', () => {
-
     // Grouping all matches by text-id
     const matches = getAllMatches(pattern(), html)
     expect(matches.length).toEqual(17)
@@ -232,9 +229,8 @@ msgstr[1] ""
 msgid "Tom's house is very big"
 msgstr ""
 
-`);
-
-  });
+`)
+  })
 
   it('stateless extracting', () => {
     const matches = getAllMatches(pattern(), stateless)
@@ -243,5 +239,4 @@ msgstr ""
     expect(matches[0].plural).toEqual(null)
     expect(matches[0].comment).toEqual(null)
   })
-
 })
