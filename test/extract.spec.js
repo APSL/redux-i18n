@@ -53,6 +53,13 @@ const stateless = `
 const Foo = ({}, context) => <h1>{context.t("Hello World")}</h1>
 `
 
+const oneWord = `const oneWord = (props, context) =>{
+  return(
+    <h1>{context.t("굿")}</h1>
+    <h1>{context.t("A")}</h1>   
+  )
+}`
+
 describe('extract texts', () => {
   it('extracting basic texts', () => {
     const matches = getAllMatches(pattern(), html)
@@ -238,5 +245,18 @@ msgstr ""
     expect(matches[0].text).toEqual('Hello World')
     expect(matches[0].plural).toEqual(null)
     expect(matches[0].comment).toEqual(null)
+  })
+
+  it('oneWord extracting', () => {
+    const matches = getAllMatches(pattern(), oneWord)
+    expect(matches.length).toEqual(2)
+
+    expect(matches[0].text).toEqual('굿')
+    expect(matches[0].plural).toEqual(null)
+    expect(matches[0].comment).toEqual(null)
+
+    expect(matches[1].text).toEqual('A')
+    expect(matches[1].plural).toEqual(null)
+    expect(matches[1].comment).toEqual(null)
   })
 })
