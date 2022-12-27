@@ -247,7 +247,7 @@ msgstr ""
     expect(matches[0].comment).toEqual(null)
   })
 
-  it('oneWord extracting', () => {
+  it('extracting one word', () => {
     const matches = getAllMatches(pattern(), oneWord)
     expect(matches.length).toEqual(2)
 
