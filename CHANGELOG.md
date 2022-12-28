@@ -2,6 +2,10 @@
 
 ## [unreleased]
 
+## 1.5.26 (2022-12-28)
+
+- [Fixed] One-letter words are not extracted. Thanks to _kwangminini_ (https://github.com/APSL/redux-i18n/pull/162)
+
 ## 1.5.25
 
 - [Fixed] Replace optimist with minimist. Thanks to _AndreeWille_ (https://github.com/APSL/redux-i18n/pull/150)
