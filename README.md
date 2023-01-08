@@ -171,7 +171,7 @@ const defaultI18nState = new Map({
 })
 ```
 
-When you [map your state to props with connect](https://github.com/reactjs/react-redux/blob/master/docs/api.md#connectmapstatetoprops-mapdispatchtoprops-mergeprops-options) you can also access the `lang` attribute in your components:
+When you [map your state to props with connect](https://github.com/reduxjs/react-redux/blob/master/docs/api/connect.md) you can also access the `lang` attribute in your components:
 
 ```javascript
 export default connect(state => ({
