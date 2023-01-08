@@ -2,6 +2,10 @@
 
 ## [unreleased]
 
+[Fixed]
+
+- Broken link. Thanks to _hussainshaikh12_ (https://github.com/APSL/redux-i18n/pull/163)
+
 ## 1.5.26 (2022-12-28)
 
 - [Fixed] One-letter words are not extracted. Thanks to _kwangminini_ (https://github.com/APSL/redux-i18n/pull/162)
