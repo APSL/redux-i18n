@@ -65,7 +65,7 @@
     "gettext-parser": "^1.1.2",
     "immutable": "^3.8.1",
     "jsdom-no-contextify": "^3.1.0",
-    "mocha": "^2.5.3",
+    "mocha": "^10.2.0",
     "moment": "~2.19.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
